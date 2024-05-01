@@ -1,2 +1,2 @@
 # NPG_projekt_zaliczeniowy
-jestem super
+Przykładowy tekst dla testów.
