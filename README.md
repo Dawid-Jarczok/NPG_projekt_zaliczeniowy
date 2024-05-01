@@ -1,2 +1,2 @@
 # NPG_projekt_zaliczeniowy
-cos
+Przykładowy tekst dla testów.
