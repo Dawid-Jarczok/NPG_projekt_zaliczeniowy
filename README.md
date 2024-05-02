@@ -2,3 +2,4 @@
 Przykładowy tekst dla testów
 Viva Barca
 test
+test2
