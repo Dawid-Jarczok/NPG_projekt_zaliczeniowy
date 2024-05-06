@@ -31,3 +31,7 @@ func _physics_process(delta):
 	elif direction > 0:
 		sprite.flip_h = false	
 	move_and_slide()
+
+func _ready():
+	# Ustawienie nowej pozycji postaci
+	position = Vector2(20, 20) # zamiast x i y wpisz odpowiednie wartości współrzędnych
