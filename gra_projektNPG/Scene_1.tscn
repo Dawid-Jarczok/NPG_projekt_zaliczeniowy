@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://k8y5rpqtbru5" path="res://Background/Green.png" id="1_4kmdb"]
 [ext_resource type="Texture2D" uid="uid://bn1ov4eydlbul" path="res://Terrain (16x16).png" id="2_mv8or"]
 [ext_resource type="Texture2D" uid="uid://o8a2g6ahh7k8" path="res://Background/Brown.png" id="2_sxmmx"]
-[ext_resource type="Script" path="res://player_movement.gd" id="3_3jpsd"]
+[ext_resource type="Script" path="res://scripts/player_movement.gd" id="3_3jpsd"]
 [ext_resource type="Texture2D" uid="uid://dj511m2v60foe" path="res://Idle (32x32).png" id="5_y3yg6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qov1h"]
@@ -958,10 +958,10 @@ texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -844.0
-offset_top = -1693.0
-offset_right = 1289.0
-offset_bottom = -319.0
+offset_left = -853.0
+offset_top = -1733.0
+offset_right = 1280.0
+offset_bottom = -359.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3, 3)
