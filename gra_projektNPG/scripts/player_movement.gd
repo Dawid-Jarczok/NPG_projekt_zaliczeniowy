@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -600.0
+const MAX_FALL_SPEED = 650
+
 enum State  {default, run, jump}
 var current_state
 var state_before
@@ -22,11 +24,14 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
-	
+  #Change speed fall
+	velocity.y = clamp(velocity.y, JUMP_VELOCITY, MAX_FALL_SPEED)
+
 func _ready():
 	# Ustawienie nowej pozycji postaci
 	position = Vector2(20, 20) # zamiast x i y wpisz odpowiednie wartości współrzędnych
 	current_state = State.default
+
 
 func player_default(delta):
 	if is_on_floor():
@@ -47,6 +52,8 @@ func player_run(delta):
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+
+	#Changing the character's direction 
 	if direction < 0:
 		current_state = State.run
 		sprite.flip_h = true
