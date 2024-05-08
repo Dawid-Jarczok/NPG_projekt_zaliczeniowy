@@ -7,9 +7,14 @@ var max_fall_speed = 600
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+var spawnPoint
+
 @onready var sprite = $Sprite2D
 
 func _physics_process(delta):
+	if Input.is_action_just_pressed("TestAction"):
+		respawn()
+
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -36,5 +41,10 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _ready():
-	# Ustawienie nowej pozycji postaci
-	position = Vector2(20, 20) # zamiast x i y wpisz odpowiednie wartości współrzędnych
+	spawnPoint = get_node("/root/Map1/PlayerStart")
+
+func respawn():
+	spawnPoint = get_node("/root/Map1/PlayerStart")
+	print(spawnPoint.global_position)
+	if spawnPoint:
+		global_position = spawnPoint.global_position
