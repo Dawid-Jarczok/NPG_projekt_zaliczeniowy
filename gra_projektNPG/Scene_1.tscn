@@ -1,9 +1,15 @@
-[gd_scene load_steps=68 format=3 uid="uid://cta5khhkikftn"]
+[gd_scene load_steps=48 format=3 uid="uid://cta5khhkikftn"]
 
-[ext_resource type="Texture2D" uid="uid://k8y5rpqtbru5" path="res://Background/Green.png" id="1_4kmdb"]
+[ext_resource type="Texture2D" uid="uid://cnsvr8oedpxtx" path="res://Background/sky/1.png" id="1_l3xtt"]
+[ext_resource type="Texture2D" uid="uid://b2j07qymh6g3o" path="res://Background/sky/2.png" id="2_66xns"]
 [ext_resource type="Texture2D" uid="uid://bn1ov4eydlbul" path="res://Terrain (16x16).png" id="2_mv8or"]
-[ext_resource type="Texture2D" uid="uid://o8a2g6ahh7k8" path="res://Background/Brown.png" id="2_sxmmx"]
+[ext_resource type="Texture2D" uid="uid://cbfh652mxixjy" path="res://Background/blue_cave/blue_L1.png" id="2_w1h0x"]
 [ext_resource type="Script" path="res://scripts/player_movement.gd" id="3_3jpsd"]
+[ext_resource type="Texture2D" uid="uid://xym4na1xictj" path="res://Background/blue_cave/blue_L2.png" id="3_87hse"]
+[ext_resource type="Texture2D" uid="uid://v3xau8fk6ih" path="res://Background/sky/3.png" id="3_wac5r"]
+[ext_resource type="Texture2D" uid="uid://d4a7b6gtg2u1m" path="res://Background/blue_cave/blue_L3.png" id="4_caw38"]
+[ext_resource type="Texture2D" uid="uid://8wg2bpj0i5io" path="res://Background/sky/4.png" id="4_trc73"]
+[ext_resource type="Texture2D" uid="uid://ddwqlhgf70mbp" path="res://Background/blue_cave/blue_L4.png" id="5_80rq6"]
 [ext_resource type="Texture2D" uid="uid://dj511m2v60foe" path="res://Idle (32x32).png" id="5_y3yg6"]
 [ext_resource type="Texture2D" uid="uid://bbcud1rmbe3et" path="res://Jump with dust_1.png" id="6_1h211"]
 [ext_resource type="Texture2D" uid="uid://dtqixuc6yyi4v" path="res://Jump (32x32).png" id="6_w0es2"]
@@ -1263,30 +1269,108 @@ size = Vector2(48, 34)
 
 [node name="Node" type="Node"]
 
-[node name="Level_1" type="TextureRect" parent="."]
+[node name="Level_1_L1" type="TextureRect" parent="."]
 texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -844.0
-offset_top = -1693.0
-offset_right = 1289.0
-offset_bottom = -319.0
+offset_left = -654.0
+offset_top = -2028.0
+offset_right = -132.0
+offset_bottom = -1622.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3, 3)
-texture = ExtResource("1_4kmdb")
-stretch_mode = 1
+texture = ExtResource("1_l3xtt")
+expand_mode = 1
 
-[node name="Level_2" type="TextureRect" parent="."]
+[node name="Level_1_L2" type="TextureRect" parent="."]
 texture_filter = 1
-offset_left = 2111.0
+offset_left = -682.0
+offset_top = -2072.0
+offset_right = 4368.0
+offset_bottom = 1134.0
+texture = ExtResource("2_66xns")
+
+[node name="Level_1_L3" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = -678.0
+offset_top = -2041.0
+offset_right = 4368.0
+offset_bottom = 1134.0
+texture = ExtResource("3_wac5r")
+
+[node name="Level_1_L4" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = -685.0
+offset_top = -2061.0
+offset_right = 4368.0
+offset_bottom = 1134.0
+texture = ExtResource("4_trc73")
+
+[node name="Level_2_L1" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 3502.0
 offset_top = 287.0
-offset_right = 8513.0
-offset_bottom = 2584.0
-scale = Vector2(3, 3)
-texture = ExtResource("2_sxmmx")
-stretch_mode = 1
+offset_right = 7488.0
+offset_bottom = 1844.0
+texture = ExtResource("2_w1h0x")
+
+[node name="Level_2_L2" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 3509.0
+offset_top = 297.0
+offset_right = 7497.0
+offset_bottom = 1855.0
+texture = ExtResource("3_87hse")
+
+[node name="Level_2_L3" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 3500.0
+offset_top = 288.0
+offset_right = 7517.0
+offset_bottom = 1857.0
+texture = ExtResource("4_caw38")
+
+[node name="Level_2_L4" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 3503.0
+offset_top = 296.0
+offset_right = 7522.0
+offset_bottom = 1866.0
+texture = ExtResource("5_80rq6")
+
+[node name="Level_2_L5" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 2700.0
+offset_top = 1863.0
+offset_right = 8409.0
+offset_bottom = 4093.0
+texture = ExtResource("2_w1h0x")
+
+[node name="Level_2_L6" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 2796.0
+offset_top = 1886.0
+offset_right = 8409.0
+offset_bottom = 4079.0
+texture = ExtResource("3_87hse")
+
+[node name="Level_2_L7" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 2641.0
+offset_top = 1858.0
+offset_right = 8430.0
+offset_bottom = 4119.0
+texture = ExtResource("4_caw38")
+
+[node name="Level_2_L8" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 2650.0
+offset_top = 1790.0
+offset_right = 8604.0
+offset_bottom = 4116.0
+texture = ExtResource("5_80rq6")
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
