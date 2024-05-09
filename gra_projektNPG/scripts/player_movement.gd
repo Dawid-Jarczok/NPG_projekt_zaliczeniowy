@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 
@@ -48,3 +49,5 @@ func respawn():
 	print(spawnPoint.global_position)
 	if spawnPoint:
 		global_position = spawnPoint.global_position
+		velocity.x = 0.0
+		velocity.y = 0.0
