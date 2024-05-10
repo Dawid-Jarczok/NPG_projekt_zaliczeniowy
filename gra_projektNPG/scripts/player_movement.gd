@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 
@@ -12,11 +13,16 @@ var Enemies = ["Enemy_mushroom"]
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+var spawnPoint
+
 @onready var sprite = $Sprite2D
 @onready var left_col_vec = $collision_left
 @onready var right_col_vec = $collision_right
 
 func _physics_process(delta):
+	if Input.is_action_just_pressed("TestAction"):
+		respawn()
+
 	player_jump(delta)
 	player_default(delta)
 	player_run(delta)
@@ -26,6 +32,7 @@ func _physics_process(delta):
 	who_hit_player_on_right()
 	move_and_slide()
 	player_animations()
+
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -70,6 +77,17 @@ func player_run(delta):
 		current_state = State.run
 		sprite.flip_h = false	
 
+func _ready():
+	spawnPoint = get_node("/root/Map1/PlayerStart")
+
+func respawn():
+	spawnPoint = get_node("/root/Map1/PlayerStart")
+	print(spawnPoint.global_position)
+	if spawnPoint:
+		global_position = spawnPoint.global_position
+		velocity.x = 0.0
+		velocity.y = 0.0
+
 func player_animations():
 	if current_state == State.default:
 		sprite.play("default")
@@ -95,3 +113,4 @@ func who_hit_player_on_right():
 			print("dupa")
 	else:
 		collider_name = null
+
