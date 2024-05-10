@@ -1,23 +1,20 @@
-[gd_scene load_steps=96 format=3 uid="uid://cta5khhkikftn"]
+[gd_scene load_steps=98 format=3 uid="uid://cta5khhkikftn"]
 
 [ext_resource type="Texture2D" uid="uid://cnsvr8oedpxtx" path="res://Background/sky/1.png" id="1_l3xtt"]
 [ext_resource type="Texture2D" uid="uid://b2j07qymh6g3o" path="res://Background/sky/2.png" id="2_66xns"]
 [ext_resource type="Texture2D" uid="uid://bn1ov4eydlbul" path="res://Terrain (16x16).png" id="2_mv8or"]
 [ext_resource type="Texture2D" uid="uid://cbfh652mxixjy" path="res://Background/blue_cave/blue_L1.png" id="2_w1h0x"]
 [ext_resource type="Script" path="res://scripts/player_movement.gd" id="3_3jpsd"]
-[ext_resource type="PackedScene" uid="uid://daoxx11ma1js0" path="res://scenes/obstacles/danger_zone.tscn" id="4_ct8yx"]
 [ext_resource type="Texture2D" uid="uid://xym4na1xictj" path="res://Background/blue_cave/blue_L2.png" id="3_87hse"]
 [ext_resource type="Texture2D" uid="uid://v3xau8fk6ih" path="res://Background/sky/3.png" id="3_wac5r"]
 [ext_resource type="Texture2D" uid="uid://d4a7b6gtg2u1m" path="res://Background/blue_cave/blue_L3.png" id="4_caw38"]
+[ext_resource type="PackedScene" uid="uid://daoxx11ma1js0" path="res://scenes/obstacles/danger_zone.tscn" id="4_ct8yx"]
 [ext_resource type="Texture2D" uid="uid://8wg2bpj0i5io" path="res://Background/sky/4.png" id="4_trc73"]
 [ext_resource type="Texture2D" uid="uid://ddwqlhgf70mbp" path="res://Background/blue_cave/blue_L4.png" id="5_80rq6"]
 [ext_resource type="Texture2D" uid="uid://dj511m2v60foe" path="res://Idle (32x32).png" id="5_y3yg6"]
-[ext_resource type="Texture2D" path="res://Jump with dust_1.png" id="6_1h211"]
-[ext_resource type="Texture2D" path="res://Jump (32x32).png" id="6_w0es2"]
+[ext_resource type="Texture2D" uid="uid://bbcud1rmbe3et" path="res://Jump with dust_1.png" id="6_1h211"]
+[ext_resource type="Texture2D" uid="uid://dtqixuc6yyi4v" path="res://Jump (32x32).png" id="6_w0es2"]
 [ext_resource type="Script" path="res://Enemy_1.gd" id="8_4laet"]
-[ext_resource type="Texture2D" path="res://Enemy Run.png" id="8_jtskg"]
-[ext_resource type="Texture2D" path="res://Hit.png" id="10_2rnm4"]
-[ext_resource type="Texture2D" path="res://Run (32x32).png" id="10_yekdh"]
 [ext_resource type="Texture2D" uid="uid://blu4hcmu0onjc" path="res://Enemy Run.png" id="8_jtskg"]
 [ext_resource type="Texture2D" uid="uid://bgwjin40bcqaq" path="res://Hit.png" id="10_2rnm4"]
 [ext_resource type="Texture2D" uid="uid://bnne375k03oto" path="res://Run (32x32).png" id="10_yekdh"]
@@ -1548,19 +1545,16 @@ position = Vector2(40, 490)
 script = ExtResource("3_3jpsd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_test/CharacterBody2D"]
-position = Vector2(42, 414)
 shape = SubResource("RectangleShape2D_4rno3")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="player_test/CharacterBody2D"]
 texture_filter = 1
-position = Vector2(41, 411)
 scale = Vector2(2, 2.132)
 sprite_frames = SubResource("SpriteFrames_uov07")
 animation = &"player_hit"
 autoplay = "default"
 
 [node name="Camera2D" type="Camera2D" parent="player_test/CharacterBody2D"]
-position = Vector2(42, 415)
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 drag_left_margin = 0.1
@@ -1568,19 +1562,19 @@ drag_top_margin = 0.1
 drag_right_margin = 0.1
 drag_bottom_margin = 0.1
 
-[node name="PlayerStart" type="Node2D" parent="."]
-position = Vector2(41, 450)
-scale = Vector2(10, 10)
-
 [node name="collision_left" type="RayCast2D" parent="player_test/CharacterBody2D"]
-position = Vector2(27, 415)
+position = Vector2(-24, 0)
 rotation = 1.5708
 target_position = Vector2(0, 10)
 
 [node name="collision_right" type="RayCast2D" parent="player_test/CharacterBody2D"]
-position = Vector2(57, 415)
+position = Vector2(24, -2)
 rotation = 4.71239
 target_position = Vector2(0, 10)
+
+[node name="PlayerStart" type="Node2D" parent="."]
+position = Vector2(41, 450)
+scale = Vector2(10, 10)
 
 [node name="Enemy_mushroom" type="CharacterBody2D" parent="."]
 position = Vector2(2, 0)

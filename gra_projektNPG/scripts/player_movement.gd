@@ -77,8 +77,6 @@ func player_run(delta):
 		current_state = State.run
 		sprite.flip_h = false	
 
-func _ready():
-	spawnPoint = get_node("/root/Map1/PlayerStart")
 
 func respawn():
 	spawnPoint = get_node("/root/Map1/PlayerStart")
