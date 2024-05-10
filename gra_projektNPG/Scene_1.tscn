@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 [gd_scene load_steps=74 format=3 uid="uid://cta5khhkikftn"]
-=======
-[gd_scene load_steps=96 format=3 uid="uid://cta5khhkikftn"]
->>>>>>> dc431c9ff8d3dd62a1e27c84eea60f11fe9bfdc7
+
 
 [ext_resource type="Texture2D" uid="uid://cnsvr8oedpxtx" path="res://Background/sky/1.png" id="1_l3xtt"]
 [ext_resource type="Texture2D" uid="uid://b2j07qymh6g3o" path="res://Background/sky/2.png" id="2_66xns"]
