@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 [gd_scene load_steps=74 format=3 uid="uid://cta5khhkikftn"]
+=======
+[gd_scene load_steps=96 format=3 uid="uid://cta5khhkikftn"]
+>>>>>>> dc431c9ff8d3dd62a1e27c84eea60f11fe9bfdc7
 
 [ext_resource type="Texture2D" uid="uid://cnsvr8oedpxtx" path="res://Background/sky/1.png" id="1_l3xtt"]
 [ext_resource type="Texture2D" uid="uid://b2j07qymh6g3o" path="res://Background/sky/2.png" id="2_66xns"]
@@ -14,9 +18,18 @@
 [ext_resource type="Texture2D" path="res://Jump with dust_1.png" id="6_1h211"]
 [ext_resource type="Texture2D" path="res://Jump (32x32).png" id="6_w0es2"]
 [ext_resource type="Script" path="res://Enemy_1.gd" id="8_4laet"]
+<<<<<<< HEAD
 [ext_resource type="Texture2D" path="res://Enemy Run.png" id="8_jtskg"]
 [ext_resource type="Texture2D" path="res://Hit.png" id="10_2rnm4"]
 [ext_resource type="Texture2D" path="res://Run (32x32).png" id="10_yekdh"]
+=======
+[ext_resource type="Texture2D" uid="uid://blu4hcmu0onjc" path="res://Enemy Run.png" id="8_jtskg"]
+[ext_resource type="Texture2D" uid="uid://bgwjin40bcqaq" path="res://Hit.png" id="10_2rnm4"]
+[ext_resource type="Texture2D" uid="uid://bnne375k03oto" path="res://Run (32x32).png" id="10_yekdh"]
+[ext_resource type="Texture2D" uid="uid://tba4mm4dgl0v" path="res://Fall (32x32).png" id="13_dmpxv"]
+[ext_resource type="Texture2D" uid="uid://bcx5lyqj7kbug" path="res://Hit (32x32).png" id="15_k8kh5"]
+[ext_resource type="Texture2D" uid="uid://2me2m188b72k" path="res://Checkpoint (Flag Idle)(64x64).png" id="19_l1wdp"]
+>>>>>>> dc431c9ff8d3dd62a1e27c84eea60f11fe9bfdc7
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qov1h"]
 texture = ExtResource("2_mv8or")
@@ -942,9 +955,41 @@ region = Rect2(96, 0, 32, 32)
 atlas = ExtResource("6_1h211")
 region = Rect2(128, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8q86"]
+atlas = ExtResource("13_dmpxv")
+region = Rect2(0, 0, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_6huke"]
 atlas = ExtResource("6_w0es2")
 region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5bk74"]
+atlas = ExtResource("15_k8kh5")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u50lw"]
+atlas = ExtResource("15_k8kh5")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4lo3h"]
+atlas = ExtResource("15_k8kh5")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7ih0"]
+atlas = ExtResource("15_k8kh5")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqt6m"]
+atlas = ExtResource("15_k8kh5")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyb1s"]
+atlas = ExtResource("15_k8kh5")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kjkof"]
+atlas = ExtResource("15_k8kh5")
+region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1s64i"]
 atlas = ExtResource("10_yekdh")
@@ -1056,11 +1101,45 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_j8q86")
+}],
+"loop": true,
+"name": &"falling",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_6huke")
 }],
 "loop": true,
 "name": &"jump",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5bk74")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u50lw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lo3h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r7ih0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqt6m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oyb1s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjkof")
+}],
+"loop": true,
+"name": &"player_hit",
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1267,6 +1346,84 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ipscq"]
 size = Vector2(48, 34)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ui40j"]
+atlas = ExtResource("19_l1wdp")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcjnb"]
+atlas = ExtResource("19_l1wdp")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4fhu"]
+atlas = ExtResource("19_l1wdp")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pthiu"]
+atlas = ExtResource("19_l1wdp")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8n88e"]
+atlas = ExtResource("19_l1wdp")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21pde"]
+atlas = ExtResource("19_l1wdp")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tr4ai"]
+atlas = ExtResource("19_l1wdp")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dugdy"]
+atlas = ExtResource("19_l1wdp")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4y041"]
+atlas = ExtResource("19_l1wdp")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vj0l"]
+atlas = ExtResource("19_l1wdp")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hcx7e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ui40j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wcjnb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4fhu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pthiu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8n88e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21pde")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tr4ai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dugdy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4y041")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vj0l")
+}],
+"loop": true,
+"name": &"flag",
+"speed": 18.0
+}]
+
 [node name="Node" type="Node"]
 
 [node name="Level_1_L1" type="TextureRect" parent="."]
@@ -1385,19 +1542,19 @@ layer_0/tile_data = PackedInt32Array(720896, 393216, 0, 720897, 458752, 0, 72089
 script = ExtResource("3_3jpsd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_test/CharacterBody2D"]
-position = Vector2(44, 470)
+position = Vector2(42, 414)
 shape = SubResource("RectangleShape2D_4rno3")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="player_test/CharacterBody2D"]
 texture_filter = 1
-position = Vector2(40, 467)
+position = Vector2(41, 411)
 scale = Vector2(2, 2.132)
 sprite_frames = SubResource("SpriteFrames_uov07")
-animation = &"run"
+animation = &"player_hit"
 autoplay = "default"
 
 [node name="Camera2D" type="Camera2D" parent="player_test/CharacterBody2D"]
-position = Vector2(43, 475)
+position = Vector2(42, 415)
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 drag_left_margin = 0.1
@@ -1405,7 +1562,18 @@ drag_top_margin = 0.1
 drag_right_margin = 0.1
 drag_bottom_margin = 0.1
 
+[node name="collision_left" type="RayCast2D" parent="player_test/CharacterBody2D"]
+position = Vector2(27, 415)
+rotation = 1.5708
+target_position = Vector2(0, 10)
+
+[node name="collision_right" type="RayCast2D" parent="player_test/CharacterBody2D"]
+position = Vector2(57, 415)
+rotation = 4.71239
+target_position = Vector2(0, 10)
+
 [node name="Enemy_mushroom" type="CharacterBody2D" parent="."]
+position = Vector2(2, 0)
 script = ExtResource("8_4laet")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy_mushroom"]
@@ -1420,12 +1588,12 @@ position = Vector2(3710, -593)
 shape = SubResource("RectangleShape2D_ipscq")
 
 [node name="RayCast2D_1" type="RayCast2D" parent="Enemy_mushroom"]
-position = Vector2(3693, -597)
+position = Vector2(3695, -595)
 rotation = 1.5708
 target_position = Vector2(0, 10)
 
 [node name="RayCast2D_2" type="RayCast2D" parent="Enemy_mushroom"]
-position = Vector2(3727, -597)
+position = Vector2(3725, -595)
 rotation = 4.71239
 target_position = Vector2(0, 10)
 
@@ -1436,3 +1604,12 @@ target_position = Vector2(0, -10)
 [node name="RayCast2D_up2" type="RayCast2D" parent="Enemy_mushroom"]
 position = Vector2(3725, -603)
 target_position = Vector2(0, -10)
+
+[node name="flag" type="AnimatedSprite2D" parent="."]
+position = Vector2(27, 465)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_hcx7e")
+animation = &"flag"
+autoplay = "flag"
+frame = 4
+frame_progress = 0.558065
