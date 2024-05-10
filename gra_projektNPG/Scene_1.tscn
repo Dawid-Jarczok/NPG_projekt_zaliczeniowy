@@ -14,18 +14,15 @@
 [ext_resource type="Texture2D" path="res://Jump with dust_1.png" id="6_1h211"]
 [ext_resource type="Texture2D" path="res://Jump (32x32).png" id="6_w0es2"]
 [ext_resource type="Script" path="res://Enemy_1.gd" id="8_4laet"]
-<<<<<<< HEAD
 [ext_resource type="Texture2D" path="res://Enemy Run.png" id="8_jtskg"]
 [ext_resource type="Texture2D" path="res://Hit.png" id="10_2rnm4"]
 [ext_resource type="Texture2D" path="res://Run (32x32).png" id="10_yekdh"]
-=======
 [ext_resource type="Texture2D" uid="uid://blu4hcmu0onjc" path="res://Enemy Run.png" id="8_jtskg"]
 [ext_resource type="Texture2D" uid="uid://bgwjin40bcqaq" path="res://Hit.png" id="10_2rnm4"]
 [ext_resource type="Texture2D" uid="uid://bnne375k03oto" path="res://Run (32x32).png" id="10_yekdh"]
 [ext_resource type="Texture2D" uid="uid://tba4mm4dgl0v" path="res://Fall (32x32).png" id="13_dmpxv"]
 [ext_resource type="Texture2D" uid="uid://bcx5lyqj7kbug" path="res://Hit (32x32).png" id="15_k8kh5"]
 [ext_resource type="Texture2D" uid="uid://2me2m188b72k" path="res://Checkpoint (Flag Idle)(64x64).png" id="19_l1wdp"]
->>>>>>> dc431c9ff8d3dd62a1e27c84eea60f11fe9bfdc7
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qov1h"]
 texture = ExtResource("2_mv8or")
