@@ -5,20 +5,25 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -600.0
 const MAX_FALL_SPEED = 650
 
-enum State  {default, run, jump}
+enum State  {default, run, jump, falling}
 var current_state
-var state_before
-
+var collider_name = null
+var Enemies = ["Enemy_mushroom"]
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var sprite = $Sprite2D
+@onready var left_col_vec = $collision_left
+@onready var right_col_vec = $collision_right
 
 func _physics_process(delta):
 	player_jump(delta)
 	player_default(delta)
 	player_run(delta)
 	player_in_air(delta)
+	player_falling(delta)
+	who_hit_player_on_left()
+	who_hit_player_on_right()
 	move_and_slide()
 	player_animations()
 	# Add the gravity.
@@ -37,14 +42,18 @@ func player_default(delta):
 	if is_on_floor():
 		current_state = State.default
 
+func player_falling(delta):
+	if not is_on_floor() and velocity.y > 0:
+		current_state = State.falling
+
+
 func player_jump(delta):
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
 func player_in_air(delta):
-	if not is_on_floor():
+	if not is_on_floor() and velocity.y < 0:
 		current_state = State.jump
-		state_before = State.jump
 
 func player_run(delta):
 	var direction = Input.get_axis("move_left", "move_right")
@@ -68,3 +77,21 @@ func player_animations():
 		sprite.play("jump")
 	elif current_state == State.run and is_on_floor():
 		sprite.play("run")
+	elif current_state == State.falling:
+		sprite.play("falling")
+
+func who_hit_player_on_left():
+	if left_col_vec.is_colliding():
+		collider_name = left_col_vec.get_collider().name
+		if Enemies.has(collider_name):
+			print("dupa")
+	else:
+		collider_name = null
+
+func who_hit_player_on_right():
+	if right_col_vec.is_colliding():
+		collider_name = right_col_vec.get_collider().name
+		if Enemies.has(collider_name):
+			print("dupa")
+	else:
+		collider_name = null
