@@ -4,12 +4,19 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -600.0
-const MAX_FALL_SPEED = 650
+const MAX_FALL_SPEED = 650.0
+const DAMAGE_VEL_X = 300.0
+const DAMAGE_VEL_Y = -400.0
+const MAX_HEALTH = 100
+
+@export var gravity_multiplier : float = 1.0
+@export var health : int = MAX_HEALTH
 
 enum State  {default, run, jump, falling}
-var current_state
+var current_state = State
 var collider_name = null
 var Enemies = ["Enemy_mushroom"]
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -35,13 +42,11 @@ func _physics_process(delta):
 
 	# Add the gravity.
 	if not is_on_floor():
-		velocity.y += gravity * delta
+		velocity.y += gravity * gravity_multiplier * delta
   #Change speed fall
 	velocity.y = clamp(velocity.y, JUMP_VELOCITY, MAX_FALL_SPEED)
 
 func _ready():
-	# Ustawienie nowej pozycji postaci
-	position = Vector2(20, 20) # zamiast x i y wpisz odpowiednie wartości współrzędnych
 	current_state = State.default
 
 
@@ -63,6 +68,7 @@ func player_in_air(delta):
 		current_state = State.jump
 
 func player_run(delta):
+	# Blocking movement input for while after player taked damage
 	var direction = Input.get_axis("move_left", "move_right")
 	if direction:
 		velocity.x = direction * SPEED
@@ -70,15 +76,15 @@ func player_run(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	#Changing the character's direction 
-	if direction < 0:
+	if velocity.x < 0:
 		current_state = State.run
 		sprite.flip_h = true
-	elif direction > 0:
+	elif velocity.x > 0:
 		current_state = State.run
 		sprite.flip_h = false	
 
-
 func respawn():
+	health = MAX_HEALTH
 	spawnPoint = get_node("/root/Map1/PlayerStart")
 	print(spawnPoint.global_position)
 	if spawnPoint:
@@ -96,11 +102,19 @@ func player_animations():
 	elif current_state == State.falling:
 		sprite.play("falling")
 
+func take_damage(damage):
+	health -= damage
+	prints("Player health:", health)
+	if health <= 0:
+		respawn()
+
 func who_hit_player_on_left():
 	if left_col_vec.is_colliding():
 		collider_name = left_col_vec.get_collider().name
 		if Enemies.has(collider_name):
-			respawn()
+			take_damage(10)
+			velocity.x = 100.0
+			velocity.y = -200.0
 	else:
 		collider_name = null
 
@@ -108,7 +122,7 @@ func who_hit_player_on_right():
 	if right_col_vec.is_colliding():
 		collider_name = right_col_vec.get_collider().name
 		if Enemies.has(collider_name):
-			respawn()
+			take_damage(10)
 	else:
 		collider_name = null
 
