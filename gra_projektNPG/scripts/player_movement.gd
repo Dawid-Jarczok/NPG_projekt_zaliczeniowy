@@ -30,7 +30,7 @@ var spawnPoint
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("TestAction"):
-		take_damage(5)
+		teleport()
 
 	player_jump(delta)
 	player_default(delta)
@@ -51,6 +51,7 @@ func _physics_process(delta):
 
 func _ready():
 	current_state = State.default
+	spawnPoint = get_node("/root/Map1/PlayerStart")
 
 
 func player_default(delta):
@@ -99,7 +100,7 @@ func player_taked_damage(delta):
 
 func respawn():
 	health = MAX_HEALTH
-	spawnPoint = get_node("/root/Map1/PlayerStart")
+	block_movement_inputs = false
 	print(spawnPoint.global_position)
 	if spawnPoint:
 		global_position = spawnPoint.global_position
@@ -144,3 +145,12 @@ func who_hit_player_on_right():
 	else:
 		collider_name = null
 
+
+func _on_taked_damage_timer_timeout():
+	block_movement_inputs = false
+
+func teleport():
+	var new_pos = get_node("/root/Map1/DebugTeleport")
+	print(new_pos.global_position)
+	if new_pos:
+		global_position = new_pos.global_position
