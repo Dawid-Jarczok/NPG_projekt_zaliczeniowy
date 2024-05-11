@@ -100,7 +100,7 @@ func who_hit_player_on_left():
 	if left_col_vec.is_colliding():
 		collider_name = left_col_vec.get_collider().name
 		if Enemies.has(collider_name):
-			print("dupa")
+			respawn()
 	else:
 		collider_name = null
 
@@ -108,7 +108,7 @@ func who_hit_player_on_right():
 	if right_col_vec.is_colliding():
 		collider_name = right_col_vec.get_collider().name
 		if Enemies.has(collider_name):
-			print("dupa")
+			respawn()
 	else:
 		collider_name = null
 
