@@ -3,14 +3,16 @@ extends CharacterBody2D
 
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -600.0
+const JUMP_VELOCITY = -700.0
 const MAX_FALL_SPEED = 650.0
 const DAMAGE_VEL_X = 300.0
 const DAMAGE_VEL_Y = -400.0
 const MAX_HEALTH = 100
 
-@export var gravity_multiplier : float = 1.0
+@export var gravity_multiplier : float = 1.5
 @export var health : int = MAX_HEALTH
+
+var block_movement_inputs : bool = false
 
 enum State  {default, run, jump, falling}
 var current_state = State
@@ -28,7 +30,7 @@ var spawnPoint
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("TestAction"):
-		respawn()
+		take_damage(5)
 
 	player_jump(delta)
 	player_default(delta)
@@ -37,6 +39,7 @@ func _physics_process(delta):
 	player_falling(delta)
 	who_hit_player_on_left()
 	who_hit_player_on_right()
+	player_taked_damage(delta)
 	move_and_slide()
 	player_animations()
 
@@ -60,6 +63,8 @@ func player_falling(delta):
 
 
 func player_jump(delta):
+	if block_movement_inputs:
+		return
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
@@ -69,11 +74,12 @@ func player_in_air(delta):
 
 func player_run(delta):
 	# Blocking movement input for while after player taked damage
-	var direction = Input.get_axis("move_left", "move_right")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+	if !block_movement_inputs:
+		var direction = Input.get_axis("move_left", "move_right")
+		if direction:
+			velocity.x = direction * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	#Changing the character's direction 
 	if velocity.x < 0:
@@ -82,6 +88,14 @@ func player_run(delta):
 	elif velocity.x > 0:
 		current_state = State.run
 		sprite.flip_h = false	
+
+func player_taked_damage(delta):
+	if !block_movement_inputs:
+		return
+	
+	# Player after taking damage jumps away from enemie there when touched ground should stop moving
+	if is_on_floor():
+		velocity.x = 0.0
 
 func respawn():
 	health = MAX_HEALTH
@@ -103,6 +117,8 @@ func player_animations():
 		sprite.play("falling")
 
 func take_damage(damage):
+	block_movement_inputs = true
+	$TakedDamageTimer.start()
 	health -= damage
 	prints("Player health:", health)
 	if health <= 0:
@@ -113,8 +129,8 @@ func who_hit_player_on_left():
 		collider_name = left_col_vec.get_collider().name
 		if Enemies.has(collider_name):
 			take_damage(10)
-			velocity.x = 100.0
-			velocity.y = -200.0
+			velocity.x = DAMAGE_VEL_X
+			velocity.y = DAMAGE_VEL_Y
 	else:
 		collider_name = null
 
@@ -123,6 +139,8 @@ func who_hit_player_on_right():
 		collider_name = right_col_vec.get_collider().name
 		if Enemies.has(collider_name):
 			take_damage(10)
+			velocity.x = -DAMAGE_VEL_X
+			velocity.y = DAMAGE_VEL_Y
 	else:
 		collider_name = null
 
