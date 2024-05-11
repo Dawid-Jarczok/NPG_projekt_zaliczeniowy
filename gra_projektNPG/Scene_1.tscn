@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-[gd_scene load_steps=96 format=3 uid="uid://cta5khhkikftn"]
-=======
 [gd_scene load_steps=98 format=3 uid="uid://cta5khhkikftn"]
->>>>>>> 2d29e839739a9d5a27defa5f40783da781eeacc0
 
 [ext_resource type="Texture2D" uid="uid://cnsvr8oedpxtx" path="res://Background/sky/1.png" id="1_l3xtt"]
 [ext_resource type="Texture2D" uid="uid://b2j07qymh6g3o" path="res://Background/sky/2.png" id="2_66xns"]
@@ -19,12 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://bbcud1rmbe3et" path="res://Jump with dust_1.png" id="6_1h211"]
 [ext_resource type="Texture2D" uid="uid://dtqixuc6yyi4v" path="res://Jump (32x32).png" id="6_w0es2"]
 [ext_resource type="Script" path="res://Enemy_1.gd" id="8_4laet"]
-<<<<<<< HEAD
-[ext_resource type="Texture2D" path="res://Enemy Run.png" id="8_jtskg"]
-[ext_resource type="Texture2D" path="res://Hit.png" id="10_2rnm4"]
-[ext_resource type="Texture2D" path="res://Run (32x32).png" id="10_yekdh"]
-=======
->>>>>>> 2d29e839739a9d5a27defa5f40783da781eeacc0
 [ext_resource type="Texture2D" uid="uid://blu4hcmu0onjc" path="res://Enemy Run.png" id="8_jtskg"]
 [ext_resource type="Texture2D" uid="uid://bgwjin40bcqaq" path="res://Hit.png" id="10_2rnm4"]
 [ext_resource type="Texture2D" uid="uid://bnne375k03oto" path="res://Run (32x32).png" id="10_yekdh"]
