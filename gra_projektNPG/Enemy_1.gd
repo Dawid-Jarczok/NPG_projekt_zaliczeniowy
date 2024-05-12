@@ -37,6 +37,12 @@ func _physics_process(delta):
 
 	if collision_vector_up1.is_colliding() or collision_vector_up2.is_colliding():
 		Enemy.play("dying")
-
+		die()
 	move_and_slide()
 
+func die():
+	velocity.x = 0.0
+	speed = 0.0
+	await get_tree().create_timer(1.5).timeout
+	Enemy.hide()
+	queue_free()

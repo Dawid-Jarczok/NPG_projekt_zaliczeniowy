@@ -1565,8 +1565,6 @@ position = Vector2(40, 490)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="player_test" groups=["Player"]]
 script = ExtResource("3_3jpsd")
-gravity_multiplier = null
-health = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_test/CharacterBody2D"]
 position = Vector2(1, 1.5)
@@ -1587,17 +1585,17 @@ drag_right_margin = 0.1
 drag_bottom_margin = 0.1
 
 [node name="collision_left" type="RayCast2D" parent="player_test/CharacterBody2D"]
-position = Vector2(-20, 8)
+position = Vector2(-14, 8)
 rotation = 1.5708
 target_position = Vector2(0, 10)
 
 [node name="collision_right" type="RayCast2D" parent="player_test/CharacterBody2D"]
-position = Vector2(21, 8)
+position = Vector2(16, 8)
 rotation = 4.71239
 target_position = Vector2(0, 10)
 
 [node name="TakedDamageTimer" type="Timer" parent="player_test/CharacterBody2D"]
-wait_time = 0.5
+wait_time = 0.7
 one_shot = true
 
 [node name="PlayerStart" type="Node2D" parent="."]
