@@ -9,7 +9,7 @@ const DAMAGE_VEL_X = 300.0
 const DAMAGE_VEL_Y = -400.0
 const MAX_HEALTH = 100
 
-@export var gravity_multiplier : float = 1.5
+@export var gravity_multiplier : float = 1.7
 @export var health : int = MAX_HEALTH
 
 var block_movement_inputs : bool = false
@@ -17,7 +17,7 @@ var block_movement_inputs : bool = false
 enum State  {default, run, jump, falling}
 var current_state = State
 var collider_name = null
-var Enemies = ["Enemy_mushroom"]
+var Enemies = ["Enemy_mushroom", "Enemy_mushroom2","Enemy_mushroom3","Enemy_mushroom4","Enemy_mushroom5","Enemy_mushroom6"]
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -110,12 +110,14 @@ func respawn():
 func player_animations():
 	if current_state == State.default:
 		sprite.play("default")
-	elif current_state == State.jump:
+	elif current_state == State.jump and block_movement_inputs == false:
 		sprite.play("jump")
 	elif current_state == State.run and is_on_floor():
 		sprite.play("run")
-	elif current_state == State.falling:
+	elif current_state == State.falling and block_movement_inputs == false:
 		sprite.play("falling")
+	elif block_movement_inputs == true:
+		sprite.play("player_hit")
 
 func take_damage(damage):
 	block_movement_inputs = true
