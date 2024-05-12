@@ -17,7 +17,7 @@ var block_movement_inputs : bool = false
 enum State  {default, run, jump, falling}
 var current_state = State
 var collider_name = null
-var Enemies = ["Enemy_mushroom"]
+var Enemies = ["Enemy_mushroom", "Enemy_mushroom2","Enemy_mushroom3","Enemy_mushroom4","Enemy_mushroom5","Enemy_mushroom6"]
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")

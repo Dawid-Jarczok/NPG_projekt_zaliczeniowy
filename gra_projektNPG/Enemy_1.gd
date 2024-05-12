@@ -41,6 +41,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 func die():
+	set_collision_mask_value(1, false)
 	velocity.x = 0.0
 	speed = 0.0
 	await get_tree().create_timer(1.5).timeout
