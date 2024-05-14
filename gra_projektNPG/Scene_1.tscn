@@ -904,7 +904,7 @@ sources/0 = SubResource("TileSetAtlasSource_qov1h")
 size = Vector2(4220, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4rno3"]
-size = Vector2(44, 65)
+size = Vector2(45, 65)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c23hy"]
 atlas = ExtResource("5_y3yg6")
@@ -1419,7 +1419,7 @@ position = Vector2(40, 490)
 script = ExtResource("3_3jpsd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_test/CharacterBody2D"]
-position = Vector2(1, 1.5)
+position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_4rno3")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="player_test/CharacterBody2D"]
@@ -1437,7 +1437,7 @@ drag_right_margin = 0.1
 drag_bottom_margin = 0.1
 
 [node name="collision_left" type="RayCast2D" parent="player_test/CharacterBody2D"]
-position = Vector2(-14, 8)
+position = Vector2(-16, 8)
 rotation = 1.5708
 target_position = Vector2(0, 10)
 
@@ -1450,16 +1450,16 @@ target_position = Vector2(0, 10)
 wait_time = 0.7
 one_shot = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player_test/CharacterBody2D"]
-position = Vector2(0.999999, 16)
-scale = Vector2(1.51563, 1.02344)
+[node name="collision_down" type="RayCast2D" parent="player_test/CharacterBody2D"]
+position = Vector2(0, 26)
+target_position = Vector2(0, 10)
+
+[node name="Dust" type="AnimatedSprite2D" parent="player_test"]
+position = Vector2(1, 16)
+scale = Vector2(1.51344, 1.02344)
 sprite_frames = SubResource("SpriteFrames_pe6uq")
 animation = &"dust"
 autoplay = "default"
-
-[node name="collision_down" type="RayCast2D" parent="player_test/CharacterBody2D"]
-position = Vector2(2, 33)
-target_position = Vector2(0, 20)
 
 [node name="PlayerStart" type="Node2D" parent="."]
 position = Vector2(41, 450)
