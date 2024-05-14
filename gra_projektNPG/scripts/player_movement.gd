@@ -7,7 +7,7 @@ const JUMP_VELOCITY = -700.0
 const MAX_FALL_SPEED = 650.0
 const DAMAGE_VEL_X = 300.0
 const DAMAGE_VEL_Y = -400.0
-const MAX_HEALTH = 100
+const MAX_HEALTH = 5
 
 @export var gravity_multiplier : float = 1.7
 @export var health : int = MAX_HEALTH
@@ -131,7 +131,7 @@ func who_hit_player_on_left():
 	if left_col_vec.is_colliding():
 		collider_name = left_col_vec.get_collider().name
 		if Enemies.has(collider_name):
-			take_damage(10)
+			take_damage(1)
 			velocity.x = DAMAGE_VEL_X
 			velocity.y = DAMAGE_VEL_Y
 	else:
@@ -141,7 +141,7 @@ func who_hit_player_on_right():
 	if right_col_vec.is_colliding():
 		collider_name = right_col_vec.get_collider().name
 		if Enemies.has(collider_name):
-			take_damage(10)
+			take_damage(1)
 			velocity.x = -DAMAGE_VEL_X
 			velocity.y = DAMAGE_VEL_Y
 	else:

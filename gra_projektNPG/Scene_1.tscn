@@ -1,5 +1,6 @@
-[gd_scene load_steps=74 format=3 uid="uid://cta5khhkikftn"]
+[gd_scene load_steps=76 format=3 uid="uid://cta5khhkikftn"]
 
+[ext_resource type="Script" path="res://World.gd" id="1_kjhly"]
 [ext_resource type="Texture2D" uid="uid://cnsvr8oedpxtx" path="res://Background/sky/1.png" id="1_l3xtt"]
 [ext_resource type="Texture2D" uid="uid://b2j07qymh6g3o" path="res://Background/sky/2.png" id="2_66xns"]
 [ext_resource type="Texture2D" uid="uid://bn1ov4eydlbul" path="res://Terrain (16x16).png" id="2_mv8or"]
@@ -20,6 +21,7 @@
 [ext_resource type="PackedScene" path="res://enemy_mushroom.tscn" id="18_c0fji"]
 [ext_resource type="Texture2D" uid="uid://2me2m188b72k" path="res://Checkpoint (Flag Idle)(64x64).png" id="19_l1wdp"]
 [ext_resource type="PackedScene" uid="uid://ckumkqganqvr5" path="res://scenes/Life/heartsContainer.tscn" id="20_t80fc"]
+[ext_resource type="Script" path="res://scenes/Life/heartsContainer.gd" id="22_5nrn6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qov1h"]
 texture = ExtResource("2_mv8or")
@@ -1277,6 +1279,7 @@ animations = [{
 }]
 
 [node name="Map1" type="Node"]
+script = ExtResource("1_kjhly")
 
 [node name="Level_1_L1" type="TextureRect" parent="."]
 texture_filter = 1
@@ -1471,10 +1474,11 @@ scale = Vector2(10, 10)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HealthContainer" parent="CanvasLayer" instance=ExtResource("20_t80fc")]
+[node name="heartsContainer" parent="CanvasLayer" instance=ExtResource("20_t80fc")]
 offset_left = 16.0
 offset_top = 16.0
 offset_right = 224.0
 offset_bottom = 56.0
+script = ExtResource("22_5nrn6")
 
 [connection signal="timeout" from="player_test/CharacterBody2D/TakedDamageTimer" to="player_test/CharacterBody2D" method="_on_taked_damage_timer_timeout"]
