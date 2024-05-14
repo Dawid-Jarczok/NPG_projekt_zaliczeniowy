@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://cta5khhkikftn"]
+[gd_scene load_steps=74 format=3 uid="uid://cta5khhkikftn"]
 
 [ext_resource type="Texture2D" uid="uid://cnsvr8oedpxtx" path="res://Background/sky/1.png" id="1_l3xtt"]
 [ext_resource type="Texture2D" uid="uid://b2j07qymh6g3o" path="res://Background/sky/2.png" id="2_66xns"]
@@ -14,11 +14,12 @@
 [ext_resource type="Texture2D" uid="uid://dj511m2v60foe" path="res://Idle (32x32).png" id="5_y3yg6"]
 [ext_resource type="Texture2D" uid="uid://bbcud1rmbe3et" path="res://Jump with dust_1.png" id="6_1h211"]
 [ext_resource type="Texture2D" uid="uid://dtqixuc6yyi4v" path="res://Jump (32x32).png" id="6_w0es2"]
-[ext_resource type="Texture2D" uid="uid://bnne375k03oto" path="res://Run (32x32).png" id="10_yekdh"]
+[ext_resource type="Texture2D" uid="uid://b6pow8vprwr3d" path="res://Run (32x32).png" id="10_yekdh"]
 [ext_resource type="Texture2D" uid="uid://tba4mm4dgl0v" path="res://Fall (32x32).png" id="13_dmpxv"]
 [ext_resource type="Texture2D" uid="uid://bcx5lyqj7kbug" path="res://Hit (32x32).png" id="15_k8kh5"]
-[ext_resource type="PackedScene" uid="uid://df5v3a1xhg2kw" path="res://enemy_mushroom.tscn" id="18_c0fji"]
+[ext_resource type="PackedScene" path="res://enemy_mushroom.tscn" id="18_c0fji"]
 [ext_resource type="Texture2D" uid="uid://2me2m188b72k" path="res://Checkpoint (Flag Idle)(64x64).png" id="19_l1wdp"]
+[ext_resource type="PackedScene" uid="uid://ckumkqganqvr5" path="res://scenes/Life/heartsContainer.tscn" id="20_t80fc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qov1h"]
 texture = ExtResource("2_mv8or")
@@ -1455,6 +1456,7 @@ position = Vector2(-947, 0)
 position = Vector2(-1101, 0)
 
 [node name="flag" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 position = Vector2(27, 465)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_hcx7e")
@@ -1466,5 +1468,13 @@ frame_progress = 0.558065
 [node name="DebugTeleport" type="Node2D" parent="."]
 position = Vector2(2219, -770)
 scale = Vector2(10, 10)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthContainer" parent="CanvasLayer" instance=ExtResource("20_t80fc")]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 224.0
+offset_bottom = 56.0
 
 [connection signal="timeout" from="player_test/CharacterBody2D/TakedDamageTimer" to="player_test/CharacterBody2D" method="_on_taked_damage_timer_timeout"]
