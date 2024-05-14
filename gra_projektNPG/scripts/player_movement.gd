@@ -18,6 +18,7 @@ enum State  {default, run, jump, falling}
 var current_state = State
 var collider_name = null
 var Enemies = ["Enemy_mushroom", "Enemy_mushroom2","Enemy_mushroom3","Enemy_mushroom4","Enemy_mushroom5","Enemy_mushroom6"]
+var if_was_falling: bool = true
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -27,6 +28,8 @@ var spawnPoint
 @onready var sprite = $Sprite2D
 @onready var left_col_vec = $collision_left
 @onready var right_col_vec = $collision_right
+@onready var down_col_vec = $collision_down
+@onready var dust = $AnimatedSprite2D
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("TestAction"):
@@ -39,6 +42,7 @@ func _physics_process(delta):
 	player_falling(delta)
 	who_hit_player_on_left()
 	who_hit_player_on_right()
+	dust_after_falling()
 	player_taked_damage(delta)
 	move_and_slide()
 	player_animations()
@@ -156,3 +160,13 @@ func teleport():
 	print(new_pos.global_position)
 	if new_pos:
 		global_position = new_pos.global_position
+
+func dust_after_falling():
+	if not down_col_vec.is_colliding():
+		if_was_falling = true
+	if down_col_vec.is_colliding():
+		if if_was_falling:
+			dust.play("dust")
+			await get_tree().create_timer(0.15).timeout
+			dust.play("default")
+			if_was_falling = false
