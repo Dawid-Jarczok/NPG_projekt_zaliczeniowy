@@ -4,7 +4,8 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -700.0
-const MAX_FALL_SPEED = 650.0
+const MAX_FALL_SPEED = 800.0
+const DUST_MIN_VELOCITY = 450.0
 const DAMAGE_VEL_X = 300.0
 const DAMAGE_VEL_Y = -400.0
 const MAX_HEALTH = 100
@@ -18,7 +19,8 @@ enum State  {default, run, jump, falling}
 var current_state = State
 var collider_name = null
 var Enemies = ["Enemy_mushroom", "Enemy_mushroom2","Enemy_mushroom3","Enemy_mushroom4","Enemy_mushroom5","Enemy_mushroom6"]
-
+var if_was_falling: bool = true
+var falling_vel: float = 0.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -27,6 +29,8 @@ var spawnPoint
 @onready var sprite = $Sprite2D
 @onready var left_col_vec = $collision_left
 @onready var right_col_vec = $collision_right
+@onready var down_col_vec = $collision_down
+@onready var dust = get_node("/root/Map1/player_test/Dust")
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("TestAction"):
@@ -39,6 +43,7 @@ func _physics_process(delta):
 	player_falling(delta)
 	who_hit_player_on_left()
 	who_hit_player_on_right()
+	dust_after_falling()
 	player_taked_damage(delta)
 	move_and_slide()
 	player_animations()
@@ -46,6 +51,7 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * gravity_multiplier * delta
+		falling_vel = velocity.y
   #Change speed fall
 	velocity.y = clamp(velocity.y, JUMP_VELOCITY, MAX_FALL_SPEED)
 
@@ -147,7 +153,6 @@ func who_hit_player_on_right():
 	else:
 		collider_name = null
 
-
 func _on_taked_damage_timer_timeout():
 	block_movement_inputs = false
 
@@ -156,3 +161,16 @@ func teleport():
 	print(new_pos.global_position)
 	if new_pos:
 		global_position = new_pos.global_position
+
+func dust_after_falling():
+	if not is_on_floor():
+		if_was_falling = true
+	else:
+		if if_was_falling:
+			if_was_falling = false
+			if falling_vel < DUST_MIN_VELOCITY: return
+			dust.global_position = global_position + Vector2(0, 18)
+			dust.play("dust")
+			await get_tree().create_timer(0.15).timeout
+			dust.play("default")
+			
