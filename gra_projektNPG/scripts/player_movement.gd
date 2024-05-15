@@ -10,7 +10,7 @@ const DAMAGE_VEL_X = 300.0
 const DAMAGE_VEL_Y = -400.0
 const MAX_HEALTH = 100
 
-@export var gravity_multiplier : float = 1.7
+@export var gravity_multiplier : float = 1.5
 @export var health : int = MAX_HEALTH
 
 var block_movement_inputs : bool = false
