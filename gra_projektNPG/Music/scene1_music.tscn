@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ftcb1tyyyvun"]
+
+[ext_resource type="AudioStream" uid="uid://dtx6tceeiyu62" path="res://Music/Greyhound (mp3cut.net).mp3" id="1_li8q8"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_li8q8")
+volume_db = -30.0
+autoplay = true
