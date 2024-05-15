@@ -126,6 +126,7 @@ func player_animations():
 		sprite.play("player_hit")
 
 func take_damage(damage):
+	if block_movement_inputs: return
 	block_movement_inputs = true
 	$TakedDamageTimer.start()
 	health -= damage
