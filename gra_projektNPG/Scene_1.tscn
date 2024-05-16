@@ -1,5 +1,7 @@
+
 [gd_scene load_steps=75 format=3 uid="uid://cta5khhkikftn"]
 
+[ext_resource type="Script" path="res://World.gd" id="1_kjhly"]
 [ext_resource type="Texture2D" uid="uid://cnsvr8oedpxtx" path="res://Background/sky/1.png" id="1_l3xtt"]
 [ext_resource type="Texture2D" uid="uid://b2j07qymh6g3o" path="res://Background/sky/2.png" id="2_66xns"]
 [ext_resource type="Texture2D" uid="uid://bn1ov4eydlbul" path="res://Terrain (16x16).png" id="2_mv8or"]
@@ -13,13 +15,17 @@
 [ext_resource type="Texture2D" uid="uid://ddwqlhgf70mbp" path="res://Background/blue_cave/blue_L4.png" id="5_80rq6"]
 [ext_resource type="Texture2D" uid="uid://dj511m2v60foe" path="res://Idle (32x32).png" id="5_y3yg6"]
 [ext_resource type="Texture2D" uid="uid://dtqixuc6yyi4v" path="res://Jump (32x32).png" id="6_w0es2"]
-[ext_resource type="Texture2D" uid="uid://bnne375k03oto" path="res://Run (32x32).png" id="10_yekdh"]
+[ext_resource type="Texture2D" uid="uid://b6pow8vprwr3d" path="res://Run (32x32).png" id="10_yekdh"]
 [ext_resource type="Texture2D" uid="uid://tba4mm4dgl0v" path="res://Fall (32x32).png" id="13_dmpxv"]
 [ext_resource type="Texture2D" uid="uid://bcx5lyqj7kbug" path="res://Hit (32x32).png" id="15_k8kh5"]
+
 [ext_resource type="Texture2D" uid="uid://bgmpvgl64mvmo" path="res://Jump with dust_2.png" id="17_1b07u"]
 [ext_resource type="Texture2D" uid="uid://3dil27eq1at8" path="res://default_dust.png" id="17_jl7gv"]
 [ext_resource type="PackedScene" uid="uid://df5v3a1xhg2kw" path="res://enemy_mushroom.tscn" id="18_c0fji"]
+
 [ext_resource type="Texture2D" uid="uid://2me2m188b72k" path="res://Checkpoint (Flag Idle)(64x64).png" id="19_l1wdp"]
+[ext_resource type="PackedScene" uid="uid://ckumkqganqvr5" path="res://scenes/Life/heartsContainer.tscn" id="20_t80fc"]
+[ext_resource type="Script" path="res://scenes/Life/heartsContainer.gd" id="22_5nrn6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qov1h"]
 texture = ExtResource("2_mv8or")
@@ -1293,6 +1299,7 @@ animations = [{
 }]
 
 [node name="Map1" type="Node"]
+script = ExtResource("1_kjhly")
 
 [node name="Level_1_L1" type="TextureRect" parent="."]
 texture_filter = 1
@@ -1483,7 +1490,10 @@ position = Vector2(-947, 0)
 position = Vector2(-1101, 0)
 
 [node name="flag" type="AnimatedSprite2D" parent="."]
+
+texture_filter = 1
 position = Vector2(26, 464)
+
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_hcx7e")
 animation = &"flag"
@@ -1494,5 +1504,14 @@ frame_progress = 0.558065
 [node name="DebugTeleport" type="Node2D" parent="."]
 position = Vector2(2219, -770)
 scale = Vector2(10, 10)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="heartsContainer" parent="CanvasLayer" instance=ExtResource("20_t80fc")]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 224.0
+offset_bottom = 56.0
+script = ExtResource("22_5nrn6")
 
 [connection signal="timeout" from="player_test/CharacterBody2D/TakedDamageTimer" to="player_test/CharacterBody2D" method="_on_taked_damage_timer_timeout"]

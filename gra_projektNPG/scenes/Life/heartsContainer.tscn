@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ckumkqganqvr5"]
+
+[node name="HealthContainer" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 30
