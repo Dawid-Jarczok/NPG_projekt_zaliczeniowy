@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://cta5khhkikftn"]
+[gd_scene load_steps=79 format=3 uid="uid://cta5khhkikftn"]
 
 [ext_resource type="Script" path="res://World.gd" id="1_kjhly"]
 [ext_resource type="Texture2D" uid="uid://cnsvr8oedpxtx" path="res://Background/sky/1.png" id="1_l3xtt"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://df5v3a1xhg2kw" path="res://enemy_mushroom.tscn" id="18_c0fji"]
 [ext_resource type="Texture2D" uid="uid://2me2m188b72k" path="res://Checkpoint (Flag Idle)(64x64).png" id="19_l1wdp"]
 [ext_resource type="PackedScene" uid="uid://ckumkqganqvr5" path="res://scenes/Life/heartsContainer.tscn" id="20_t80fc"]
+[ext_resource type="Script" path="res://scripts/UI/UIManager.gd" id="21_pa553"]
 [ext_resource type="Script" path="res://scenes/Life/heartsContainer.gd" id="22_5nrn6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qov1h"]
@@ -1522,9 +1523,26 @@ frame_progress = 0.558065
 position = Vector2(2219, -770)
 scale = Vector2(10, 10)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="UIManager" type="CanvasLayer" parent="."]
+follow_viewport_scale = 1.1
+script = ExtResource("21_pa553")
 
-[node name="heartsContainer" parent="CanvasLayer" instance=ExtResource("20_t80fc")]
+[node name="ScoreDisplay" type="Label" parent="UIManager"]
+anchors_preset = -1
+anchor_top = 0.014
+anchor_bottom = 0.014
+offset_left = 1097.0
+offset_top = -4.08
+offset_right = 1294.0
+offset_bottom = 68.92
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "Score: 0
+
+
+"
+
+[node name="heartsContainer" parent="UIManager" instance=ExtResource("20_t80fc")]
 offset_left = 16.0
 offset_top = 16.0
 offset_right = 224.0

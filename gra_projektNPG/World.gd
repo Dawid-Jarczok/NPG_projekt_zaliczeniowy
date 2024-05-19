@@ -1,7 +1,7 @@
 extends Node
 
 
-@onready var heartsContainer = $CanvasLayer/heartsContainer
+@onready var heartsContainer = $UIManager/heartsContainer
 # Called when the node enters the scene tree for the first time.
 
 func _ready():
