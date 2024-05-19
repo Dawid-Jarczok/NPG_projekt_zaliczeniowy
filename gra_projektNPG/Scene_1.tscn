@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://cta5khhkikftn"]
+[gd_scene load_steps=76 format=3 uid="uid://cta5khhkikftn"]
 
 [ext_resource type="Texture2D" uid="uid://cnsvr8oedpxtx" path="res://Background/sky/1.png" id="1_l3xtt"]
 [ext_resource type="Texture2D" uid="uid://b2j07qymh6g3o" path="res://Background/sky/2.png" id="2_66xns"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://3dil27eq1at8" path="res://default_dust.png" id="17_jl7gv"]
 [ext_resource type="PackedScene" uid="uid://df5v3a1xhg2kw" path="res://enemy_mushroom.tscn" id="18_c0fji"]
 [ext_resource type="Texture2D" uid="uid://2me2m188b72k" path="res://Checkpoint (Flag Idle)(64x64).png" id="19_l1wdp"]
+[ext_resource type="Script" path="res://scripts/UI/UIManager.gd" id="21_pa553"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qov1h"]
 texture = ExtResource("2_mv8or")
@@ -1494,5 +1495,24 @@ frame_progress = 0.558065
 [node name="DebugTeleport" type="Node2D" parent="."]
 position = Vector2(2219, -770)
 scale = Vector2(10, 10)
+
+[node name="UIManager" type="CanvasLayer" parent="."]
+follow_viewport_scale = 1.1
+script = ExtResource("21_pa553")
+
+[node name="ScoreDisplay" type="Label" parent="UIManager"]
+anchors_preset = -1
+anchor_top = 0.014
+anchor_bottom = 0.014
+offset_left = 1097.0
+offset_top = -4.08
+offset_right = 1294.0
+offset_bottom = 68.92
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "Score: 0
+
+
+"
 
 [connection signal="timeout" from="player_test/CharacterBody2D/TakedDamageTimer" to="player_test/CharacterBody2D" method="_on_taked_damage_timer_timeout"]
