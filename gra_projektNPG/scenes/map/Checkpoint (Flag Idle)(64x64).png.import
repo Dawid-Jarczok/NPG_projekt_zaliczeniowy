@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djvtrkp6fowf5"
-path="res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+uid="uid://2me2m188b72k"
+path="res://.godot/imported/Checkpoint (Flag Idle)(64x64).png-b7d931a7020f3c74d12a566e0832ee9f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icon.svg"
-dest_files=["res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"]
+source_file="res://scenes/map/Checkpoint (Flag Idle)(64x64).png"
+dest_files=["res://.godot/imported/Checkpoint (Flag Idle)(64x64).png-b7d931a7020f3c74d12a566e0832ee9f.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

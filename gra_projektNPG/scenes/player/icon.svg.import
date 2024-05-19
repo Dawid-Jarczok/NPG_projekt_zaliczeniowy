@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blu4hcmu0onjc"
-path="res://.godot/imported/Enemy Run.png-759f04be0675ebef050289474c9121fc.ctex"
+uid="uid://djvtrkp6fowf5"
+path="res://.godot/imported/icon.svg-34397134db04fad10461d459f29fb6c3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemy Run.png"
-dest_files=["res://.godot/imported/Enemy Run.png-759f04be0675ebef050289474c9121fc.ctex"]
+source_file="res://scenes/player/icon.svg"
+dest_files=["res://.godot/imported/icon.svg-34397134db04fad10461d459f29fb6c3.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

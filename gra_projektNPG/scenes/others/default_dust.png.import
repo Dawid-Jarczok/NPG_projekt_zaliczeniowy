@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcx5lyqj7kbug"
-path="res://.godot/imported/Hit (32x32).png-f8922f990f1f8fbf69d33abed2cbc7f8.ctex"
+uid="uid://3dil27eq1at8"
+path="res://.godot/imported/default_dust.png-5785c074b3de5cfc48352ed9a306d226.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Hit (32x32).png"
-dest_files=["res://.godot/imported/Hit (32x32).png-f8922f990f1f8fbf69d33abed2cbc7f8.ctex"]
+source_file="res://scenes/others/default_dust.png"
+dest_files=["res://.godot/imported/default_dust.png-5785c074b3de5cfc48352ed9a306d226.ctex"]
 
 [params]
 

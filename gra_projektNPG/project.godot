@@ -13,7 +13,7 @@ config_version=5
 config/name="Gra_projektNPG"
 run/main_scene="res://Scene_1.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://scenes/player/icon.svg"
 
 [autoload]
 
