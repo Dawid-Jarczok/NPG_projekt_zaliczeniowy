@@ -193,9 +193,9 @@ rotation = 4.71239
 target_position = Vector2(0, 10)
 
 [node name="RayCast2D_up1" type="RayCast2D" parent="."]
-position = Vector2(3694, -603)
+position = Vector2(3688, -602)
 target_position = Vector2(0, -10)
 
 [node name="RayCast2D_up2" type="RayCast2D" parent="."]
-position = Vector2(3725, -603)
+position = Vector2(3732, -602)
 target_position = Vector2(0, -10)

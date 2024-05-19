@@ -10,7 +10,6 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var collision_vector_up1 = $RayCast2D_up1
 @onready var collision_vector_up2 = $RayCast2D_up2
 
-
 var facing_left = true
 var facing_right = false
 
