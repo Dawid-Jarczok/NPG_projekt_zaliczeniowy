@@ -1,8 +1,8 @@
 [gd_scene load_steps=27 format=3 uid="uid://df5v3a1xhg2kw"]
 
-[ext_resource type="Script" path="res://Enemy_1.gd" id="1_yasep"]
-[ext_resource type="Texture2D" uid="uid://bgwjin40bcqaq" path="res://Hit.png" id="2_23lo2"]
-[ext_resource type="Texture2D" uid="uid://blu4hcmu0onjc" path="res://Enemy Run.png" id="3_vxc7s"]
+[ext_resource type="Script" path="res://scripts/enemies_AI/Enemy_1.gd" id="1_yasep"]
+[ext_resource type="Texture2D" uid="uid://bgwjin40bcqaq" path="res://scenes/player/Hit.png" id="2_23lo2"]
+[ext_resource type="Texture2D" uid="uid://blu4hcmu0onjc" path="res://scenes/Enemies/Enemy Run.png" id="3_vxc7s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lrerh"]
 atlas = ExtResource("2_23lo2")
@@ -193,9 +193,9 @@ rotation = 4.71239
 target_position = Vector2(0, 10)
 
 [node name="RayCast2D_up1" type="RayCast2D" parent="."]
-position = Vector2(3694, -603)
+position = Vector2(3688, -602)
 target_position = Vector2(0, -10)
 
 [node name="RayCast2D_up2" type="RayCast2D" parent="."]
-position = Vector2(3725, -603)
+position = Vector2(3732, -602)
 target_position = Vector2(0, -10)
