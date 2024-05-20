@@ -1597,6 +1597,14 @@ offset_right = 224.0
 offset_bottom = 56.0
 script = ExtResource("22_5nrn6")
 
+[node name="FPSMeter" type="Label" parent="UIManager"]
+offset_left = 1100.0
+offset_top = 50.0
+offset_right = 1200.0
+offset_bottom = 73.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "FPS: "
+
 [node name="Saw" parent="." instance=ExtResource("25_eoa5h")]
 
 [node name="Spikes" parent="." instance=ExtResource("26_najc7")]
