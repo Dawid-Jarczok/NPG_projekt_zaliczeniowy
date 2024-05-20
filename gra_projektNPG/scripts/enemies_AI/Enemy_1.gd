@@ -10,7 +10,6 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var collision_vector_up1 = $RayCast2D_up1
 @onready var collision_vector_up2 = $RayCast2D_up2
 
-
 var facing_left = true
 var facing_right = false
 
@@ -36,11 +35,15 @@ func _physics_process(delta):
 		Enemy.flip_h = false
 
 	if collision_vector_up1.is_colliding() or collision_vector_up2.is_colliding():
-		Enemy.play("dying")
 		die()
+
 	move_and_slide()
 
 func die():
+	Enemy.play("dying")
+	GameManager.gain_score(1)
+	collision_vector_up1.enabled = false
+	collision_vector_up2.enabled = false
 	set_collision_mask_value(1, false)
 	velocity.x = 0.0
 	speed = 0.0

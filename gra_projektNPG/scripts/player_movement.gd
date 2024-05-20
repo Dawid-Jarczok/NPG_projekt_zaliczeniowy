@@ -19,6 +19,7 @@ enum State  {default, run, jump, falling}
 var current_state = State
 var collider_name = null
 var Enemies = ["Enemy_mushroom", "Enemy_mushroom2","Enemy_mushroom3","Enemy_mushroom4","Enemy_mushroom5","Enemy_mushroom6"]
+var Traps = ["Saw", "Spikes"]
 var if_was_falling: bool = true
 var falling_vel: float = 0.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -27,9 +28,15 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var spawnPoint
 
 @onready var sprite = $Sprite2D
-@onready var left_col_vec = $collision_left
-@onready var right_col_vec = $collision_right
-@onready var down_col_vec = $collision_down
+@onready var left_col_vec_1 = $collision_left_1
+@onready var left_col_vec_2 = $collision_left_2
+@onready var left_col_vec_3 = $collision_left_3
+@onready var right_col_vec_1 = $collision_right_1
+@onready var right_col_vec_2 = $collision_right_2
+@onready var right_col_vec_3 = $collision_right_3
+@onready var down_col_vec_1 = $collision_down_1
+@onready var down_col_vec_2 = $collision_down_2
+@onready var down_col_vec_3 = $collision_down_3
 @onready var dust = get_node("/root/Map1/player_test/Dust")
 
 func _physics_process(delta):
@@ -43,6 +50,7 @@ func _physics_process(delta):
 	player_falling(delta)
 	who_hit_player_on_left()
 	who_hit_player_on_right()
+	who_hit_player_on_bottom()
 	dust_after_falling()
 	player_taked_damage(delta)
 	move_and_slide()
@@ -126,6 +134,7 @@ func player_animations():
 		sprite.play("player_hit")
 
 func take_damage(damage):
+	if block_movement_inputs: return
 	block_movement_inputs = true
 	$TakedDamageTimer.start()
 	health -= damage
@@ -134,9 +143,25 @@ func take_damage(damage):
 		respawn()
 
 func who_hit_player_on_left():
-	if left_col_vec.is_colliding():
-		collider_name = left_col_vec.get_collider().name
-		if Enemies.has(collider_name):
+	if left_col_vec_1.is_colliding():
+		collider_name = left_col_vec_1.get_collider().name
+		if Enemies.has(collider_name) or Traps.has(collider_name):
+			take_damage(10)
+			velocity.x = DAMAGE_VEL_X
+			velocity.y = DAMAGE_VEL_Y
+	else:
+		collider_name = null
+	if left_col_vec_2.is_colliding():
+		collider_name = left_col_vec_2.get_collider().name
+		if Enemies.has(collider_name) or Traps.has(collider_name):
+			take_damage(10)
+			velocity.x = DAMAGE_VEL_X
+			velocity.y = DAMAGE_VEL_Y
+	else:
+		collider_name = null
+	if left_col_vec_3.is_colliding():
+		collider_name = left_col_vec_3.get_collider().name
+		if Enemies.has(collider_name) or Traps.has(collider_name):
 			take_damage(10)
 			velocity.x = DAMAGE_VEL_X
 			velocity.y = DAMAGE_VEL_Y
@@ -144,12 +169,57 @@ func who_hit_player_on_left():
 		collider_name = null
 
 func who_hit_player_on_right():
-	if right_col_vec.is_colliding():
-		collider_name = right_col_vec.get_collider().name
-		if Enemies.has(collider_name):
+	if right_col_vec_1.is_colliding():
+		collider_name = right_col_vec_1.get_collider().name
+		if Enemies.has(collider_name) or Traps.has(collider_name):
 			take_damage(10)
 			velocity.x = -DAMAGE_VEL_X
 			velocity.y = DAMAGE_VEL_Y
+	else:
+		collider_name = null
+	if right_col_vec_2.is_colliding():
+		collider_name = right_col_vec_2.get_collider().name
+		if Enemies.has(collider_name) or Traps.has(collider_name):
+			take_damage(10)
+			velocity.x = -DAMAGE_VEL_X
+			velocity.y = DAMAGE_VEL_Y
+	else:
+		collider_name = null
+	if right_col_vec_3.is_colliding():
+		collider_name = right_col_vec_3.get_collider().name
+		if Enemies.has(collider_name) or Traps.has(collider_name):
+			take_damage(10)
+			velocity.x = -DAMAGE_VEL_X
+			velocity.y = DAMAGE_VEL_Y
+	else:
+		collider_name = null
+
+func who_hit_player_on_bottom():
+	if down_col_vec_1.is_colliding():
+		collider_name = down_col_vec_1.get_collider().name
+		if Traps.has(collider_name):
+			take_damage(10)
+			velocity.y = DAMAGE_VEL_Y
+			await get_tree().create_timer(0.05).timeout
+			velocity.x = -DAMAGE_VEL_X
+	else:
+		collider_name = null
+	if down_col_vec_2.is_colliding():
+		collider_name = down_col_vec_2.get_collider().name
+		if Traps.has(collider_name):
+			take_damage(10)
+			velocity.y = DAMAGE_VEL_Y
+			await get_tree().create_timer(0.05).timeout
+			velocity.x = -DAMAGE_VEL_X
+	else:
+		collider_name = null
+	if down_col_vec_2.is_colliding():
+		collider_name = down_col_vec_2.get_collider().name
+		if Traps.has(collider_name):
+			take_damage(10)
+			velocity.y = DAMAGE_VEL_Y
+			await get_tree().create_timer(0.05).timeout
+			velocity.x = -DAMAGE_VEL_X
 	else:
 		collider_name = null
 
