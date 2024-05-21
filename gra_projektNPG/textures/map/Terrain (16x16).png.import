@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2me2m188b72k"
-path="res://.godot/imported/Checkpoint (Flag Idle)(64x64).png-b7d931a7020f3c74d12a566e0832ee9f.ctex"
+uid="uid://bn1ov4eydlbul"
+path="res://.godot/imported/Terrain (16x16).png-4aa9f46a722ab997e041715aeddb78ef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/map/Checkpoint (Flag Idle)(64x64).png"
-dest_files=["res://.godot/imported/Checkpoint (Flag Idle)(64x64).png-b7d931a7020f3c74d12a566e0832ee9f.ctex"]
+source_file="res://textures/map/Terrain (16x16).png"
+dest_files=["res://.godot/imported/Terrain (16x16).png-4aa9f46a722ab997e041715aeddb78ef.ctex"]
 
 [params]
 
