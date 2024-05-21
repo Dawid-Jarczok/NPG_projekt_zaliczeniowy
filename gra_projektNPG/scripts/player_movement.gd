@@ -18,7 +18,7 @@ var block_movement_inputs : bool = false
 enum State  {default, run, jump, falling}
 var current_state = State
 var collider_name = null
-var Enemies = ["Enemy_mushroom", "Enemy_mushroom2","Enemy_mushroom3","Enemy_mushroom4","Enemy_mushroom5","Enemy_mushroom6"]
+var Enemies = ["Enemy_mushroom", "Enemy_mushroom2","Enemy_mushroom3","Enemy_mushroom4","Enemy_mushroom5","Enemy_mushroom6", "enemy_bluebird", "Bat"]
 var Traps = ["Saw", "Spikes"]
 var if_was_falling: bool = true
 var falling_vel: float = 0.0
@@ -37,6 +37,9 @@ var spawnPoint
 @onready var down_col_vec_1 = $collision_down_1
 @onready var down_col_vec_2 = $collision_down_2
 @onready var down_col_vec_3 = $collision_down_3
+@onready var up_col_vec_1 = $collision_up_1
+@onready var up_col_vec_2 = $collision_up_2
+@onready var up_col_vec_3 = $collision_up_3
 @onready var dust = get_node("/root/Map1/player_test/Dust")
 
 func _physics_process(delta):
@@ -51,6 +54,7 @@ func _physics_process(delta):
 	who_hit_player_on_left()
 	who_hit_player_on_right()
 	who_hit_player_on_bottom()
+	who_hit_player_from_top()
 	dust_after_falling()
 	player_taked_damage(delta)
 	move_and_slide()
@@ -220,6 +224,32 @@ func who_hit_player_on_bottom():
 			velocity.y = DAMAGE_VEL_Y
 			await get_tree().create_timer(0.05).timeout
 			velocity.x = -DAMAGE_VEL_X
+	else:
+		collider_name = null
+
+func who_hit_player_from_top():
+	if up_col_vec_1.is_colliding():
+		collider_name = up_col_vec_1.get_collider().name
+		if Enemies.has(collider_name) or Traps.has(collider_name):
+			take_damage(10)
+			velocity.x = DAMAGE_VEL_X
+			velocity.y = DAMAGE_VEL_Y
+	else:
+		collider_name = null
+	if up_col_vec_2.is_colliding():
+		collider_name = up_col_vec_2.get_collider().name
+		if Enemies.has(collider_name) or Traps.has(collider_name):
+			take_damage(10)
+			velocity.x = DAMAGE_VEL_X
+			velocity.y = DAMAGE_VEL_Y
+	else:
+		collider_name = null
+	if up_col_vec_3.is_colliding():
+		collider_name = up_col_vec_3.get_collider().name
+		if Enemies.has(collider_name) or Traps.has(collider_name):
+			take_damage(10)
+			velocity.x = DAMAGE_VEL_X
+			velocity.y = DAMAGE_VEL_Y
 	else:
 		collider_name = null
 
