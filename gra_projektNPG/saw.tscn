@@ -79,5 +79,5 @@ sprite_frames = SubResource("SpriteFrames_x2qq2")
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 2)
+scale = Vector2(1.22252, 1.22252)
 shape = SubResource("CircleShape2D_ofmnq")

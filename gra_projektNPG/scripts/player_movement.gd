@@ -217,8 +217,8 @@ func who_hit_player_on_bottom():
 			velocity.x = -DAMAGE_VEL_X
 	else:
 		collider_name = null
-	if down_col_vec_2.is_colliding():
-		collider_name = down_col_vec_2.get_collider().name
+	if down_col_vec_3.is_colliding():
+		collider_name = down_col_vec_3.get_collider().name
 		if Traps.has(collider_name):
 			take_damage(10)
 			velocity.y = DAMAGE_VEL_Y

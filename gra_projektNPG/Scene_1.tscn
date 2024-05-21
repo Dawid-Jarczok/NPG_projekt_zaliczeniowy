@@ -1542,6 +1542,9 @@ scale = Vector2(10, 10)
 
 [node name="Enemy_mushroom" parent="." instance=ExtResource("18_c0fji")]
 
+[node name="Enemy_mushroom7" parent="." instance=ExtResource("18_c0fji")]
+position = Vector2(-3162, 1099)
+
 [node name="Enemy_mushroom2" parent="." instance=ExtResource("18_c0fji")]
 position = Vector2(-392, 0)
 
@@ -1568,7 +1571,7 @@ frame = 4
 frame_progress = 0.558065
 
 [node name="DebugTeleport" type="Node2D" parent="."]
-position = Vector2(5474, 2181)
+position = Vector2(5341, 1697)
 scale = Vector2(10, 10)
 
 [node name="UIManager" type="CanvasLayer" parent="."]
