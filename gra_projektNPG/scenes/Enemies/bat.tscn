@@ -209,9 +209,7 @@ shape = SubResource("RectangleShape2D_isnxj")
 texture_filter = 1
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_1a2pi")
-animation = &"dying"
 autoplay = "default"
-frame_progress = 0.614688
 
 [node name="detection_area" type="Area2D" parent="."]
 light_mask = 2

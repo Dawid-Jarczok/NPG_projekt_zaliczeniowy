@@ -2,15 +2,15 @@ class_name Player
 extends CharacterBody2D
 
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -700.0
-const MAX_FALL_SPEED = 800.0
+const SPEED = 340.0
+const JUMP_VELOCITY = -750.0
+const MAX_FALL_SPEED = 850.0
 const DUST_MIN_VELOCITY = 450.0
 const DAMAGE_VEL_X = 300.0
 const DAMAGE_VEL_Y = -400.0
 const MAX_HEALTH = 100
 
-@export var gravity_multiplier : float = 1.5
+@export var gravity_multiplier : float = 1.7
 @export var health : int = MAX_HEALTH
 
 var block_movement_inputs : bool = false
@@ -24,8 +24,6 @@ var if_was_falling: bool = true
 var falling_vel: float = 0.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
-var spawnPoint
 
 @onready var sprite = $Sprite2D
 @onready var left_col_vec_1 = $collision_left_1
@@ -69,7 +67,7 @@ func _physics_process(delta):
 
 func _ready():
 	current_state = State.default
-	spawnPoint = get_node("/root/Map1/PlayerStart")
+	GameManager.checkpoint = get_node("/root/Map1/PlayerStart").global_position
 
 
 func player_default(delta):
@@ -119,11 +117,10 @@ func player_taked_damage(delta):
 func respawn():
 	health = MAX_HEALTH
 	block_movement_inputs = false
-	print(spawnPoint.global_position)
-	if spawnPoint:
-		global_position = spawnPoint.global_position
-		velocity.x = 0.0
-		velocity.y = 0.0
+	print(GameManager.checkpoint)
+	global_position = GameManager.checkpoint
+	velocity.x = 0.0
+	velocity.y = 0.0
 
 func player_animations():
 	if current_state == State.default:
@@ -205,7 +202,8 @@ func who_hit_player_on_bottom():
 			take_damage(10)
 			velocity.y = DAMAGE_VEL_Y
 			await get_tree().create_timer(0.05).timeout
-			velocity.x = -DAMAGE_VEL_X
+			velocity.x = DAMAGE_VEL_X
+			if sprite.flip_h == true: velocity.x = -velocity.x 
 	else:
 		collider_name = null
 	if down_col_vec_2.is_colliding():
@@ -214,7 +212,8 @@ func who_hit_player_on_bottom():
 			take_damage(10)
 			velocity.y = DAMAGE_VEL_Y
 			await get_tree().create_timer(0.05).timeout
-			velocity.x = -DAMAGE_VEL_X
+			velocity.x = DAMAGE_VEL_X
+			if sprite.flip_h == true: velocity.x = -velocity.x 
 	else:
 		collider_name = null
 	if down_col_vec_3.is_colliding():
@@ -223,7 +222,8 @@ func who_hit_player_on_bottom():
 			take_damage(10)
 			velocity.y = DAMAGE_VEL_Y
 			await get_tree().create_timer(0.05).timeout
-			velocity.x = -DAMAGE_VEL_X
+			velocity.x = DAMAGE_VEL_X
+			if sprite.flip_h == true: velocity.x = -velocity.x 
 	else:
 		collider_name = null
 
@@ -233,7 +233,8 @@ func who_hit_player_from_top():
 		if Enemies.has(collider_name) or Traps.has(collider_name):
 			take_damage(10)
 			velocity.x = DAMAGE_VEL_X
-			velocity.y = DAMAGE_VEL_Y
+			if sprite.flip_h == true: velocity.x = -velocity.x 
+			velocity.y = -DAMAGE_VEL_Y
 	else:
 		collider_name = null
 	if up_col_vec_2.is_colliding():
@@ -241,7 +242,8 @@ func who_hit_player_from_top():
 		if Enemies.has(collider_name) or Traps.has(collider_name):
 			take_damage(10)
 			velocity.x = DAMAGE_VEL_X
-			velocity.y = DAMAGE_VEL_Y
+			if sprite.flip_h == true: velocity.x = -velocity.x 
+			velocity.y = -DAMAGE_VEL_Y
 	else:
 		collider_name = null
 	if up_col_vec_3.is_colliding():
@@ -249,7 +251,8 @@ func who_hit_player_from_top():
 		if Enemies.has(collider_name) or Traps.has(collider_name):
 			take_damage(10)
 			velocity.x = DAMAGE_VEL_X
-			velocity.y = DAMAGE_VEL_Y
+			if sprite.flip_h == true: velocity.x = -velocity.x 
+			velocity.y = -DAMAGE_VEL_Y
 	else:
 		collider_name = null
 
