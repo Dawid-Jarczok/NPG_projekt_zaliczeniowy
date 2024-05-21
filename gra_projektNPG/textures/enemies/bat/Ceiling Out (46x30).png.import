@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw8gx5f8oren5"
-path="res://.godot/imported/Flying (46x30).png-0941f432a487baf24c55a835a0d43906.ctex"
+uid="uid://coc60df168y5f"
+path="res://.godot/imported/Ceiling Out (46x30).png-e7d0fb866d2e51630b6544ec72630fcc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Flying (46x30).png"
-dest_files=["res://.godot/imported/Flying (46x30).png-0941f432a487baf24c55a835a0d43906.ctex"]
+source_file="res://textures/enemies/bat/Ceiling Out (46x30).png"
+dest_files=["res://.godot/imported/Ceiling Out (46x30).png-e7d0fb866d2e51630b6544ec72630fcc.ctex"]
 
 [params]
 

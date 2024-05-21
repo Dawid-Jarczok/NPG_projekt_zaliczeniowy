@@ -19,15 +19,15 @@
 [ext_resource type="Texture2D" uid="uid://bcx5lyqj7kbug" path="res://scenes/player/Hit (32x32).png" id="15_k8kh5"]
 [ext_resource type="Texture2D" uid="uid://bgmpvgl64mvmo" path="res://scenes/player/Jump with dust_2.png" id="17_1b07u"]
 [ext_resource type="Texture2D" uid="uid://3dil27eq1at8" path="res://scenes/others/default_dust.png" id="17_jl7gv"]
-[ext_resource type="PackedScene" uid="uid://df5v3a1xhg2kw" path="res://enemy_mushroom.tscn" id="18_c0fji"]
+[ext_resource type="PackedScene" uid="uid://df5v3a1xhg2kw" path="res://scenes/Enemies/enemy_mushroom.tscn" id="18_c0fji"]
 [ext_resource type="Texture2D" uid="uid://2me2m188b72k" path="res://scenes/map/Checkpoint (Flag Idle)(64x64).png" id="19_l1wdp"]
 [ext_resource type="PackedScene" uid="uid://ckumkqganqvr5" path="res://scenes/Life/heartsContainer.tscn" id="20_t80fc"]
 [ext_resource type="Script" path="res://scripts/UI/UIManager.gd" id="21_pa553"]
 [ext_resource type="Script" path="res://scenes/Life/heartsContainer.gd" id="22_5nrn6"]
-[ext_resource type="PackedScene" uid="uid://btpjymcbbsefw" path="res://saw.tscn" id="25_eoa5h"]
-[ext_resource type="PackedScene" uid="uid://ddsjrdcdhvffu" path="res://spikes.tscn" id="26_najc7"]
-[ext_resource type="PackedScene" uid="uid://ca3p8uvuro2bl" path="res://enemy_bluebird.tscn" id="27_sofye"]
-[ext_resource type="PackedScene" uid="uid://e1lwibw6g3hw" path="res://bat.tscn" id="29_nv2hj"]
+[ext_resource type="PackedScene" uid="uid://btpjymcbbsefw" path="res://scenes/Enemies/saw.tscn" id="25_eoa5h"]
+[ext_resource type="PackedScene" uid="uid://ddsjrdcdhvffu" path="res://scenes/Enemies/spikes.tscn" id="26_najc7"]
+[ext_resource type="PackedScene" uid="uid://ca3p8uvuro2bl" path="res://scenes/Enemies/enemy_bluebird.tscn" id="27_sofye"]
+[ext_resource type="PackedScene" uid="uid://e1lwibw6g3hw" path="res://scenes/Enemies/bat.tscn" id="29_nv2hj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qov1h"]
 texture = ExtResource("2_mv8or")
@@ -1541,9 +1541,6 @@ position = Vector2(41, 450)
 scale = Vector2(10, 10)
 
 [node name="Enemy_mushroom" parent="." instance=ExtResource("18_c0fji")]
-
-[node name="Enemy_mushroom7" parent="." instance=ExtResource("18_c0fji")]
-position = Vector2(-3162, 1099)
 
 [node name="Enemy_mushroom2" parent="." instance=ExtResource("18_c0fji")]
 position = Vector2(-392, 0)

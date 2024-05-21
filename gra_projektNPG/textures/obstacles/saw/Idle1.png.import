@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvpjl3ui3kutc"
-path="res://.godot/imported/Idle (46x30).png-2c8d900c1d1349e3ed3781f0b4d0c208.ctex"
+uid="uid://do3evxm6tl5vr"
+path="res://.godot/imported/Idle1.png-673c2a371431c7c64ef75d741c8ec8cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Idle (46x30).png"
-dest_files=["res://.godot/imported/Idle (46x30).png-2c8d900c1d1349e3ed3781f0b4d0c208.ctex"]
+source_file="res://textures/obstacles/saw/Idle1.png"
+dest_files=["res://.godot/imported/Idle1.png-673c2a371431c7c64ef75d741c8ec8cf.ctex"]
 
 [params]
 

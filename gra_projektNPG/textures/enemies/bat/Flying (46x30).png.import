@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5cg5ygsvl71j"
-path="res://.godot/imported/Hit (46x30).png-edfbbfeda6f6f625fbb90360a53a6959.ctex"
+uid="uid://cw8gx5f8oren5"
+path="res://.godot/imported/Flying (46x30).png-d6ca8774a4c0f1411ee5274d0f6236ba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Hit (46x30).png"
-dest_files=["res://.godot/imported/Hit (46x30).png-edfbbfeda6f6f625fbb90360a53a6959.ctex"]
+source_file="res://textures/enemies/bat/Flying (46x30).png"
+dest_files=["res://.godot/imported/Flying (46x30).png-d6ca8774a4c0f1411ee5274d0f6236ba.ctex"]
 
 [params]
 

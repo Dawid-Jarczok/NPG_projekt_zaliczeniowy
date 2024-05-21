@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ddsjrdcdhvffu"]
 
-[ext_resource type="Texture2D" uid="uid://do3evxm6tl5vr" path="res://Idle1.png" id="1_d0qym"]
+[ext_resource type="Texture2D" uid="uid://do3evxm6tl5vr" path="res://textures/obstacles/saw/Idle1.png" id="1_d0qym"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s32kc"]
 size = Vector2(191, 33.75)
