@@ -30,6 +30,21 @@
 [ext_resource type="PackedScene" uid="uid://e1lwibw6g3hw" path="res://scenes/Enemies/bat.tscn" id="29_nv2hj"]
 
 [sub_resource type="GDScript" id="GDScript_orrd6"]
+script/source = "extends Node
+
+
+#@onready var heartsContainer = $UIManager/heartsContainer
+# Called when the node enters the scene tree for the first time.
+
+#func _ready():
+	#heartsContainer.setMaxHearts(5)
+	
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+	#pass
+"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qov1h"]
 texture = ExtResource("2_mv8or")
@@ -1430,7 +1445,7 @@ offset_right = 10149.0
 offset_bottom = 4116.0
 texture = ExtResource("5_80rq6")
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="TileMap" type="TileMap" parent="." groups=["Map"]]
 texture_filter = 1
 scale = Vector2(3, 3)
 tile_set = SubResource("TileSet_al4lp")
