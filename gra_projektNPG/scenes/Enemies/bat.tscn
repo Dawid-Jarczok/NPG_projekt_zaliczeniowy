@@ -1,9 +1,9 @@
 [gd_scene load_steps=32 format=3 uid="uid://e1lwibw6g3hw"]
 
-[ext_resource type="Script" path="res://Bat.gd" id="1_gdqi4"]
-[ext_resource type="Texture2D" uid="uid://cw8gx5f8oren5" path="res://Flying (46x30).png" id="2_dgq1u"]
-[ext_resource type="Texture2D" uid="uid://dvpjl3ui3kutc" path="res://Idle (46x30).png" id="3_tkfc3"]
-[ext_resource type="Texture2D" uid="uid://c5cg5ygsvl71j" path="res://Hit (46x30).png" id="4_gh7qj"]
+[ext_resource type="Script" path="res://scripts/enemies_AI/Bat.gd" id="1_gdqi4"]
+[ext_resource type="Texture2D" uid="uid://cw8gx5f8oren5" path="res://textures/enemies/bat/Flying (46x30).png" id="2_dgq1u"]
+[ext_resource type="Texture2D" uid="uid://dvpjl3ui3kutc" path="res://textures/obstacles/saw/Idle (46x30).png" id="3_tkfc3"]
+[ext_resource type="Texture2D" uid="uid://c5cg5ygsvl71j" path="res://textures/enemies/bat/Hit (46x30).png" id="4_gh7qj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_isnxj"]
 size = Vector2(82, 42)

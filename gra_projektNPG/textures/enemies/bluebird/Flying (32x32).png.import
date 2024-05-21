@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://do3evxm6tl5vr"
-path="res://.godot/imported/Idle1.png-c75932292f902e5b718a18531f0a7890.ctex"
+uid="uid://o6xrx8qana6a"
+path="res://.godot/imported/Flying (32x32).png-b1eb1a7c316de9cac3e31a9fb0ec9f24.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Idle1.png"
-dest_files=["res://.godot/imported/Idle1.png-c75932292f902e5b718a18531f0a7890.ctex"]
+source_file="res://textures/enemies/bluebird/Flying (32x32).png"
+dest_files=["res://.godot/imported/Flying (32x32).png-b1eb1a7c316de9cac3e31a9fb0ec9f24.ctex"]
 
 [params]
 

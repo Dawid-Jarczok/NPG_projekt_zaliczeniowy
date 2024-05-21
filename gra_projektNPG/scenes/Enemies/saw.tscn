@@ -1,37 +1,37 @@
 [gd_scene load_steps=12 format=3 uid="uid://btpjymcbbsefw"]
 
-[ext_resource type="Texture2D" uid="uid://c8x4qy2113pm3" path="res://On (38x38).png" id="1_pwpee"]
+[ext_resource type="Texture2D" uid="uid://c8x4qy2113pm3" path="res://textures/obstacles/saw/On (38x38).png" id="1_8soe0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_na2ou"]
-atlas = ExtResource("1_pwpee")
+atlas = ExtResource("1_8soe0")
 region = Rect2(0, 0, 38, 38)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_62jio"]
-atlas = ExtResource("1_pwpee")
+atlas = ExtResource("1_8soe0")
 region = Rect2(38, 0, 38, 38)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7qsjp"]
-atlas = ExtResource("1_pwpee")
+atlas = ExtResource("1_8soe0")
 region = Rect2(76, 0, 38, 38)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mrv20"]
-atlas = ExtResource("1_pwpee")
+atlas = ExtResource("1_8soe0")
 region = Rect2(114, 0, 38, 38)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r0x2g"]
-atlas = ExtResource("1_pwpee")
+atlas = ExtResource("1_8soe0")
 region = Rect2(152, 0, 38, 38)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4x50r"]
-atlas = ExtResource("1_pwpee")
+atlas = ExtResource("1_8soe0")
 region = Rect2(190, 0, 38, 38)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v1sbh"]
-atlas = ExtResource("1_pwpee")
+atlas = ExtResource("1_8soe0")
 region = Rect2(228, 0, 38, 38)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yeeuu"]
-atlas = ExtResource("1_pwpee")
+atlas = ExtResource("1_8soe0")
 region = Rect2(266, 0, 38, 38)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_x2qq2"]
@@ -79,5 +79,5 @@ sprite_frames = SubResource("SpriteFrames_x2qq2")
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 2)
+scale = Vector2(1.22252, 1.22252)
 shape = SubResource("CircleShape2D_ofmnq")
