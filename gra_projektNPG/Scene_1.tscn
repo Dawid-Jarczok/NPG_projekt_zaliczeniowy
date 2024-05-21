@@ -1,6 +1,5 @@
 [gd_scene load_steps=83 format=3 uid="uid://cta5khhkikftn"]
 
-[ext_resource type="Script" path="res://scripts/World.gd" id="1_kjhly"]
 [ext_resource type="Texture2D" uid="uid://cnsvr8oedpxtx" path="res://Background/sky/1.png" id="1_l3xtt"]
 [ext_resource type="Texture2D" uid="uid://b2j07qymh6g3o" path="res://Background/sky/2.png" id="2_66xns"]
 [ext_resource type="Texture2D" uid="uid://bn1ov4eydlbul" path="res://scenes/map/Terrain (16x16).png" id="2_mv8or"]
@@ -28,6 +27,8 @@
 [ext_resource type="PackedScene" uid="uid://ddsjrdcdhvffu" path="res://scenes/Enemies/spikes.tscn" id="26_najc7"]
 [ext_resource type="PackedScene" uid="uid://ca3p8uvuro2bl" path="res://scenes/Enemies/enemy_bluebird.tscn" id="27_sofye"]
 [ext_resource type="PackedScene" uid="uid://e1lwibw6g3hw" path="res://scenes/Enemies/bat.tscn" id="29_nv2hj"]
+
+[sub_resource type="GDScript" id="GDScript_orrd6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qov1h"]
 texture = ExtResource("2_mv8or")
@@ -1323,7 +1324,7 @@ animations = [{
 }]
 
 [node name="Map1" type="Node"]
-script = ExtResource("1_kjhly")
+script = SubResource("GDScript_orrd6")
 
 [node name="Level_1_L1" type="TextureRect" parent="."]
 texture_filter = 1
