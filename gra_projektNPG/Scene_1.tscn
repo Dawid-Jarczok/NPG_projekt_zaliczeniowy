@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://btpjymcbbsefw" path="res://scenes/Enemies/saw.tscn" id="25_eoa5h"]
 [ext_resource type="PackedScene" uid="uid://ddsjrdcdhvffu" path="res://scenes/Enemies/spikes.tscn" id="26_najc7"]
 [ext_resource type="PackedScene" uid="uid://ca3p8uvuro2bl" path="res://scenes/Enemies/enemy_bluebird.tscn" id="27_sofye"]
+[ext_resource type="PackedScene" uid="uid://bmylv207kehw8" path="res://scenes/Enemies/bee.tscn" id="28_043uq"]
 [ext_resource type="PackedScene" uid="uid://dpg1dxuvxui0j" path="res://scenes/map/checkpoint.tscn" id="28_l6oky"]
 [ext_resource type="PackedScene" uid="uid://e1lwibw6g3hw" path="res://scenes/Enemies/bat.tscn" id="29_nv2hj"]
 
@@ -1520,15 +1521,15 @@ position = Vector2(20, 26)
 target_position = Vector2(0, 10)
 
 [node name="collision_up_1" type="RayCast2D" parent="player_test/CharacterBody2D"]
-position = Vector2(-18, -24)
+position = Vector2(-22, -23)
 target_position = Vector2(0, -10)
 
 [node name="collision_up_2" type="RayCast2D" parent="player_test/CharacterBody2D"]
-position = Vector2(-1, -24)
+position = Vector2(0, -23)
 target_position = Vector2(0, -10)
 
 [node name="collision_up_3" type="RayCast2D" parent="player_test/CharacterBody2D"]
-position = Vector2(19, -24)
+position = Vector2(22, -23)
 target_position = Vector2(0, -10)
 
 [node name="Dust" type="AnimatedSprite2D" parent="player_test"]
@@ -1570,7 +1571,7 @@ frame = 4
 frame_progress = 0.558065
 
 [node name="DebugTeleport" type="Node2D" parent="."]
-position = Vector2(3938, 2389)
+position = Vector2(9111, -245)
 scale = Vector2(10, 10)
 
 [node name="UIManager" type="CanvasLayer" parent="."]
@@ -1615,6 +1616,8 @@ position = Vector2(942, -627)
 [node name="enemy_bluebird" parent="." instance=ExtResource("27_sofye")]
 
 [node name="Bat" parent="." instance=ExtResource("29_nv2hj")]
+
+[node name="Bee" parent="." instance=ExtResource("28_043uq")]
 
 [node name="Checkpoint" parent="." instance=ExtResource("28_l6oky")]
 position = Vector2(619, 528)
