@@ -1,8 +1,8 @@
 extends CharacterBody2D
 var speed = 210.0
 var player = null
-var player_chase = false
-var counter = 0
+enum State  {default, chase, fly2ceiling}
+var state = State
 var collider_name = null
 @onready var Bat = $AnimatedSprite2D
 @onready var col_vect_up_1 = $collision_up_1
@@ -10,25 +10,39 @@ var collider_name = null
 @onready var col_vect_down_1 = $collision_down_1
 @onready var col_vect_down_2 = $collision_down_2
 
+func _ready():
+	state = State.default
+
 func _physics_process(delta):
-	if player_chase and counter >= 3:
-		Bat.play("chasing")
-		velocity = Vector2.ZERO
+	if state == State.chase:
 		velocity = position.direction_to(player.global_position) * speed
-		if col_vect_up_1.is_colliding() and col_vect_up_1.get_collider().name == "CharacterBody2D":
+		if velocity.x > 0: Bat.flip_h = true;
+		else: Bat.flip_h = false
+
+		if col_vect_up_1.is_colliding() and col_vect_up_1.get_collider().is_in_group("Player"):
 			die()
-		if col_vect_up_2.is_colliding() and col_vect_up_2.get_collider().name == "CharacterBody2D":
+		if col_vect_up_2.is_colliding() and col_vect_up_2.get_collider().is_in_group("Player"):
 			die()	
-		move_and_slide()
+	elif state == State.fly2ceiling:
+		velocity.x = 0.0
+		velocity.y = -speed
+		if col_vect_up_1.is_colliding() and col_vect_up_1.get_collider().is_in_group("Map"):
+			state = State.default
+		if col_vect_up_2.is_colliding() and col_vect_up_2.get_collider().is_in_group("Map"):
+			state = State.default
+	
+	animations()
+	move_and_collide(velocity * delta)
+	#move_and_slide()
 
 func _on_detection_area_body_entered(body):
-	counter += 1
-	player = body
-	player_chase = true
+	if body.is_in_group("Player"):
+		player = body
+		state = State.chase
 
 func _on_detection_area_body_exited(body):
 	player = null
-	player_chase = false
+	state = State.fly2ceiling
 
 func die():
 	Bat.play("dying")
@@ -43,3 +57,9 @@ func die():
 	queue_free()
 	
 	move_and_slide()
+
+func animations():
+	if state == State.chase or state == State.fly2ceiling:
+		Bat.play("chasing")
+	else:
+		Bat.play("default")

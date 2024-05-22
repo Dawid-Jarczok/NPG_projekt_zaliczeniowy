@@ -13,7 +13,7 @@ var facing_left = true
 var facing_right = false
 
 func _physics_process(delta):
-	velocity.y = 0
+	velocity.y = 0.0
 
 	if facing_left:
 		velocity.x = speed
@@ -34,7 +34,8 @@ func _physics_process(delta):
 	if collision_vector_up1.is_colliding() or collision_vector_up2.is_colliding():
 		die()
 
-	move_and_slide()
+	move_and_collide(velocity * delta)
+	#move_and_slide()
 
 func _on_timer_timeout():
 	facing_left = !facing_left
