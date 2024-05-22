@@ -27,24 +27,10 @@
 [ext_resource type="PackedScene" uid="uid://ddsjrdcdhvffu" path="res://scenes/Enemies/spikes.tscn" id="26_najc7"]
 [ext_resource type="PackedScene" uid="uid://ca3p8uvuro2bl" path="res://scenes/Enemies/enemy_bluebird.tscn" id="27_sofye"]
 [ext_resource type="PackedScene" uid="uid://bmylv207kehw8" path="res://scenes/Enemies/bee.tscn" id="28_043uq"]
+[ext_resource type="PackedScene" uid="uid://dpg1dxuvxui0j" path="res://scenes/map/checkpoint.tscn" id="28_l6oky"]
 [ext_resource type="PackedScene" uid="uid://e1lwibw6g3hw" path="res://scenes/Enemies/bat.tscn" id="29_nv2hj"]
 
 [sub_resource type="GDScript" id="GDScript_orrd6"]
-script/source = "extends Node
-
-
-#@onready var heartsContainer = $UIManager/heartsContainer
-# Called when the node enters the scene tree for the first time.
-
-#func _ready():
-	#heartsContainer.setMaxHearts(5)
-	
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-	#pass
-"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qov1h"]
 texture = ExtResource("2_mv8or")
@@ -1632,5 +1618,8 @@ position = Vector2(942, -627)
 [node name="Bat" parent="." instance=ExtResource("29_nv2hj")]
 
 [node name="Bee" parent="." instance=ExtResource("28_043uq")]
+
+[node name="Checkpoint" parent="." instance=ExtResource("28_l6oky")]
+position = Vector2(619, 528)
 
 [connection signal="timeout" from="player_test/CharacterBody2D/TakedDamageTimer" to="player_test/CharacterBody2D" method="_on_taked_damage_timer_timeout"]
