@@ -28,7 +28,6 @@
 [ext_resource type="PackedScene" uid="uid://ca3p8uvuro2bl" path="res://scenes/Enemies/enemy_bluebird.tscn" id="27_sofye"]
 [ext_resource type="PackedScene" uid="uid://bmylv207kehw8" path="res://scenes/Enemies/bee.tscn" id="28_043uq"]
 [ext_resource type="PackedScene" uid="uid://dpg1dxuvxui0j" path="res://scenes/map/checkpoint.tscn" id="28_l6oky"]
-[ext_resource type="PackedScene" uid="uid://c473joxbbb1q0" path="res://scenes/Enemies/lava.tscn" id="29_hojrd"]
 [ext_resource type="PackedScene" uid="uid://e1lwibw6g3hw" path="res://scenes/Enemies/bat.tscn" id="29_nv2hj"]
 
 [sub_resource type="GDScript" id="GDScript_orrd6"]
@@ -1621,6 +1620,7 @@ position = Vector2(942, -627)
 [node name="Bee" parent="." instance=ExtResource("28_043uq")]
 
 [node name="Checkpoint" parent="." instance=ExtResource("28_l6oky")]
+texture_filter = 1
 position = Vector2(619, 528)
 
 [connection signal="timeout" from="player_test/CharacterBody2D/TakedDamageTimer" to="player_test/CharacterBody2D" method="_on_taked_damage_timer_timeout"]
