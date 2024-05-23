@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://cta5khhkikftn"]
+[gd_scene load_steps=86 format=3 uid="uid://cta5khhkikftn"]
 
 [ext_resource type="Texture2D" uid="uid://cnsvr8oedpxtx" path="res://Background/sky/1.png" id="1_l3xtt"]
 [ext_resource type="Texture2D" uid="uid://b2j07qymh6g3o" path="res://Background/sky/2.png" id="2_66xns"]
@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://bmylv207kehw8" path="res://scenes/Enemies/bee.tscn" id="28_043uq"]
 [ext_resource type="PackedScene" uid="uid://dpg1dxuvxui0j" path="res://scenes/map/checkpoint.tscn" id="28_l6oky"]
 [ext_resource type="PackedScene" uid="uid://e1lwibw6g3hw" path="res://scenes/Enemies/bat.tscn" id="29_nv2hj"]
+[ext_resource type="PackedScene" uid="uid://c473joxbbb1q0" path="res://scenes/Enemies/lava.tscn" id="29_snudb"]
 
 [sub_resource type="GDScript" id="GDScript_orrd6"]
 
@@ -1618,6 +1619,8 @@ position = Vector2(942, -627)
 [node name="Bat" parent="." instance=ExtResource("29_nv2hj")]
 
 [node name="Bee" parent="." instance=ExtResource("28_043uq")]
+
+[node name="Lava" parent="." instance=ExtResource("29_snudb")]
 
 [node name="Checkpoint" parent="." instance=ExtResource("28_l6oky")]
 texture_filter = 1
