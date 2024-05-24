@@ -8,10 +8,8 @@ const MAX_FALL_SPEED = 850.0
 const DUST_MIN_VELOCITY = 450.0
 const DAMAGE_VEL_X = 300.0
 const DAMAGE_VEL_Y = -400.0
-const MAX_HEALTH = 100
 
 @export var gravity_multiplier : float = 1.7
-@export var health : int = MAX_HEALTH
 
 var block_movement_inputs : bool = false
 
@@ -116,12 +114,23 @@ func player_taked_damage(delta):
 		velocity.x = 0.0
 
 func respawn():
-	health = MAX_HEALTH
 	block_movement_inputs = false
-	print(GameManager.checkpoint)
-	global_position = GameManager.checkpoint
+	prints("Teleported to: ", GameManager.checkpoint)
+	#dying animation
+	await get_tree().create_timer(0.2).timeout
 	velocity.x = 0.0
 	velocity.y = 0.0
+	GameManager.set_health(GameManager.BEGIN_HEALTH)
+	global_position = GameManager.checkpoint
+
+func teleport2checkpoint():
+	if GameManager.take_damage():
+		respawn()
+		return
+	velocity.x = 0.0
+	velocity.y = 0.0
+	prints("Teleported to: ", GameManager.checkpoint)
+	global_position = GameManager.checkpoint
 
 func player_animations():
 	if current_state == State.default:
@@ -139,9 +148,7 @@ func take_damage(damage):
 	if block_movement_inputs: return
 	block_movement_inputs = true
 	$TakedDamageTimer.start()
-	health -= damage
-	prints("Player health:", health)
-	if health <= 0:
+	if GameManager.take_damage():
 		respawn()
 
 func who_hit_player_on_left():

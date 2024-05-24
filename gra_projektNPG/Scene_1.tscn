@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://3dil27eq1at8" path="res://scenes/others/default_dust.png" id="17_jl7gv"]
 [ext_resource type="PackedScene" uid="uid://df5v3a1xhg2kw" path="res://scenes/Enemies/enemy_mushroom.tscn" id="18_c0fji"]
 [ext_resource type="Texture2D" uid="uid://2me2m188b72k" path="res://textures/map/Checkpoint (Flag Idle)(64x64).png" id="19_l1wdp"]
+[ext_resource type="Texture2D" uid="uid://2me2m188b72k" path="res://textures/map/Checkpoint (Flag Idle)(64x64).png" id="19_l1wdp"]
 [ext_resource type="PackedScene" uid="uid://ckumkqganqvr5" path="res://scenes/Life/heartsContainer.tscn" id="20_t80fc"]
 [ext_resource type="Script" path="res://scripts/UI/UIManager.gd" id="21_pa553"]
 [ext_resource type="Script" path="res://scenes/Life/heartsContainer.gd" id="22_5nrn6"]
@@ -31,6 +32,21 @@
 [ext_resource type="PackedScene" uid="uid://e1lwibw6g3hw" path="res://scenes/Enemies/bat.tscn" id="29_nv2hj"]
 
 [sub_resource type="GDScript" id="GDScript_orrd6"]
+script/source = "extends Node
+
+
+#@onready var heartsContainer = $UIManager/heartsContainer
+# Called when the node enters the scene tree for the first time.
+
+#func _ready():
+	#heartsContainer.setMaxHearts(5)
+	
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+	#pass
+"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qov1h"]
 texture = ExtResource("2_mv8or")
