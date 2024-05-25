@@ -1,6 +1,7 @@
 extends Node
 
 const BEGIN_HEALTH = 5
+const MAX_HEALTH = 10
 
 signal gained_score(int)
 signal health_changed(int)
@@ -29,6 +30,7 @@ func set_checkpoint(position : Vector2):
 
 func set_health(_health : int):
 	health = _health
+	clamp(health, 0, MAX_HEALTH)
 	emit_signal("health_changed", health)
 
 

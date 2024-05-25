@@ -32,3 +32,28 @@ stretch_mode = 2
 layout_mode = 2
 texture = ExtResource("1_rb3s3")
 stretch_mode = 2
+
+[node name="6" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_rb3s3")
+stretch_mode = 2
+
+[node name="7" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_rb3s3")
+stretch_mode = 2
+
+[node name="8" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_rb3s3")
+stretch_mode = 2
+
+[node name="9" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_rb3s3")
+stretch_mode = 2
+
+[node name="10" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_rb3s3")
+stretch_mode = 2
