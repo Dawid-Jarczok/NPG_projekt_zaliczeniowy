@@ -20,6 +20,8 @@ func gain_score(score_gained):
 	emit_signal("gained_score", score_gained)
 	prints("Score: ", score)
 
+func lose_scoore():
+	gain_score((-score) * 0.33)
 
 func set_checkpoint(position : Vector2):
 	checkpoint = position

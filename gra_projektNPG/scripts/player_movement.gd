@@ -12,6 +12,7 @@ const DAMAGE_VEL_Y = -400.0
 @export var gravity_multiplier : float = 1.7
 
 var block_movement_inputs : bool = false
+var block_damage : bool = false
 
 enum State  {default, run, jump, falling}
 var current_state = State
@@ -53,7 +54,6 @@ func _physics_process(delta):
 	who_hit_player_on_bottom()
 	who_hit_player_from_top()
 	dust_after_falling()
-	player_taked_damage(delta)
 	move_and_slide()
 	player_animations()
 
@@ -105,13 +105,6 @@ func player_run(delta):
 		current_state = State.run
 		sprite.flip_h = false	
 
-func player_taked_damage(delta):
-	if !block_movement_inputs:
-		return
-	
-	# Player after taking damage jumps away from enemie there when touched ground should stop moving
-	if is_on_floor():
-		velocity.x = 0.0
 
 func respawn():
 	block_movement_inputs = false
@@ -120,13 +113,15 @@ func respawn():
 	await get_tree().create_timer(0.2).timeout
 	velocity.x = 0.0
 	velocity.y = 0.0
-	GameManager.set_health(GameManager.BEGIN_HEALTH)
 	global_position = GameManager.checkpoint
+	GameManager.lose_scoore()
+	GameManager.set_health(GameManager.BEGIN_HEALTH)
 
 func teleport2checkpoint():
 	if GameManager.take_damage():
 		respawn()
 		return
+	GameManager.lose_scoore()
 	velocity.x = 0.0
 	velocity.y = 0.0
 	prints("Teleported to: ", GameManager.checkpoint)
@@ -144,9 +139,19 @@ func player_animations():
 	elif block_movement_inputs == true:
 		sprite.play("player_hit")
 
-func take_damage(damage):
-	if block_movement_inputs: return
-	block_movement_inputs = true
+func take_damage(damage, jump : Vector2):
+	if block_damage: return
+	block_damage = true
+	block_movement_inputs  = true
+	if jump.x == 1:
+		velocity.x = DAMAGE_VEL_X
+	else:
+		velocity.x = -DAMAGE_VEL_X
+	
+	if jump.y == 1:
+		velocity.y = DAMAGE_VEL_Y
+	else:
+		velocity.y = -DAMAGE_VEL_Y
 	$TakedDamageTimer.start()
 	if GameManager.take_damage():
 		respawn()
@@ -155,25 +160,19 @@ func who_hit_player_on_left():
 	if left_col_vec_1.is_colliding():
 		collider_name = left_col_vec_1.get_collider().name
 		if Enemies.has(collider_name) or Traps.has(collider_name):
-			take_damage(10)
-			velocity.x = DAMAGE_VEL_X
-			velocity.y = DAMAGE_VEL_Y
+			take_damage(10, Vector2(1, 1))
 	else:
 		collider_name = null
 	if left_col_vec_2.is_colliding():
 		collider_name = left_col_vec_2.get_collider().name
 		if Enemies.has(collider_name) or Traps.has(collider_name):
-			take_damage(10)
-			velocity.x = DAMAGE_VEL_X
-			velocity.y = DAMAGE_VEL_Y
+			take_damage(10, Vector2(1, 1))
 	else:
 		collider_name = null
 	if left_col_vec_3.is_colliding():
 		collider_name = left_col_vec_3.get_collider().name
 		if Enemies.has(collider_name) or Traps.has(collider_name):
-			take_damage(10)
-			velocity.x = DAMAGE_VEL_X
-			velocity.y = DAMAGE_VEL_Y
+			take_damage(10, Vector2(1, 1))
 	else:
 		collider_name = null
 
@@ -181,25 +180,19 @@ func who_hit_player_on_right():
 	if right_col_vec_1.is_colliding():
 		collider_name = right_col_vec_1.get_collider().name
 		if Enemies.has(collider_name) or Traps.has(collider_name):
-			take_damage(10)
-			velocity.x = -DAMAGE_VEL_X
-			velocity.y = DAMAGE_VEL_Y
+			take_damage(10, Vector2(-1, 1))
 	else:
 		collider_name = null
 	if right_col_vec_2.is_colliding():
 		collider_name = right_col_vec_2.get_collider().name
 		if Enemies.has(collider_name) or Traps.has(collider_name):
-			take_damage(10)
-			velocity.x = -DAMAGE_VEL_X
-			velocity.y = DAMAGE_VEL_Y
+			take_damage(10, Vector2(-1, 1))
 	else:
 		collider_name = null
 	if right_col_vec_3.is_colliding():
 		collider_name = right_col_vec_3.get_collider().name
 		if Enemies.has(collider_name) or Traps.has(collider_name):
-			take_damage(10)
-			velocity.x = -DAMAGE_VEL_X
-			velocity.y = DAMAGE_VEL_Y
+			take_damage(10, Vector2(-1, 1))
 	else:
 		collider_name = null
 
@@ -207,31 +200,19 @@ func who_hit_player_on_bottom():
 	if down_col_vec_1.is_colliding():
 		collider_name = down_col_vec_1.get_collider().name
 		if Traps.has(collider_name):
-			take_damage(10)
-			velocity.y = DAMAGE_VEL_Y
-			await get_tree().create_timer(0.05).timeout
-			velocity.x = DAMAGE_VEL_X
-			if sprite.flip_h == true: velocity.x = -velocity.x 
+			take_damage(10, Vector2(sprite.flip_h, 1))
 	else:
 		collider_name = null
 	if down_col_vec_2.is_colliding():
 		collider_name = down_col_vec_2.get_collider().name
 		if Traps.has(collider_name):
-			take_damage(10)
-			velocity.y = DAMAGE_VEL_Y
-			await get_tree().create_timer(0.05).timeout
-			velocity.x = DAMAGE_VEL_X
-			if sprite.flip_h == true: velocity.x = -velocity.x 
+			take_damage(10, Vector2(sprite.flip_h, 1))
 	else:
 		collider_name = null
 	if down_col_vec_3.is_colliding():
 		collider_name = down_col_vec_3.get_collider().name
 		if Traps.has(collider_name):
-			take_damage(10)
-			velocity.y = DAMAGE_VEL_Y
-			await get_tree().create_timer(0.05).timeout
-			velocity.x = DAMAGE_VEL_X
-			if sprite.flip_h == true: velocity.x = -velocity.x 
+			take_damage(10, Vector2(sprite.flip_h, 1))
 	else:
 		collider_name = null
 
@@ -239,33 +220,25 @@ func who_hit_player_from_top():
 	if up_col_vec_1.is_colliding():
 		collider_name = up_col_vec_1.get_collider().name
 		if Enemies.has(collider_name) or Traps.has(collider_name):
-			take_damage(10)
-			velocity.x = DAMAGE_VEL_X
-			if sprite.flip_h == true: velocity.x = -velocity.x 
-			velocity.y = -DAMAGE_VEL_Y
+			take_damage(10, Vector2(sprite.flip_h, -1))
 	else:
 		collider_name = null
 	if up_col_vec_2.is_colliding():
 		collider_name = up_col_vec_2.get_collider().name
 		if Enemies.has(collider_name) or Traps.has(collider_name):
-			take_damage(10)
-			velocity.x = DAMAGE_VEL_X
-			if sprite.flip_h == true: velocity.x = -velocity.x 
-			velocity.y = -DAMAGE_VEL_Y
+			take_damage(10, Vector2(sprite.flip_h, -1))
 	else:
 		collider_name = null
 	if up_col_vec_3.is_colliding():
 		collider_name = up_col_vec_3.get_collider().name
 		if Enemies.has(collider_name) or Traps.has(collider_name):
-			take_damage(10)
-			velocity.x = DAMAGE_VEL_X
-			if sprite.flip_h == true: velocity.x = -velocity.x 
-			velocity.y = -DAMAGE_VEL_Y
+			take_damage(10, Vector2(sprite.flip_h, -1))
 	else:
 		collider_name = null
 
 func _on_taked_damage_timer_timeout():
 	block_movement_inputs = false
+	block_damage = false
 
 func teleport():
 	var new_pos = get_node("/root/Map1/DebugTeleport")

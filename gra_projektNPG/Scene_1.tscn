@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://cta5khhkikftn"]
+[gd_scene load_steps=85 format=3 uid="uid://cta5khhkikftn"]
 
 [ext_resource type="Texture2D" uid="uid://cnsvr8oedpxtx" path="res://Background/sky/1.png" id="1_l3xtt"]
 [ext_resource type="Texture2D" uid="uid://b2j07qymh6g3o" path="res://Background/sky/2.png" id="2_66xns"]
@@ -20,14 +20,13 @@
 [ext_resource type="Texture2D" uid="uid://3dil27eq1at8" path="res://scenes/others/default_dust.png" id="17_jl7gv"]
 [ext_resource type="PackedScene" uid="uid://df5v3a1xhg2kw" path="res://scenes/Enemies/enemy_mushroom.tscn" id="18_c0fji"]
 [ext_resource type="Texture2D" uid="uid://2me2m188b72k" path="res://textures/map/Checkpoint (Flag Idle)(64x64).png" id="19_l1wdp"]
-[ext_resource type="Texture2D" uid="uid://2me2m188b72k" path="res://textures/map/Checkpoint (Flag Idle)(64x64).png" id="19_l1wdp"]
 [ext_resource type="PackedScene" uid="uid://ckumkqganqvr5" path="res://scenes/Life/heartsContainer.tscn" id="20_t80fc"]
 [ext_resource type="Script" path="res://scripts/UI/UIManager.gd" id="21_pa553"]
 [ext_resource type="Script" path="res://scenes/Life/heartsContainer.gd" id="22_5nrn6"]
 [ext_resource type="PackedScene" uid="uid://btpjymcbbsefw" path="res://scenes/Enemies/saw.tscn" id="25_eoa5h"]
 [ext_resource type="PackedScene" uid="uid://ddsjrdcdhvffu" path="res://scenes/Enemies/spikes.tscn" id="26_najc7"]
 [ext_resource type="PackedScene" uid="uid://ca3p8uvuro2bl" path="res://scenes/Enemies/enemy_bluebird.tscn" id="27_sofye"]
-[ext_resource type="PackedScene" uid="uid://bmylv207kehw8" path="res://scenes/Enemies/bee.tscn" id="28_043uq"]
+[ext_resource type="PackedScene" path="res://scenes/Enemies/bee.tscn" id="28_043uq"]
 [ext_resource type="PackedScene" uid="uid://dpg1dxuvxui0j" path="res://scenes/map/checkpoint.tscn" id="28_l6oky"]
 [ext_resource type="PackedScene" uid="uid://e1lwibw6g3hw" path="res://scenes/Enemies/bat.tscn" id="29_nv2hj"]
 
@@ -1521,7 +1520,7 @@ rotation = 4.71239
 target_position = Vector2(0, 10)
 
 [node name="TakedDamageTimer" type="Timer" parent="player_test/CharacterBody2D"]
-wait_time = 0.7
+wait_time = 0.5
 one_shot = true
 
 [node name="collision_down_1" type="RayCast2D" parent="player_test/CharacterBody2D"]
@@ -1587,7 +1586,7 @@ frame = 4
 frame_progress = 0.558065
 
 [node name="DebugTeleport" type="Node2D" parent="."]
-position = Vector2(9111, -245)
+position = Vector2(5611, 2190)
 scale = Vector2(10, 10)
 
 [node name="UIManager" type="CanvasLayer" parent="."]
@@ -1632,6 +1631,7 @@ position = Vector2(942, -627)
 [node name="enemy_bluebird" parent="." instance=ExtResource("27_sofye")]
 
 [node name="Bat" parent="." instance=ExtResource("29_nv2hj")]
+position = Vector2(4852, 2089)
 
 [node name="Bee" parent="." instance=ExtResource("28_043uq")]
 

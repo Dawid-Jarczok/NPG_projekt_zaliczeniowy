@@ -198,11 +198,9 @@ animations = [{
 radius = 334.006
 
 [node name="Bat" type="CharacterBody2D"]
-position = Vector2(4611, 2131)
 script = ExtResource("1_gdqi4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_isnxj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -219,21 +217,22 @@ visibility_layer = 2
 light_mask = 2
 visibility_layer = 2
 shape = SubResource("CircleShape2D_ym2m8")
+debug_color = Color(0.890196, 0.866667, 0.117647, 0.0470588)
 
 [node name="collision_up_1" type="RayCast2D" parent="."]
-position = Vector2(-29, -13)
+position = Vector2(-15, -14)
 target_position = Vector2(0, -10)
 
 [node name="collision_up_2" type="RayCast2D" parent="."]
-position = Vector2(23, -13)
+position = Vector2(15, -13)
 target_position = Vector2(0, -10)
 
 [node name="collision_down_1" type="RayCast2D" parent="."]
-position = Vector2(-34, 14)
+position = Vector2(-15, 13)
 target_position = Vector2(0, 10)
 
 [node name="collision_down_2" type="RayCast2D" parent="."]
-position = Vector2(24, 14)
+position = Vector2(15, 13)
 target_position = Vector2(0, 10)
 
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
