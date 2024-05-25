@@ -3,13 +3,9 @@ var speed = 210.0
 var player = null
 enum State  {default, chase, fly2ceiling, push}
 var state = State
-var last_state
 var timer
 var collider_name = null
 @onready var Bat = $AnimatedSprite2D
-@onready var col_shape = $CollisionShape2D
-@onready var col_vect_up_1 = $collision_up_1
-@onready var col_vect_up_2 = $collision_up_2
 @onready var col_vect_down_1 = $collision_down_1
 @onready var col_vect_down_2 = $collision_down_2
 
@@ -27,38 +23,24 @@ func _physics_process(delta):
 		
 		if velocity.x > 0: Bat.flip_h = true;
 		else: Bat.flip_h = false
-
-		if col_vect_up_1.is_colliding() and col_vect_up_1.get_collider().is_in_group("Player"):
-			die()
-		if col_vect_up_2.is_colliding() and col_vect_up_2.get_collider().is_in_group("Player"):
-			die()
-		
+			
 	elif state == State.fly2ceiling:
 		velocity.x = 0.0
 		velocity.y = -speed
-		if col_vect_up_1.is_colliding() and col_vect_up_1.get_collider().is_in_group("Map"):
-			state = State.default
-		if col_vect_up_2.is_colliding() and col_vect_up_2.get_collider().is_in_group("Map"):
-			state = State.default
 			
 	elif state == State.push:
 		velocity *= 0.93
 
 	animations()
-	var collider = move_and_collide(velocity * delta)
-	if collider != null:
-		if collider.get_collider().is_in_group("Player"):
+
+	move_and_slide()
+	for i in range(get_slide_collision_count()):
+		if get_slide_collision(i).get_collider().is_in_group("Player"):
 			velocity = -position.direction_to(player.global_position) * speed * 3
 			state = State.push
 			timer.start()
-	#move_and_slide()
-
-	if last_state != state:
-		last_state = state
-		prints("bat state: ", state)
 
 func _on_timer_timeout():
-	print("timeout")
 	if state == State.push:
 		state = State.chase
 
@@ -68,24 +50,29 @@ func _on_detection_area_body_entered(body):
 		state = State.chase
 
 func _on_detection_area_body_exited(body):
-	state = State.fly2ceiling
+	if body.is_in_group("Player"):
+		state = State.fly2ceiling
 
 func die():
 	Bat.play("dying")
 	GameManager.gain_score(1)
-	col_vect_up_1.enabled = false
-	col_vect_up_2.enabled = false
 	set_collision_mask_value(1, false)
 	velocity.x = 0.0
 	speed = 0.0
 	await get_tree().create_timer(0.5).timeout
 	Bat.hide()
 	queue_free()
-	
-	move_and_slide()
 
 func animations():
 	if state == State.default:
 		Bat.play("default")
 	else:
 		Bat.play("chasing")
+
+func _on_area_up_body_entered(body:Node2D):
+	if state == State.fly2ceiling:
+		if body.is_in_group("Map"):
+			state = State.default
+	elif state == State.chase or state == State.push:
+		if body.is_in_group("Player"):
+			die()
