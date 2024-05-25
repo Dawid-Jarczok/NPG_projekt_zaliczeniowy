@@ -28,12 +28,27 @@
 [ext_resource type="PackedScene" uid="uid://btpjymcbbsefw" path="res://scenes/Enemies/saw.tscn" id="25_eoa5h"]
 [ext_resource type="PackedScene" uid="uid://ddsjrdcdhvffu" path="res://scenes/Enemies/spikes.tscn" id="26_najc7"]
 [ext_resource type="PackedScene" uid="uid://ca3p8uvuro2bl" path="res://scenes/Enemies/enemy_bluebird.tscn" id="27_sofye"]
-[ext_resource type="PackedScene" uid="uid://bmylv207kehw8" path="res://scenes/Enemies/bee.tscn" id="28_043uq"]
+[ext_resource type="PackedScene" path="res://scenes/Enemies/bee.tscn" id="28_043uq"]
 [ext_resource type="PackedScene" uid="uid://dpg1dxuvxui0j" path="res://scenes/map/checkpoint.tscn" id="28_l6oky"]
 [ext_resource type="PackedScene" uid="uid://e1lwibw6g3hw" path="res://scenes/Enemies/bat.tscn" id="29_nv2hj"]
 [ext_resource type="PackedScene" uid="uid://c473joxbbb1q0" path="res://scenes/Enemies/lava.tscn" id="29_snudb"]
 
 [sub_resource type="GDScript" id="GDScript_orrd6"]
+script/source = "extends Node
+
+
+#@onready var heartsContainer = $UIManager/heartsContainer
+# Called when the node enters the scene tree for the first time.
+
+#func _ready():
+	#heartsContainer.setMaxHearts(5)
+	
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+	#pass
+"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qov1h"]
 texture = ExtResource("2_mv8or")
@@ -4900,7 +4915,7 @@ rotation = 4.71239
 target_position = Vector2(0, 10)
 
 [node name="TakedDamageTimer" type="Timer" parent="player_test/CharacterBody2D"]
-wait_time = 0.7
+wait_time = 0.5
 one_shot = true
 
 [node name="collision_down_1" type="RayCast2D" parent="player_test/CharacterBody2D"]
@@ -4972,7 +4987,7 @@ frame = 4
 frame_progress = 0.558065
 
 [node name="DebugTeleport" type="Node2D" parent="."]
-position = Vector2(6904, 1699)
+position = Vector2(5611, 2190)
 scale = Vector2(10, 10)
 
 [node name="UIManager" type="CanvasLayer" parent="."]
@@ -5020,6 +5035,7 @@ position = Vector2(942, -627)
 texture_filter = 1
 
 [node name="Bat" parent="." instance=ExtResource("29_nv2hj")]
+position = Vector2(4852, 2089)
 texture_filter = 1
 
 [node name="Bee" parent="." instance=ExtResource("28_043uq")]

@@ -1,6 +1,59 @@
-[gd_scene format=3 uid="uid://ckumkqganqvr5"]
+[gd_scene load_steps=2 format=3 uid="uid://ckumkqganqvr5"]
+
+[ext_resource type="Texture2D" uid="uid://bh2264er4j0v2" path="res://Background/Pixel Heart Sprite 32x32.png" id="1_rb3s3"]
 
 [node name="HealthContainer" type="HBoxContainer"]
-offset_right = 40.0
-offset_bottom = 40.0
-theme_override_constants/separation = 30
+offset_right = 280.0
+offset_bottom = 32.0
+scale = Vector2(2, 2)
+theme_override_constants/separation = 0
+
+[node name="1" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_rb3s3")
+stretch_mode = 2
+
+[node name="2" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_rb3s3")
+stretch_mode = 2
+
+[node name="3" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_rb3s3")
+stretch_mode = 2
+
+[node name="4" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_rb3s3")
+stretch_mode = 2
+
+[node name="5" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_rb3s3")
+stretch_mode = 2
+
+[node name="6" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_rb3s3")
+stretch_mode = 2
+
+[node name="7" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_rb3s3")
+stretch_mode = 2
+
+[node name="8" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_rb3s3")
+stretch_mode = 2
+
+[node name="9" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_rb3s3")
+stretch_mode = 2
+
+[node name="10" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_rb3s3")
+stretch_mode = 2
