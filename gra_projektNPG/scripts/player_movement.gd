@@ -19,7 +19,7 @@ var current_state = State
 var collider_name = null
 var Enemies = ["Enemy_mushroom", "Enemy_mushroom2","Enemy_mushroom3","Enemy_mushroom4","Enemy_mushroom5","Enemy_mushroom6", 
 "enemy_bluebird", "Bat", "Bee"]
-var Traps = ["Saw", "Spikes"]
+var Traps = ["Saw", "Spikes", "Lava"]
 var if_was_falling: bool = true
 var falling_vel: float = 0.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
