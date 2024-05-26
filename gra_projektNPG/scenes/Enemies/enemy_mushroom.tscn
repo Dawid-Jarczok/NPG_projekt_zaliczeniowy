@@ -1,6 +1,6 @@
-[gd_scene load_steps=27 format=3 uid="uid://df5v3a1xhg2kw"]
+[gd_scene load_steps=30 format=3 uid="uid://df5v3a1xhg2kw"]
 
-[ext_resource type="Script" path="res://scripts/enemies_AI/Enemy_1.gd" id="1_yasep"]
+[ext_resource type="Script" path="res://scripts/enemies_AI/Mushroom.gd" id="1_yasep"]
 [ext_resource type="Texture2D" uid="uid://bgwjin40bcqaq" path="res://scenes/player/Hit.png" id="2_23lo2"]
 [ext_resource type="Texture2D" uid="uid://blu4hcmu0onjc" path="res://textures/enemies/mushroom/Enemy Run.png" id="3_vxc7s"]
 
@@ -165,37 +165,55 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ipscq"]
-size = Vector2(48, 34)
+size = Vector2(54, 35)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_hcljs"]
+a = Vector2(27, -18)
+b = Vector2(-27, -18)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_7oxof"]
+a = Vector2(-28, -17)
+b = Vector2(-28, 18)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_pbeuy"]
+a = Vector2(28, -17)
+b = Vector2(28, 18)
 
 [node name="Enemy_mushroom" type="CharacterBody2D"]
-position = Vector2(2, 0)
+texture_filter = 1
 script = ExtResource("1_yasep")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(3710, -607)
+position = Vector2(0, -12)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_sy7p6")
-animation = &"dying"
+animation = &"enemy"
 autoplay = "enemy"
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3710, -593)
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_ipscq")
+metadata/_edit_lock_ = true
 
-[node name="RayCast2D_1" type="RayCast2D" parent="."]
-position = Vector2(3695, -595)
-rotation = 1.5708
-target_position = Vector2(0, 10)
+[node name="Area_up" type="Area2D" parent="."]
 
-[node name="RayCast2D_2" type="RayCast2D" parent="."]
-position = Vector2(3725, -595)
-rotation = 4.71239
-target_position = Vector2(0, 10)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_up"]
+shape = SubResource("SegmentShape2D_hcljs")
+debug_color = Color(0.733333, 0.388235, 0.686275, 0.419608)
 
-[node name="RayCast2D_up1" type="RayCast2D" parent="."]
-position = Vector2(3688, -602)
-target_position = Vector2(0, -10)
+[node name="Area_left" type="Area2D" parent="."]
 
-[node name="RayCast2D_up2" type="RayCast2D" parent="."]
-position = Vector2(3732, -602)
-target_position = Vector2(0, -10)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_left"]
+shape = SubResource("SegmentShape2D_7oxof")
+debug_color = Color(0.768627, 0.364706, 0.67451, 0.419608)
+
+[node name="Area_right" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_right"]
+shape = SubResource("SegmentShape2D_pbeuy")
+debug_color = Color(0.721569, 0.396078, 0.705882, 0.419608)
+
+[connection signal="body_entered" from="Area_up" to="." method="_on_area_up_body_entered"]
+[connection signal="body_entered" from="Area_left" to="." method="_on_area_left_body_entered"]
+[connection signal="body_entered" from="Area_right" to="." method="_on_area_right_body_entered"]

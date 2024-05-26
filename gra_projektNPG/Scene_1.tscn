@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://cta5khhkikftn"]
+[gd_scene load_steps=90 format=3 uid="uid://cta5khhkikftn"]
 
 [ext_resource type="Texture2D" uid="uid://cnsvr8oedpxtx" path="res://Background/sky/1.png" id="1_l3xtt"]
 [ext_resource type="Texture2D" uid="uid://b2j07qymh6g3o" path="res://Background/sky/2.png" id="2_66xns"]
@@ -4864,6 +4864,7 @@ shape = SubResource("RectangleShape2D_g6dt1")
 position = Vector2(40, 490)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="player_test" groups=["Player"]]
+collision_mask = 3
 script = ExtResource("3_3jpsd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_test/CharacterBody2D"]
@@ -4954,27 +4955,22 @@ position = Vector2(41, 450)
 scale = Vector2(10, 10)
 
 [node name="Enemy_mushroom" parent="." instance=ExtResource("18_c0fji")]
-texture_filter = 1
+position = Vector2(2454, -594)
 
 [node name="Enemy_mushroom2" parent="." instance=ExtResource("18_c0fji")]
-texture_filter = 1
-position = Vector2(-392, 0)
+position = Vector2(2644, -594)
 
 [node name="Enemy_mushroom4" parent="." instance=ExtResource("18_c0fji")]
-texture_filter = 1
-position = Vector2(-703, 0)
+position = Vector2(3201, -594)
 
 [node name="Enemy_mushroom5" parent="." instance=ExtResource("18_c0fji")]
-texture_filter = 1
-position = Vector2(-1210, 0)
+position = Vector2(3451, -594)
 
 [node name="Enemy_mushroom3" parent="." instance=ExtResource("18_c0fji")]
-texture_filter = 1
-position = Vector2(-947, 0)
+position = Vector2(2885, -595)
 
 [node name="Enemy_mushroom6" parent="." instance=ExtResource("18_c0fji")]
-texture_filter = 1
-position = Vector2(-1101, 0)
+position = Vector2(3642, -594)
 
 [node name="flag" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -4987,7 +4983,7 @@ frame = 4
 frame_progress = 0.558065
 
 [node name="DebugTeleport" type="Node2D" parent="."]
-position = Vector2(5611, 2190)
+position = Vector2(2262, -744)
 scale = Vector2(10, 10)
 
 [node name="UIManager" type="CanvasLayer" parent="."]
@@ -5033,10 +5029,11 @@ position = Vector2(942, -627)
 
 [node name="enemy_bluebird" parent="." instance=ExtResource("27_sofye")]
 texture_filter = 1
+position = Vector2(2120, 1386)
 
 [node name="Bat" parent="." instance=ExtResource("29_nv2hj")]
-position = Vector2(4852, 2089)
 texture_filter = 1
+position = Vector2(4852, 2089)
 
 [node name="Bee" parent="." instance=ExtResource("28_043uq")]
 texture_filter = 1
