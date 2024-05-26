@@ -130,7 +130,7 @@ b = Vector2(-30, 22)
 a = Vector2(30, -20)
 b = Vector2(30, 22)
 
-[node name="enemy_bluebird" type="CharacterBody2D"]
+[node name="enemy_bluebird" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_0h57b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

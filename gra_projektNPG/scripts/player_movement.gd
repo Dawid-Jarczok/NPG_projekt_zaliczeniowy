@@ -7,7 +7,7 @@ const JUMP_VELOCITY = -750.0
 const MAX_FALL_SPEED = 850.0
 const DUST_MIN_VELOCITY = 450.0
 const DAMAGE_VEL_X = 300.0
-const DAMAGE_VEL_Y = -400.0
+const DAMAGE_VEL_Y = -450.0
 
 @export var gravity_multiplier : float = 1.7
 
