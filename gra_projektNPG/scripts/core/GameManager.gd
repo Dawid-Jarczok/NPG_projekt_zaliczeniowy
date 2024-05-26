@@ -33,6 +33,8 @@ func set_health(_health : int):
 	clamp(health, 0, MAX_HEALTH)
 	emit_signal("health_changed", health)
 
+func gain_health(_health : int):
+	set_health(_health + health)
 
 # returns true if health is 0
 func take_damage():

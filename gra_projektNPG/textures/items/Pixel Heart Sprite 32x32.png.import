@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcx5lyqj7kbug"
-path="res://.godot/imported/Hit (32x32).png-ca93f6f609eed00e4869572ea5888924.ctex"
+uid="uid://5pkt1auaog4d"
+path="res://.godot/imported/Pixel Heart Sprite 32x32.png-d5240ba110935720e7092b1fb403c9f4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/player/Hit (32x32).png"
-dest_files=["res://.godot/imported/Hit (32x32).png-ca93f6f609eed00e4869572ea5888924.ctex"]
+source_file="res://textures/items/Pixel Heart Sprite 32x32.png"
+dest_files=["res://.godot/imported/Pixel Heart Sprite 32x32.png-d5240ba110935720e7092b1fb403c9f4.ctex"]
 
 [params]
 
