@@ -1470,6 +1470,7 @@ shape = SubResource("RectangleShape2D_g6dt1")
 position = Vector2(40, 490)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="player_test" groups=["Player"]]
+collision_mask = 3
 script = ExtResource("3_3jpsd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_test/CharacterBody2D"]
@@ -1587,7 +1588,7 @@ frame = 4
 frame_progress = 0.558065
 
 [node name="DebugTeleport" type="Node2D" parent="."]
-position = Vector2(5611, 2190)
+position = Vector2(1221, 1498)
 scale = Vector2(10, 10)
 
 [node name="UIManager" type="CanvasLayer" parent="."]
@@ -1630,6 +1631,7 @@ text = "FPS: "
 position = Vector2(942, -627)
 
 [node name="enemy_bluebird" parent="." instance=ExtResource("27_sofye")]
+position = Vector2(2120, 1386)
 
 [node name="Bat" parent="." instance=ExtResource("29_nv2hj")]
 position = Vector2(4852, 2089)
