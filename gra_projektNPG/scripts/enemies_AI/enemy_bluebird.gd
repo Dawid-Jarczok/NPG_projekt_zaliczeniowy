@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 var speed = -200.0
 @onready var bluebird = $AnimatedSprite2D
+@onready var area_left = $Area_left
 var direction = true
 
 func _physics_process(delta):
@@ -17,9 +18,6 @@ func _physics_process(delta):
 
 	move_and_collide(velocity * delta)
 	#move_and_slide()
-
-func _on_timer_timeout():
-	direction = !direction
 
 func die():
 	bluebird.play("dying")
@@ -46,3 +44,10 @@ func _on_area_left_body_entered(body:Node2D):
 func _on_area_up_body_entered(body:Node2D):
 	if body.is_in_group("Player"):
 		die()
+
+
+func _on_flying_area_area_exited(area:Area2D):
+	if area == $Area_right:
+		direction = false
+	elif area == $Area_left:
+		direction = true
