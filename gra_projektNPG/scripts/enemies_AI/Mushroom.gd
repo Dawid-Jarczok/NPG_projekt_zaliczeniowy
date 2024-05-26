@@ -9,17 +9,20 @@ var facing_dir:bool = false
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var Enemy = $AnimatedSprite2D
-
+@onready var ground_detection_left = $Ground_detection_left
+@onready var ground_detection_right = $Ground_detection_right
 
 func _ready():
 	facing_dir = randi_range(0, 1)
 	speed = randf_range(SPEED_MIN, SPEED_MAX)
-	prints("Mushrom: ", facing_dir, speed)
 
 func _physics_process(delta):
 	
 	if not is_on_floor():
 		velocity.y += gravity * delta
+
+	if !ground_detection_left.is_colliding() or !ground_detection_right.is_colliding():
+		facing_dir = !facing_dir
 
 	if facing_dir:
 		velocity.x = speed
