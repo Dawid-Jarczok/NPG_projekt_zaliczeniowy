@@ -21,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://btpjymcbbsefw" path="res://scenes/Enemies/saw.tscn" id="25_eoa5h"]
 [ext_resource type="PackedScene" uid="uid://ddsjrdcdhvffu" path="res://scenes/Enemies/spikes.tscn" id="26_najc7"]
 [ext_resource type="PackedScene" uid="uid://dncerdh5ikort" path="res://scenes/items/heart.tscn" id="26_rgwaq"]
-[ext_resource type="PackedScene" uid="uid://ca3p8uvuro2bl" path="res://scenes/Enemies/enemy_bluebird.tscn" id="27_sofye"]
+[ext_resource type="PackedScene" uid="uid://ca3p8uvuro2bl" path="res://scenes/Enemies/bluebird.tscn" id="27_sofye"]
 [ext_resource type="PackedScene" path="res://scenes/Enemies/bee.tscn" id="28_043uq"]
 [ext_resource type="PackedScene" uid="uid://dpg1dxuvxui0j" path="res://scenes/map/checkpoint.tscn" id="28_l6oky"]
 [ext_resource type="PackedScene" uid="uid://e1lwibw6g3hw" path="res://scenes/Enemies/bat.tscn" id="29_nv2hj"]
@@ -4626,9 +4626,9 @@ texture_filter = 1
 texture_filter = 1
 position = Vector2(942, -627)
 
-[node name="enemy_bluebird" parent="." instance=ExtResource("27_sofye")]
-texture_filter = 1
-position = Vector2(2120, 1386)
+[node name="Bluebird" parent="." groups=["Enemy"] instance=ExtResource("27_sofye")]
+position = Vector2(1724, 1375)
+flying_area_width = 1500.0
 
 [node name="Bat" parent="." instance=ExtResource("29_nv2hj")]
 texture_filter = 1

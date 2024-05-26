@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://ca3p8uvuro2bl"]
+[gd_scene load_steps=25 format=3 uid="uid://ca3p8uvuro2bl"]
 
 [ext_resource type="Script" path="res://scripts/enemies_AI/enemy_bluebird.gd" id="1_0h57b"]
 [ext_resource type="Texture2D" uid="uid://o6xrx8qana6a" path="res://textures/enemies/bluebird/Flying (32x32).png" id="1_km3tn"]
+[ext_resource type="Script" path="res://scripts/enemies_AI/enemy_bluebird_config.gd" id="1_kma1m"]
 [ext_resource type="Texture2D" uid="uid://lmneuybyorlc" path="res://textures/enemies/bluebird/Hit (32x32).png" id="2_303iw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_am4lb"]
@@ -130,42 +131,50 @@ b = Vector2(-30, 22)
 a = Vector2(30, -20)
 b = Vector2(30, 22)
 
-[node name="enemy_bluebird" type="CharacterBody2D" groups=["Enemy"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4qsd3"]
+size = Vector2(1000, 60)
+
+[node name="bluebird" type="Node2D"]
+script = ExtResource("1_kma1m")
+
+[node name="enemy_bluebird" type="CharacterBody2D" parent="." groups=["Enemy"]]
 script = ExtResource("1_0h57b")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_bluebird"]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_am4lb")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="enemy_bluebird"]
 texture_filter = 1
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_r0yjr")
 autoplay = "default"
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
-autostart = true
+[node name="Area_up" type="Area2D" parent="enemy_bluebird"]
 
-[node name="Area_up" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_up"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_bluebird/Area_up"]
 shape = SubResource("SegmentShape2D_3rlls")
 debug_color = Color(0.72549, 0.372549, 0.756863, 0.419608)
 
-[node name="Area_left" type="Area2D" parent="."]
+[node name="Area_left" type="Area2D" parent="enemy_bluebird"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_left"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_bluebird/Area_left"]
 shape = SubResource("SegmentShape2D_wnb4a")
 debug_color = Color(0.643137, 0.415686, 0.827451, 0.419608)
 
-[node name="Area_right" type="Area2D" parent="."]
+[node name="Area_right" type="Area2D" parent="enemy_bluebird"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_right"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_bluebird/Area_right"]
 shape = SubResource("SegmentShape2D_20xql")
 debug_color = Color(0.752941, 0.364706, 0.717647, 0.419608)
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="body_entered" from="Area_up" to="." method="_on_area_up_body_entered"]
-[connection signal="body_entered" from="Area_left" to="." method="_on_area_left_body_entered"]
-[connection signal="body_entered" from="Area_right" to="." method="_on_area_right_body_entered"]
+[node name="Flying_area" type="Area2D" parent="."]
+
+[node name="Shape" type="CollisionShape2D" parent="Flying_area"]
+shape = SubResource("RectangleShape2D_4qsd3")
+debug_color = Color(0.741176, 0.45098, 0.329412, 0.0431373)
+
+[connection signal="body_entered" from="enemy_bluebird/Area_up" to="enemy_bluebird" method="_on_area_up_body_entered"]
+[connection signal="body_entered" from="enemy_bluebird/Area_left" to="enemy_bluebird" method="_on_area_left_body_entered"]
+[connection signal="body_entered" from="enemy_bluebird/Area_right" to="enemy_bluebird" method="_on_area_right_body_entered"]
+[connection signal="area_exited" from="Flying_area" to="enemy_bluebird" method="_on_flying_area_area_exited"]
