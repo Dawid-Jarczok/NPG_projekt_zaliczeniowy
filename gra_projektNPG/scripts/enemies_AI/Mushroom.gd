@@ -1,12 +1,20 @@
 extends CharacterBody2D
 
-var speed = -60.0
+const SPEED_MIN = 50.0
+const SPEED_MAX = 100.0
+
+var speed:float = SPEED_MIN
+var facing_dir:bool = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var Enemy = $AnimatedSprite2D
 
-var facing_dir= true
+
+func _ready():
+	facing_dir = randi_range(0, 1)
+	speed = randf_range(SPEED_MIN, SPEED_MAX)
+	prints("Mushrom: ", facing_dir, speed)
 
 func _physics_process(delta):
 	
@@ -14,9 +22,9 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 
 	if facing_dir:
-		velocity.x = -speed
-	else:
 		velocity.x = speed
+	else:
+		velocity.x = -speed
 
 	Enemy.flip_h = facing_dir
 
