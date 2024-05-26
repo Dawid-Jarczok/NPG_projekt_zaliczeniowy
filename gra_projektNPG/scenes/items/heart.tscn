@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bb6ql62bvitjd"]
+[gd_scene load_steps=19 format=3 uid="uid://dncerdh5ikort"]
 
 [ext_resource type="Script" path="res://scripts/Items/heart.gd" id="1_2a8aw"]
 [ext_resource type="Texture2D" uid="uid://5pkt1auaog4d" path="res://textures/items/Pixel Heart Sprite 32x32.png" id="2_cg6dg"]
@@ -113,12 +113,13 @@ animations = [{
 size = Vector2(30, 35)
 
 [node name="Heart" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_2a8aw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_olksx")
-frame_progress = 0.124565
+autoplay = "default"
 
 [node name="Area2D" type="Area2D" parent="."]
 
