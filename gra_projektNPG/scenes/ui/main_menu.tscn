@@ -1,0 +1,93 @@
+[gd_scene load_steps=6 format=3 uid="uid://4fb5sam7fcrf"]
+
+[ext_resource type="Texture2D" uid="uid://b5n4k0naaowkn" path="res://textures/ui/MainMenuBackground.png" id="1_gv3e1"]
+[ext_resource type="Script" path="res://scripts/UI/main_menu.gd" id="1_ut7dh"]
+
+[sub_resource type="SystemFont" id="SystemFont_x00os"]
+font_names = PackedStringArray("Fira Sans")
+font_weight = 900
+subpixel_positioning = 0
+oversampling = 3.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_g2q1a"]
+font = SubResource("SystemFont_x00os")
+font_size = 64
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_d1yn0"]
+font_names = PackedStringArray("Fira Sans")
+font_weight = 800
+subpixel_positioning = 0
+oversampling = 3.0
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ut7dh")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_gv3e1")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/separation = 48
+
+[node name="Label" type="Label" parent="Background/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "2D PLATFORMER GAME"
+label_settings = SubResource("LabelSettings_g2q1a")
+
+[node name="Play Button" type="Button" parent="Background/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(384, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = SubResource("SystemFont_d1yn0")
+theme_override_font_sizes/font_size = 48
+text = "PLAY GAME"
+
+[node name="Settings Quit" type="Button" parent="Background/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(384, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = SubResource("SystemFont_d1yn0")
+theme_override_font_sizes/font_size = 48
+text = "SETTINGS"
+
+[node name="Quit Button" type="Button" parent="Background/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(384, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = SubResource("SystemFont_d1yn0")
+theme_override_font_sizes/font_size = 48
+text = "QUIT"
+
+[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/Play Button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/Settings Quit" to="." method="_on_settings_quit_pressed"]
+[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/Quit Button" to="." method="_on_quit_button_pressed"]
