@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://e1lwibw6g3hw"]
+[gd_scene load_steps=33 format=3 uid="uid://e1lwibw6g3hw"]
 
 [ext_resource type="Script" path="res://scripts/enemies_AI/Bat.gd" id="1_gdqi4"]
 [ext_resource type="Texture2D" uid="uid://cw8gx5f8oren5" path="res://textures/enemies/bat/Flying (46x30).png" id="2_dgq1u"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c5cg5ygsvl71j" path="res://textures/enemies/bat/Hit (46x30).png" id="4_gh7qj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_isnxj"]
-size = Vector2(82, 42)
+size = Vector2(82, 47)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_33lce"]
 atlas = ExtResource("2_dgq1u")
@@ -197,12 +197,15 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_ym2m8"]
 radius = 334.006
 
-[node name="Bat" type="CharacterBody2D"]
-position = Vector2(4611, 2131)
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ygj48"]
+a = Vector2(-41, -6)
+b = Vector2(41, -6)
+
+[node name="Bat" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_gdqi4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 0)
+position = Vector2(0, -2.5)
 shape = SubResource("RectangleShape2D_isnxj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -214,27 +217,30 @@ autoplay = "default"
 [node name="detection_area" type="Area2D" parent="."]
 light_mask = 2
 visibility_layer = 2
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
 light_mask = 2
 visibility_layer = 2
+position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_ym2m8")
-
-[node name="collision_up_1" type="RayCast2D" parent="."]
-position = Vector2(-29, -13)
-target_position = Vector2(0, -10)
-
-[node name="collision_up_2" type="RayCast2D" parent="."]
-position = Vector2(23, -13)
-target_position = Vector2(0, -10)
+debug_color = Color(0.890196, 0.866667, 0.117647, 0.0470588)
 
 [node name="collision_down_1" type="RayCast2D" parent="."]
-position = Vector2(-34, 14)
+position = Vector2(-15, 13)
 target_position = Vector2(0, 10)
 
 [node name="collision_down_2" type="RayCast2D" parent="."]
-position = Vector2(24, 14)
+position = Vector2(15, 13)
 target_position = Vector2(0, 10)
+
+[node name="Area_up" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_up"]
+position = Vector2(0, -21)
+shape = SubResource("SegmentShape2D_ygj48")
+debug_color = Color(0.662745, 0.356863, 0.92549, 0.419608)
 
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_entered" from="Area_up" to="." method="_on_area_up_body_entered"]
