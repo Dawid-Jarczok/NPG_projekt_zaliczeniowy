@@ -1,7 +1,32 @@
-[gd_scene load_steps=22 format=3 uid="uid://dcni15hu02fgh"]
+[gd_scene load_steps=29 format=3 uid="uid://dcni15hu02fgh"]
 
 [ext_resource type="Texture2D" uid="uid://dyp0efh84dl1x" path="res://textures/collectibles/Bananas.png" id="1_05bef"]
-[ext_resource type="Script" path="res://scripts/Items/collectibles.gd" id="1_afin0"]
+[ext_resource type="Script" path="res://scripts/Items/banana_collectible.gd" id="1_jyr2r"]
+[ext_resource type="Texture2D" uid="uid://ylpac68oxd3h" path="res://textures/collectibles/Collected.png" id="2_qodfe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cga5y"]
+atlas = ExtResource("2_qodfe")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2u11v"]
+atlas = ExtResource("2_qodfe")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lo45c"]
+atlas = ExtResource("2_qodfe")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbyph"]
+atlas = ExtResource("2_qodfe")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3td1"]
+atlas = ExtResource("2_qodfe")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aejpw"]
+atlas = ExtResource("2_qodfe")
+region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tvetx"]
 atlas = ExtResource("1_05bef")
@@ -75,6 +100,29 @@ region = Rect2(512, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_cga5y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2u11v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lo45c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbyph")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3td1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aejpw")
+}],
+"loop": false,
+"name": &"collected",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_tvetx")
 }, {
 "duration": 1.0,
@@ -127,20 +175,25 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 24.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ltbsv"]
-size = Vector2(16, 16)
+size = Vector2(18, 19)
 
-[node name="Collectibles" type="Node2D"]
-script = ExtResource("1_afin0")
+[node name="banana_collectible" type="Node2D"]
+script = ExtResource("1_jyr2r")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_77tfh")
+autoplay = "default"
 
 [node name="banana" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="banana"]
+scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_ltbsv")
+
+[connection signal="body_entered" from="banana" to="." method="_on_banana_body_entered"]
