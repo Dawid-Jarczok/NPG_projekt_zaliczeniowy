@@ -19,6 +19,7 @@ config/icon="res://textures/player/icon.svg"
 
 Scene1Music="*res://Music/scene1_music.tscn"
 GameManager="*res://scripts/core/GameManager.gd"
+LevelManager="*res://scripts/core/LevelManager.gd"
 
 [display]
 
