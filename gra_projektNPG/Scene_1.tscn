@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://cta5khhkikftn"]
+[gd_scene load_steps=46 format=3 uid="uid://cta5khhkikftn"]
 
 [ext_resource type="Texture2D" uid="uid://cnsvr8oedpxtx" path="res://Background/sky/1.png" id="1_l3xtt"]
 [ext_resource type="Texture2D" uid="uid://b2j07qymh6g3o" path="res://Background/sky/2.png" id="2_66xns"]
@@ -21,9 +21,11 @@
 [ext_resource type="PackedScene" uid="uid://btpjymcbbsefw" path="res://scenes/Enemies/saw.tscn" id="25_eoa5h"]
 [ext_resource type="PackedScene" uid="uid://ddsjrdcdhvffu" path="res://scenes/Enemies/spikes.tscn" id="26_najc7"]
 [ext_resource type="PackedScene" uid="uid://dncerdh5ikort" path="res://scenes/items/heart.tscn" id="26_rgwaq"]
+[ext_resource type="PackedScene" uid="uid://dcni15hu02fgh" path="res://scenes/items/banana_collectible.tscn" id="27_rerfp"]
 [ext_resource type="PackedScene" uid="uid://ca3p8uvuro2bl" path="res://scenes/Enemies/bluebird.tscn" id="27_sofye"]
-[ext_resource type="PackedScene" path="res://scenes/Enemies/bee.tscn" id="28_043uq"]
+[ext_resource type="PackedScene" uid="uid://bmylv207kehw8" path="res://scenes/Enemies/bee.tscn" id="28_043uq"]
 [ext_resource type="PackedScene" uid="uid://dpg1dxuvxui0j" path="res://scenes/map/checkpoint.tscn" id="28_l6oky"]
+[ext_resource type="PackedScene" uid="uid://cdtyiyovg5yr0" path="res://scenes/items/strawberry_collectible.tscn" id="29_mgnrf"]
 [ext_resource type="PackedScene" uid="uid://e1lwibw6g3hw" path="res://scenes/Enemies/bat.tscn" id="29_nv2hj"]
 [ext_resource type="PackedScene" uid="uid://c473joxbbb1q0" path="res://scenes/Enemies/lava.tscn" id="29_snudb"]
 [ext_resource type="PackedScene" uid="uid://37tfxkmlq44e" path="res://scenes/Enemies/walking_saw.tscn" id="31_jg18e"]
@@ -4675,6 +4677,7 @@ text = "Score: 0
 "
 
 [node name="heartsContainer" parent="UIManager" instance=ExtResource("20_t80fc")]
+texture_filter = 1
 offset_left = 16.0
 offset_top = 16.0
 offset_right = 224.0
@@ -4738,3 +4741,9 @@ target_position = Vector2(0, 10)
 
 [node name="Heart" parent="." instance=ExtResource("26_rgwaq")]
 position = Vector2(571, 268)
+
+[node name="strawberry_collectible" parent="." instance=ExtResource("29_mgnrf")]
+position = Vector2(185, 499)
+
+[node name="banana_collectible" parent="." instance=ExtResource("27_rerfp")]
+position = Vector2(258, 494)
