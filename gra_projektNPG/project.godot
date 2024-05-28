@@ -13,12 +13,13 @@ config_version=5
 config/name="Gra_projektNPG"
 run/main_scene="res://Scene_1.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
-config/icon="res://scenes/player/icon.svg"
+config/icon="res://textures/player/icon.svg"
 
 [autoload]
 
 Scene1Music="*res://Music/scene1_music.tscn"
 GameManager="*res://scripts/core/GameManager.gd"
+LevelManager="*res://scripts/core/LevelManager.gd"
 
 [display]
 
@@ -54,6 +55,7 @@ TestAction={
 [layer_names]
 
 2d_physics/layer_1="player"
+2d_physics/layer_2="enemy"
 
 [rendering]
 
