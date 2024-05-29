@@ -22,7 +22,7 @@ var falling_vel: float = 0.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var sprite = $Sprite2D
-@onready var dust = get_node("/root/Map1/Player/Dust")
+@onready var dust = get_parent().get_node("Dust")
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("TestAction"):
@@ -46,7 +46,12 @@ func _physics_process(delta):
 
 func _ready():
 	current_state = State.default
-	GameManager.checkpoint = get_node("/root/Map1/PlayerStart").global_position
+	var new_spawnpoint = LevelManager.get_current_level().get_node("PlayerStart")
+	if new_spawnpoint:
+		prints("Spawn point: ", new_spawnpoint.global_position)
+		GameManager.checkpoint = new_spawnpoint.global_position
+	else:
+		print("Error: cannot find player start on level")
 
 
 func player_default(delta):
@@ -141,10 +146,12 @@ func _on_taked_damage_timer_timeout():
 	block_damage = false
 
 func teleport():
-	var new_pos = get_node("/root/Map1/DebugTeleport")
-	print(new_pos.global_position)
+	var new_pos = LevelManager.get_current_level().get_node("DebugTeleport")
 	if new_pos:
+		print(new_pos.global_position)
 		global_position = new_pos.global_position
+	else:
+		print("Error: cannot find debug teleport on level")
 
 func dust_after_falling():
 	if not is_on_floor():
