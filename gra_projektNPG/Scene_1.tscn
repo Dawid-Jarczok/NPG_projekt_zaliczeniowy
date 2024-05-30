@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://cta5khhkikftn"]
+[gd_scene load_steps=11 format=3 uid="uid://cta5khhkikftn"]
 
 [ext_resource type="PackedScene" uid="uid://4fb5sam7fcrf" path="res://scenes/ui/main_menu.tscn" id="1_1xnc0"]
 [ext_resource type="Script" path="res://scripts/core/main.gd" id="1_ptdoi"]
 [ext_resource type="Script" path="res://scripts/classes/level_data.gd" id="2_a4f84"]
 [ext_resource type="Script" path="res://scripts/core/GameManager.gd" id="3_p4pdb"]
 [ext_resource type="PackedScene" uid="uid://bpopbgpsn1ux" path="res://scenes/ui/pause_menu.tscn" id="4_lm8fn"]
+[ext_resource type="Script" path="res://scripts/UI/UIManager.gd" id="6_uuwmv"]
+[ext_resource type="PackedScene" uid="uid://ckumkqganqvr5" path="res://scenes/Life/heartsContainer.tscn" id="7_sf4wt"]
+[ext_resource type="Script" path="res://scripts/UI/heartsContainer.gd" id="8_6ms00"]
 
 [sub_resource type="Resource" id="Resource_5il0f"]
 script = ExtResource("2_a4f84")
@@ -14,13 +17,17 @@ level_completed = false
 level_unlocked = false
 level_path = "levels/level_01"
 
+[sub_resource type="Resource" id="Resource_i8qc2"]
+script = ExtResource("2_a4f84")
+level_id = 2
+level_name = "Second Level"
+level_completed = false
+level_unlocked = false
+level_path = "levels/level_02"
+
 [node name="Main" type="Node"]
 script = ExtResource("1_ptdoi")
-available_levels = Array[ExtResource("2_a4f84")]([SubResource("Resource_5il0f")])
-
-[node name="GameManager" type="Node" parent="."]
-process_mode = 3
-script = ExtResource("3_p4pdb")
+available_levels = Array[ExtResource("2_a4f84")]([SubResource("Resource_5il0f"), SubResource("Resource_i8qc2")])
 
 [node name="UIMain" type="CanvasLayer" parent="."]
 
@@ -28,6 +35,46 @@ script = ExtResource("3_p4pdb")
 
 [node name="PauseMenu" parent="UIMain" instance=ExtResource("4_lm8fn")]
 visible = false
+
+[node name="GameManager" type="Node" parent="."]
+process_mode = 3
+script = ExtResource("3_p4pdb")
+
+[node name="UIManager" type="CanvasLayer" parent="GameManager"]
+visible = false
+follow_viewport_scale = 1.1
+script = ExtResource("6_uuwmv")
+
+[node name="ScoreDisplay" type="Label" parent="GameManager/UIManager"]
+anchors_preset = -1
+anchor_top = 0.014
+anchor_bottom = 0.014
+offset_left = 1097.0
+offset_top = -4.08
+offset_right = 1294.0
+offset_bottom = 68.92
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "Score: 0
+
+
+"
+
+[node name="heartsContainer" parent="GameManager/UIManager" instance=ExtResource("7_sf4wt")]
+texture_filter = 1
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 224.0
+offset_bottom = 56.0
+script = ExtResource("8_6ms00")
+
+[node name="FPSMeter" type="Label" parent="GameManager/UIManager"]
+offset_left = 1100.0
+offset_top = 50.0
+offset_right = 1200.0
+offset_bottom = 73.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "FPS: "
 
 [node name="2DScene" type="Node2D" parent="."]
 process_mode = 1
