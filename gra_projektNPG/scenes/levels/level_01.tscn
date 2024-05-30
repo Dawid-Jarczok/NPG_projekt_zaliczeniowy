@@ -4605,5 +4605,5 @@ position = Vector2(185, 499)
 position = Vector2(258, 494)
 
 [node name="Portal" parent="." instance=ExtResource("30_qe0gj")]
-position = Vector2(329, 480)
+position = Vector2(1205, 240)
 teleport_to_level_id = 2
