@@ -6,6 +6,22 @@ var speed = -200.0
 @onready var area_left = $Area_left
 var direction = true
 
+func _ready():
+	GameManager.game_pause.connect(enemy_pause)
+
+func enemy_pause(_pause):
+	if _pause:
+		set_process(false)
+		set_physics_process(false)
+		set_process_unhandled_input(false)
+		set_process_input(false)
+	else:
+		set_process(true)
+		set_physics_process(true)
+		set_process_unhandled_input(true)
+		set_process_input(true)
+
+
 func _physics_process(delta):
 	velocity.y = 0.0
 

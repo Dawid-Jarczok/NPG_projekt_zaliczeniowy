@@ -15,6 +15,21 @@ var attack = false
 @onready var col_vect_up_1 = $collision_up_1
 @onready var col_vect_up_2 = $collision_up_2
 
+func _ready():
+	GameManager.game_pause.connect(enemy_pause)
+
+func enemy_pause(_pause):
+	if _pause:
+		set_process(false)
+		set_physics_process(false)
+		set_process_unhandled_input(false)
+		set_process_input(false)
+	else:
+		set_process(true)
+		set_physics_process(true)
+		set_process_unhandled_input(true)
+		set_process_input(true)
+
 func _physics_process(delta):
 
 	if facing_left and !attack:

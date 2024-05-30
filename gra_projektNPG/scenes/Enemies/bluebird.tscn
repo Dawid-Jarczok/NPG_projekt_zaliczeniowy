@@ -131,7 +131,7 @@ b = Vector2(-30, 22)
 a = Vector2(30, -20)
 b = Vector2(30, 22)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m6bvt"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h256n"]
 size = Vector2(500, 60)
 
 [node name="bluebird" type="Node2D"]
@@ -171,7 +171,7 @@ debug_color = Color(0.752941, 0.364706, 0.717647, 0.419608)
 [node name="Flying_area" type="Area2D" parent="."]
 
 [node name="Shape" type="CollisionShape2D" parent="Flying_area"]
-shape = SubResource("RectangleShape2D_m6bvt")
+shape = SubResource("RectangleShape2D_h256n")
 debug_color = Color(0.741176, 0.45098, 0.329412, 0.0431373)
 
 [connection signal="body_entered" from="enemy_bluebird/Area_up" to="enemy_bluebird" method="_on_area_up_body_entered"]

@@ -6,6 +6,7 @@ const MAX_HEALTH = 10
 signal gained_score(int)
 signal health_changed(int)
 signal health_set(int)
+signal game_pause(bool)
 
 var player : Player
 
@@ -13,8 +14,19 @@ var score : int = 0
 var health : int = BEGIN_HEALTH
 var checkpoint : Vector2 = Vector2.ZERO
 
+var game_paused : bool = false
+
 func _ready():
-	pass
+	set_process(true)
+
+func _process(delta):
+	if LevelManager.loaded_level != null and Input.is_action_just_pressed("pause"):
+		game_paused = !game_paused
+		emit_signal("game_pause", game_paused)
+
+func resume_game():
+	game_paused = false;
+	emit_signal("game_pause", game_paused)
 
 func gain_score(score_gained):
 	score += score_gained

@@ -13,8 +13,22 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var ground_detection_right = $Ground_detection_right
 
 func _ready():
+	GameManager.game_pause.connect(enemy_pause)
 	facing_dir = randi_range(0, 1)
 	speed = randf_range(SPEED_MIN, SPEED_MAX)
+
+func enemy_pause(_pause):
+	if _pause:
+		set_process(false)
+		set_physics_process(false)
+		set_process_unhandled_input(false)
+		set_process_input(false)
+	else:
+		set_process(true)
+		set_physics_process(true)
+		set_process_unhandled_input(true)
+		set_process_input(true)
+
 
 func _physics_process(delta):
 	
