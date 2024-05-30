@@ -54,7 +54,7 @@ func _ready():
 	if new_spawnpoint:
 		prints("Spawn point: ", new_spawnpoint.global_position)
 		GameManager.checkpoint = new_spawnpoint.global_position
-		teleport2checkpoint()
+		teleport2checkpoint(false)
 	else:
 		print("Error: cannot find player start on level")
 
@@ -123,11 +123,12 @@ func respawn():
 	GameManager.lose_scoore()
 	GameManager.set_health(GameManager.BEGIN_HEALTH)
 
-func teleport2checkpoint():
-	if GameManager.take_damage():
-		respawn()
-		return
-	GameManager.lose_scoore()
+func teleport2checkpoint(damage : bool = true):
+	if damage:
+		if GameManager.take_damage():
+			respawn()
+			return
+		GameManager.lose_scoore()
 	velocity.x = 0.0
 	velocity.y = 0.0
 	prints("Teleported to: ", GameManager.checkpoint)
