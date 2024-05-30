@@ -14,6 +14,8 @@ var checkpoint : Vector2 = Vector2.ZERO
 
 var game_paused : bool = false
 
+@onready var ui_manager = $UIManager
+
 func _ready():
 	set_process(true)
 
@@ -22,7 +24,6 @@ func _process(delta):
 		game_paused = !game_paused
 		emit_signal("game_pause", game_paused)
 	
-	var ui_manager = $UIManager
 	if ui_manager:
 		if LevelManager.loaded_level != null:
 				ui_manager.show()
