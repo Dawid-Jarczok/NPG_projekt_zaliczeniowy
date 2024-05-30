@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cta5khhkikftn"]
+[gd_scene load_steps=8 format=3 uid="uid://cta5khhkikftn"]
 
 [ext_resource type="PackedScene" uid="uid://4fb5sam7fcrf" path="res://scenes/ui/main_menu.tscn" id="1_1xnc0"]
 [ext_resource type="Script" path="res://scripts/core/main.gd" id="1_ptdoi"]
@@ -14,9 +14,17 @@ level_completed = false
 level_unlocked = false
 level_path = "levels/level_01"
 
+[sub_resource type="Resource" id="Resource_i8qc2"]
+script = ExtResource("2_a4f84")
+level_id = 2
+level_name = "Second Level"
+level_completed = false
+level_unlocked = false
+level_path = "levels/level_02"
+
 [node name="Main" type="Node"]
 script = ExtResource("1_ptdoi")
-available_levels = Array[ExtResource("2_a4f84")]([SubResource("Resource_5il0f")])
+available_levels = Array[ExtResource("2_a4f84")]([SubResource("Resource_5il0f"), SubResource("Resource_i8qc2")])
 
 [node name="GameManager" type="Node" parent="."]
 process_mode = 3

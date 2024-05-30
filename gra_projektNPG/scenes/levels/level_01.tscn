@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://vow4lwjvcfte"]
+[gd_scene load_steps=47 format=3 uid="uid://vow4lwjvcfte"]
 
 [ext_resource type="Script" path="res://scripts/classes/level.gd" id="1_uu58n"]
 [ext_resource type="Texture2D" uid="uid://cnsvr8oedpxtx" path="res://Background/sky/1.png" id="3_26bro"]
@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://dncerdh5ikort" path="res://scenes/items/heart.tscn" id="28_s7dl5"]
 [ext_resource type="PackedScene" uid="uid://cdtyiyovg5yr0" path="res://scenes/items/strawberry_collectible.tscn" id="29_3n5m1"]
 [ext_resource type="PackedScene" uid="uid://dcni15hu02fgh" path="res://scenes/items/banana_collectible.tscn" id="30_6ph3c"]
+[ext_resource type="PackedScene" uid="uid://bysky8x2mukib" path="res://scenes/map/portal.tscn" id="30_qe0gj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qov1h"]
 texture = ExtResource("11_6cshk")
@@ -4639,3 +4640,7 @@ position = Vector2(185, 499)
 
 [node name="banana_collectible" parent="." instance=ExtResource("30_6ph3c")]
 position = Vector2(258, 494)
+
+[node name="Portal" parent="." instance=ExtResource("30_qe0gj")]
+position = Vector2(329, 480)
+teleport_to_level_id = 2

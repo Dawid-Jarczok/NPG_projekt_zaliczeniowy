@@ -34,7 +34,7 @@ func gain_score(score_gained):
 	prints("Score: ", score)
 
 func lose_scoore():
-	gain_score((-score) * 0.33)
+	gain_score((-score) * 0.2)
 
 func set_checkpoint(position : Vector2):
 	checkpoint = position
