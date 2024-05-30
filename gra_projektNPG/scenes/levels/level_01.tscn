@@ -4529,6 +4529,7 @@ position = Vector2(378.001, 1032.5)
 shape = SubResource("RectangleShape2D_g6dt1")
 
 [node name="Player" parent="." instance=ExtResource("15_upvqh")]
+z_index = 1
 position = Vector2(48, 495)
 
 [node name="PlayerStart" type="Node2D" parent="."]

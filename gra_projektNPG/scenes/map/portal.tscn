@@ -171,8 +171,9 @@ animations = [{
 "speed": 15.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3fvqv"]
-size = Vector2(32, 32)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xhp1y"]
+radius = 11.0
+height = 35.3333
 
 [node name="Portal" type="Node2D"]
 scale = Vector2(3, 3)
@@ -188,7 +189,8 @@ frame_progress = 0.0805544
 [node name="PortalArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PortalArea"]
-shape = SubResource("RectangleShape2D_3fvqv")
+position = Vector2(0, 6.33333)
+shape = SubResource("CapsuleShape2D_xhp1y")
 debug_color = Color(0.835294, 0, 0.933333, 0.0431373)
 
 [connection signal="body_entered" from="PortalArea" to="." method="_on_portal_area_body_entered"]

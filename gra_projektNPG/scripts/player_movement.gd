@@ -24,17 +24,17 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var sprite = $Sprite2D
 @onready var dust = get_parent().get_node("Dust")
 
-signal entered_portal()
-
 func _physics_process(delta):
 	if Input.is_action_just_pressed("TestAction"):
 		teleport()
 
-	player_jump(delta)
-	player_default(delta)
-	player_run(delta)
-	player_in_air(delta)
-	player_falling(delta)
+	if current_state != State.teleporting:
+		player_jump(delta)
+		player_default(delta)
+		player_run(delta)
+		player_in_air(delta)
+		player_falling(delta)
+
 	dust_after_falling()
 	move_and_slide()
 	player_animations(delta)
@@ -48,7 +48,6 @@ func _physics_process(delta):
 
 func _ready():
 	GameManager.game_pause.connect(player_pause)
-	entered_portal.connect(player_entered_portal)
 	current_state = State.default
 	var new_spawnpoint = LevelManager.get_current_level().get_node("PlayerStart")
 	if new_spawnpoint:
@@ -60,6 +59,7 @@ func _ready():
 
 func player_entered_portal():
 	block_movement_inputs = true
+	velocity = Vector2.ZERO
 	current_state = State.teleporting
 
 func player_pause(_pause):
@@ -144,6 +144,7 @@ func player_animations(delta):
 	elif current_state == State.falling and block_movement_inputs == false:
 		sprite.play("falling")
 	elif current_state == State.teleporting:
+		sprite.play("default")
 		modulate.a = lerp(modulate.a, 0.0, 2.0 * delta)
 	elif block_movement_inputs == true:
 		sprite.play("player_hit")

@@ -9,7 +9,7 @@ extends Node2D
 
 func _on_portal_area_body_entered(body:Node2D):
 	if body.is_in_group("Player"):
-		emit_signal("entered portal")
+		body.player_entered_portal()
 		prints("Teleporting to level: ", teleport_to_level_id)
 		await get_tree().create_timer(1.0).timeout
 		LevelManager.load_level(teleport_to_level_id)

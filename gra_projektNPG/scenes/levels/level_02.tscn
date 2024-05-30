@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://daoxx11ma1js0" path="res://scenes/obstacles/danger_zone.tscn" id="14_osurd"]
 [ext_resource type="PackedScene" uid="uid://dbw3mm46qkkw1" path="res://scenes/player/player.tscn" id="15_upvqh"]
 [ext_resource type="Texture2D" uid="uid://2me2m188b72k" path="res://textures/map/Checkpoint (Flag Idle)(64x64).png" id="17_ys1jo"]
-[ext_resource type="PackedScene" uid="uid://dncerdh5ikort" path="res://scenes/items/heart.tscn" id="28_s7dl5"]
+[ext_resource type="PackedScene" uid="uid://cdtyiyovg5yr0" path="res://scenes/items/strawberry_collectible.tscn" id="29_3n5m1"]
 [ext_resource type="PackedScene" uid="uid://dcni15hu02fgh" path="res://scenes/items/banana_collectible.tscn" id="30_6ph3c"]
 [ext_resource type="PackedScene" uid="uid://bysky8x2mukib" path="res://scenes/map/portal.tscn" id="30_qe0gj"]
 
@@ -4411,6 +4411,7 @@ position = Vector2(7164.01, 1357)
 shape = SubResource("RectangleShape2D_v32ya")
 
 [node name="Player" parent="." instance=ExtResource("15_upvqh")]
+z_index = 1
 position = Vector2(-74, 136)
 
 [node name="PlayerStart" type="Node2D" parent="."]
@@ -4495,7 +4496,28 @@ text = "Dawid Jarczok
 Main job: Programmer"
 
 [node name="banana_collectible" parent="." instance=ExtResource("30_6ph3c")]
-position = Vector2(241, 505)
+position = Vector2(935, 454)
 
-[node name="Heart" parent="." instance=ExtResource("28_s7dl5")]
-position = Vector2(608, 502)
+[node name="strawberry_collectible" parent="." instance=ExtResource("29_3n5m1")]
+position = Vector2(1837, 456)
+
+[node name="banana_collectible2" parent="." instance=ExtResource("30_6ph3c")]
+position = Vector2(3280, 315)
+
+[node name="banana_collectible3" parent="." instance=ExtResource("30_6ph3c")]
+position = Vector2(2667, 266)
+
+[node name="strawberry_collectible2" parent="." instance=ExtResource("29_3n5m1")]
+position = Vector2(4276, 314)
+
+[node name="banana_collectible4" parent="." instance=ExtResource("30_6ph3c")]
+position = Vector2(6023, 1179)
+
+[node name="strawberry_collectible3" parent="." instance=ExtResource("29_3n5m1")]
+position = Vector2(6746, 1033)
+
+[node name="banana_collectible5" parent="." instance=ExtResource("30_6ph3c")]
+position = Vector2(7428, 987)
+
+[node name="banana_collectible6" parent="." instance=ExtResource("30_6ph3c")]
+position = Vector2(9229, 508)
