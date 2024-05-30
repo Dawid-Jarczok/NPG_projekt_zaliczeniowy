@@ -8,8 +8,6 @@ signal health_changed(int)
 signal health_set(int)
 signal game_pause(bool)
 
-var player : Player
-
 var score : int = 0
 var health : int = BEGIN_HEALTH
 var checkpoint : Vector2 = Vector2.ZERO
@@ -23,6 +21,13 @@ func _process(delta):
 	if LevelManager.loaded_level != null and Input.is_action_just_pressed("pause"):
 		game_paused = !game_paused
 		emit_signal("game_pause", game_paused)
+	
+	var ui_manager = $UIManager
+	if ui_manager:
+		if LevelManager.loaded_level != null:
+				ui_manager.show()
+		else:
+				ui_manager.hide()
 
 func resume_game():
 	game_paused = false;

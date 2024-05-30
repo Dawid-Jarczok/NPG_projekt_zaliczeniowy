@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://vow4lwjvcfte"]
+[gd_scene load_steps=44 format=3 uid="uid://vow4lwjvcfte"]
 
 [ext_resource type="Script" path="res://scripts/classes/level.gd" id="1_uu58n"]
 [ext_resource type="Texture2D" uid="uid://cnsvr8oedpxtx" path="res://Background/sky/1.png" id="3_26bro"]
@@ -16,9 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://dbw3mm46qkkw1" path="res://scenes/player/player.tscn" id="15_upvqh"]
 [ext_resource type="PackedScene" uid="uid://df5v3a1xhg2kw" path="res://scenes/Enemies/enemy_mushroom.tscn" id="16_ub0qd"]
 [ext_resource type="Texture2D" uid="uid://2me2m188b72k" path="res://textures/map/Checkpoint (Flag Idle)(64x64).png" id="17_ys1jo"]
-[ext_resource type="Script" path="res://scripts/UI/UIManager.gd" id="18_1t4yn"]
-[ext_resource type="PackedScene" uid="uid://ckumkqganqvr5" path="res://scenes/Life/heartsContainer.tscn" id="19_q2aio"]
-[ext_resource type="Script" path="res://scenes/Life/heartsContainer.gd" id="20_m4jfy"]
 [ext_resource type="PackedScene" uid="uid://btpjymcbbsefw" path="res://scenes/Enemies/saw.tscn" id="21_5ys3k"]
 [ext_resource type="PackedScene" uid="uid://ddsjrdcdhvffu" path="res://scenes/Enemies/spikes.tscn" id="22_48rvh"]
 [ext_resource type="PackedScene" uid="uid://ca3p8uvuro2bl" path="res://scenes/Enemies/bluebird.tscn" id="23_0ioxp"]
@@ -4572,41 +4569,6 @@ frame_progress = 0.558065
 [node name="DebugTeleport" type="Node2D" parent="."]
 position = Vector2(2180, -807)
 scale = Vector2(10, 10)
-
-[node name="UIManager" type="CanvasLayer" parent="."]
-follow_viewport_scale = 1.1
-script = ExtResource("18_1t4yn")
-
-[node name="ScoreDisplay" type="Label" parent="UIManager"]
-anchors_preset = -1
-anchor_top = 0.014
-anchor_bottom = 0.014
-offset_left = 1097.0
-offset_top = -4.08
-offset_right = 1294.0
-offset_bottom = 68.92
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 25
-text = "Score: 0
-
-
-"
-
-[node name="heartsContainer" parent="UIManager" instance=ExtResource("19_q2aio")]
-texture_filter = 1
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 224.0
-offset_bottom = 56.0
-script = ExtResource("20_m4jfy")
-
-[node name="FPSMeter" type="Label" parent="UIManager"]
-offset_left = 1100.0
-offset_top = 50.0
-offset_right = 1200.0
-offset_bottom = 73.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "FPS: "
 
 [node name="Saw" parent="." groups=["Trap"] instance=ExtResource("21_5ys3k")]
 texture_filter = 1
