@@ -20,7 +20,7 @@ func _ready():
 	set_process(true)
 
 func _process(delta):
-	if Input.is_action_just_pressed("pause"):
+	if LevelManager.loaded_level != null and Input.is_action_just_pressed("pause"):
 		game_paused = !game_paused
 		emit_signal("game_pause", game_paused)
 

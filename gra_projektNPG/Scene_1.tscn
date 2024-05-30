@@ -27,6 +27,7 @@ script = ExtResource("3_p4pdb")
 [node name="MainMenu" parent="UIMain" instance=ExtResource("1_1xnc0")]
 
 [node name="PauseMenu" parent="UIMain" instance=ExtResource("4_lm8fn")]
+visible = false
 
 [node name="2DScene" type="Node2D" parent="."]
 process_mode = 1
