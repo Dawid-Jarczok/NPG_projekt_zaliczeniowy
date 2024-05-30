@@ -72,7 +72,7 @@ theme_override_fonts/font = SubResource("SystemFont_d1yn0")
 theme_override_font_sizes/font_size = 48
 text = "PLAY GAME"
 
-[node name="Settings Quit" type="Button" parent="Background/MarginContainer/VBoxContainer"]
+[node name="Settings Button" type="Button" parent="Background/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(384, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -89,5 +89,5 @@ theme_override_font_sizes/font_size = 48
 text = "QUIT"
 
 [connection signal="pressed" from="Background/MarginContainer/VBoxContainer/Play Button" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/Settings Quit" to="." method="_on_settings_quit_pressed"]
+[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/Settings Button" to="." method="_on_settings_quit_pressed"]
 [connection signal="pressed" from="Background/MarginContainer/VBoxContainer/Quit Button" to="." method="_on_quit_button_pressed"]

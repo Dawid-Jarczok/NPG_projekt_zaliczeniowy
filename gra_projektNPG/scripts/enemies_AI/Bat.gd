@@ -10,12 +10,25 @@ var collider_name = null
 @onready var col_vect_down_2 = $collision_down_2
 
 func _ready():
+	GameManager.game_pause.connect(enemy_pause)
 	state = State.default
 	timer = Timer.new()
 	timer.wait_time = 0.5
 	timer.one_shot = true
 	timer.connect("timeout", Callable(self, "_on_timer_timeout"))
 	add_child(timer)
+
+func enemy_pause(_pause):
+	if _pause:
+		set_process(false)
+		set_physics_process(false)
+		set_process_unhandled_input(false)
+		set_process_input(false)
+	else:
+		set_process(true)
+		set_physics_process(true)
+		set_process_unhandled_input(true)
+		set_process_input(true)
 
 func _physics_process(delta):
 	if state == State.chase:

@@ -42,3 +42,17 @@ func get_level_data_by_id(id : int) -> LevelData:
 
 func get_current_level() -> Level:
 	return loaded_level
+
+func pause_game() -> void:
+	#var level_data = get_level_data_by_id(loaded_level.level_id)
+	#var level_path = "res://scenes/%s.tscn" % level_data.level_path
+	#level_path.pause()
+	#get_tree().paused = true
+	print("Game paused")
+
+func resume_game() -> void:
+	print("Game resumed")
+	#get_tree().paused = false
+
+func is_game_paused() -> bool:
+	return loaded_level.get_tree().paused

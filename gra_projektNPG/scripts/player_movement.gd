@@ -45,6 +45,7 @@ func _physics_process(delta):
 	velocity.y = clamp(velocity.y, JUMP_VELOCITY, MAX_FALL_SPEED)
 
 func _ready():
+	GameManager.game_pause.connect(player_pause)
 	current_state = State.default
 	var new_spawnpoint = LevelManager.get_current_level().get_node("PlayerStart")
 	if new_spawnpoint:
@@ -52,6 +53,18 @@ func _ready():
 		GameManager.checkpoint = new_spawnpoint.global_position
 	else:
 		print("Error: cannot find player start on level")
+
+func player_pause(_pause):
+	if _pause:
+		set_process(false)
+		set_physics_process(false)
+		set_process_unhandled_input(false)
+		set_process_input(false)
+	else:
+		set_process(true)
+		set_physics_process(true)
+		set_process_unhandled_input(true)
+		set_process_input(true)
 
 
 func player_default(delta):
