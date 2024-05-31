@@ -35,8 +35,11 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	if !ground_detection_left.is_colliding() or !ground_detection_right.is_colliding():
-		facing_dir = !facing_dir
+	if !ground_detection_left.is_colliding():
+		facing_dir = true
+
+	if !ground_detection_right.is_colliding():
+		facing_dir = false
 
 	if facing_dir:
 		velocity.x = speed
