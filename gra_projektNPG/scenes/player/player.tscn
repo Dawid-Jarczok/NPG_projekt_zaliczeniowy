@@ -332,7 +332,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"dust",
-"speed": 40.0
+"speed": 15.0
 }]
 
 [node name="player_test" type="Node2D" groups=["Player"]]
@@ -356,6 +356,7 @@ frame_progress = 0.427245
 metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 drag_left_margin = 0.1
@@ -395,6 +396,7 @@ debug_color = Color(0.705882, 0.356863, 0.85098, 0.419608)
 position = Vector2(1, 16)
 scale = Vector2(1.51344, 1.02344)
 sprite_frames = SubResource("SpriteFrames_pe6uq")
+animation = &"dust"
 autoplay = "default"
 
 [connection signal="timeout" from="CharacterBody2D/TakedDamageTimer" to="CharacterBody2D" method="_on_taked_damage_timer_timeout"]
