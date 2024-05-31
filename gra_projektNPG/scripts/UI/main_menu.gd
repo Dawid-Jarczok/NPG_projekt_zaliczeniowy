@@ -6,7 +6,7 @@ func _on_quit_button_pressed():
 	get_tree().quit()
 
 func _on_settings_quit_pressed():
-	pass # Replace with function body.
+	pass
 
 func _on_play_button_pressed():
 	LevelManager.load_level(1)
