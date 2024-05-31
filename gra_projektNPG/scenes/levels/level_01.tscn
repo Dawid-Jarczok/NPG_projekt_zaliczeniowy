@@ -20,13 +20,13 @@
 [ext_resource type="PackedScene" uid="uid://ddsjrdcdhvffu" path="res://scenes/Enemies/spikes.tscn" id="22_48rvh"]
 [ext_resource type="PackedScene" uid="uid://ca3p8uvuro2bl" path="res://scenes/Enemies/bluebird.tscn" id="23_0ioxp"]
 [ext_resource type="PackedScene" uid="uid://e1lwibw6g3hw" path="res://scenes/Enemies/bat.tscn" id="24_p4a6p"]
-[ext_resource type="PackedScene" path="res://scenes/Enemies/bee.tscn" id="25_nff51"]
+[ext_resource type="PackedScene" uid="uid://bmylv207kehw8" path="res://scenes/Enemies/bee.tscn" id="25_nff51"]
 [ext_resource type="PackedScene" uid="uid://c473joxbbb1q0" path="res://scenes/Enemies/lava.tscn" id="26_b7s5f"]
 [ext_resource type="PackedScene" uid="uid://dpg1dxuvxui0j" path="res://scenes/map/checkpoint.tscn" id="27_45ync"]
 [ext_resource type="PackedScene" uid="uid://dncerdh5ikort" path="res://scenes/items/heart.tscn" id="28_s7dl5"]
 [ext_resource type="PackedScene" uid="uid://cdtyiyovg5yr0" path="res://scenes/items/strawberry_collectible.tscn" id="29_3n5m1"]
 [ext_resource type="PackedScene" uid="uid://dcni15hu02fgh" path="res://scenes/items/banana_collectible.tscn" id="30_6ph3c"]
-[ext_resource type="PackedScene" uid="uid://bysky8x2mukib" path="res://scenes/map/portal.tscn" id="30_qe0gj"]
+[ext_resource type="PackedScene" path="res://scenes/map/portal.tscn" id="30_qe0gj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qov1h"]
 texture = ExtResource("11_6cshk")
@@ -4413,13 +4413,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -2037.0
 offset_top = -2445.0
-offset_right = 3726.0
-offset_bottom = -1451.0
+offset_right = 5255.0
+offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3, 3)
 texture = ExtResource("3_26bro")
-expand_mode = 1
 
 [node name="Level_1_L2" type="TextureRect" parent="."]
 texture_filter = 1
@@ -4439,10 +4438,66 @@ texture = ExtResource("5_i6ll7")
 
 [node name="Level_1_L4" type="TextureRect" parent="."]
 texture_filter = 1
-offset_left = -2014.0
-offset_top = -2061.0
-offset_right = 7596.0
+offset_left = -2879.0
+offset_top = -1230.0
+offset_right = 4223.0
 offset_bottom = 1123.0
+texture = ExtResource("6_3l8sl")
+
+[node name="Level_1_L5" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = -2202.0
+offset_top = 544.0
+offset_right = 4900.0
+offset_bottom = 2897.0
+texture = ExtResource("6_3l8sl")
+
+[node name="Level_1_L6" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 1444.0
+offset_top = 1026.0
+offset_right = 6738.0
+offset_bottom = 2780.0
+texture = ExtResource("6_3l8sl")
+
+[node name="Level_1_L7" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 4378.0
+offset_top = -2328.0
+offset_right = 12756.0
+offset_bottom = 448.0
+texture = ExtResource("6_3l8sl")
+
+[node name="Level_1_L8" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 321.0
+offset_top = -2157.0
+offset_right = 5301.0
+offset_bottom = -507.0
+texture = ExtResource("6_3l8sl")
+
+[node name="Level_1_L9" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 12753.0
+offset_top = -2285.0
+offset_right = 20875.0
+offset_bottom = 406.0
+texture = ExtResource("6_3l8sl")
+
+[node name="Level_1_L10" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 14818.0
+offset_top = 836.0
+offset_right = 20155.0
+offset_bottom = 2604.0
+texture = ExtResource("6_3l8sl")
+
+[node name="Level_1_L11" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 10438.0
+offset_top = 1652.0
+offset_right = 15775.0
+offset_bottom = 3420.0
 texture = ExtResource("6_3l8sl")
 
 [node name="Level_2_L1" type="TextureRect" parent="."]
