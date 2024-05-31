@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/core/main.gd" id="1_ptdoi"]
 [ext_resource type="Script" path="res://scripts/classes/level_data.gd" id="2_a4f84"]
 [ext_resource type="Script" path="res://scripts/core/GameManager.gd" id="3_p4pdb"]
-[ext_resource type="PackedScene" path="res://scenes/ui/pause_menu.tscn" id="4_lm8fn"]
+[ext_resource type="PackedScene" uid="uid://bpopbgpsn1ux" path="res://scenes/ui/pause_menu.tscn" id="4_lm8fn"]
 [ext_resource type="Script" path="res://scripts/UI/UIManager.gd" id="6_uuwmv"]
 [ext_resource type="PackedScene" uid="uid://ckumkqganqvr5" path="res://scenes/Life/heartsContainer.tscn" id="7_sf4wt"]
 [ext_resource type="Script" path="res://scripts/UI/heartsContainer.gd" id="8_6ms00"]
