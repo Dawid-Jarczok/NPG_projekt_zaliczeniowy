@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://dbw3mm46qkkw1"]
+[gd_scene load_steps=52 format=3 uid="uid://dbw3mm46qkkw1"]
 
 [ext_resource type="Script" path="res://scripts/player_movement.gd" id="1_dtuco"]
 [ext_resource type="Texture2D" uid="uid://dj511m2v60foe" path="res://textures/player/Idle (32x32).png" id="2_khrn8"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://dtqixuc6yyi4v" path="res://textures/player/Jump (32x32).png" id="4_qbfy7"]
 [ext_resource type="Texture2D" uid="uid://bcx5lyqj7kbug" path="res://textures/player/Hit (32x32).png" id="5_jcdpb"]
 [ext_resource type="Texture2D" uid="uid://bnne375k03oto" path="res://textures/player/Run (32x32).png" id="6_3jdey"]
-[ext_resource type="Texture2D" uid="uid://3dil27eq1at8" path="res://scenes/others/default_dust.png" id="7_frrme"]
 [ext_resource type="Texture2D" uid="uid://bgmpvgl64mvmo" path="res://textures/player/Jump with dust_2.png" id="8_xangk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4rno3"]
@@ -309,7 +308,7 @@ region = Rect2(128, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("7_frrme")
+"texture": null
 }],
 "loop": true,
 "name": &"default",
@@ -396,7 +395,6 @@ debug_color = Color(0.705882, 0.356863, 0.85098, 0.419608)
 position = Vector2(1, 16)
 scale = Vector2(1.51344, 1.02344)
 sprite_frames = SubResource("SpriteFrames_pe6uq")
-animation = &"dust"
 autoplay = "default"
 
 [connection signal="timeout" from="CharacterBody2D/TakedDamageTimer" to="CharacterBody2D" method="_on_taked_damage_timer_timeout"]
