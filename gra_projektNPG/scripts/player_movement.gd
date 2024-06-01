@@ -14,7 +14,7 @@ const DAMAGE_VEL_Y = -450.0
 var block_movement_inputs : bool = false
 var block_damage : bool = false
 
-enum State  {default, run, jump, falling}
+enum State  {default, run, jump, falling, teleporting}
 var current_state = State
 var if_was_falling: bool = true
 var falling_vel: float = 0.0
@@ -28,14 +28,16 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("TestAction"):
 		teleport()
 
-	player_jump(delta)
-	player_default(delta)
-	player_run(delta)
-	player_in_air(delta)
-	player_falling(delta)
+	if current_state != State.teleporting:
+		player_jump(delta)
+		player_default(delta)
+		player_run(delta)
+		player_in_air(delta)
+		player_falling(delta)
+
 	dust_after_falling()
 	move_and_slide()
-	player_animations()
+	player_animations(delta)
 
 	# Add the gravity.
 	if not is_on_floor():
@@ -45,13 +47,32 @@ func _physics_process(delta):
 	velocity.y = clamp(velocity.y, JUMP_VELOCITY, MAX_FALL_SPEED)
 
 func _ready():
+	GameManager.game_pause.connect(player_pause)
 	current_state = State.default
 	var new_spawnpoint = LevelManager.get_current_level().get_node("PlayerStart")
 	if new_spawnpoint:
 		prints("Spawn point: ", new_spawnpoint.global_position)
 		GameManager.checkpoint = new_spawnpoint.global_position
+		teleport2checkpoint(false)
 	else:
 		print("Error: cannot find player start on level")
+
+func player_entered_portal():
+	block_movement_inputs = true
+	velocity = Vector2.ZERO
+	current_state = State.teleporting
+
+func player_pause(_pause):
+	if _pause:
+		set_process(false)
+		set_physics_process(false)
+		set_process_unhandled_input(false)
+		set_process_input(false)
+	else:
+		set_process(true)
+		set_physics_process(true)
+		set_process_unhandled_input(true)
+		set_process_input(true)
 
 
 func player_default(delta):
@@ -66,7 +87,7 @@ func player_falling(delta):
 func player_jump(delta):
 	if block_movement_inputs:
 		return
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
 func player_in_air(delta):
@@ -102,17 +123,18 @@ func respawn():
 	GameManager.lose_scoore()
 	GameManager.set_health(GameManager.BEGIN_HEALTH)
 
-func teleport2checkpoint():
-	if GameManager.take_damage():
-		respawn()
-		return
-	GameManager.lose_scoore()
+func teleport2checkpoint(damage : bool = true):
+	if damage:
+		if GameManager.take_damage():
+			respawn()
+			return
+		GameManager.lose_scoore()
 	velocity.x = 0.0
 	velocity.y = 0.0
 	prints("Teleported to: ", GameManager.checkpoint)
 	global_position = GameManager.checkpoint
 
-func player_animations():
+func player_animations(delta):
 	if current_state == State.default:
 		sprite.play("default")
 	elif current_state == State.jump and block_movement_inputs == false:
@@ -121,10 +143,13 @@ func player_animations():
 		sprite.play("run")
 	elif current_state == State.falling and block_movement_inputs == false:
 		sprite.play("falling")
+	elif current_state == State.teleporting:
+		sprite.play("default")
+		modulate.a = lerp(modulate.a, 0.0, 2.0 * delta)
 	elif block_movement_inputs == true:
 		sprite.play("player_hit")
 
-func take_damage(damage, jump : Vector2):
+func take_damage(jump : Vector2):
 	if block_damage: return
 	block_damage = true
 	block_movement_inputs  = true
@@ -169,19 +194,19 @@ func dust_after_falling():
 
 func _on_area_up_body_entered(body):
 	if body.is_in_group("Enemy") or body.is_in_group("Trap"):
-		take_damage(10, Vector2(sprite.flip_h, 1))
+		take_damage(Vector2(sprite.flip_h, 1))
 
 
 func _on_area_down_body_entered(body):
 	if body.is_in_group("Trap"):
-		take_damage(10, Vector2(sprite.flip_h, 1))
+		take_damage(Vector2(sprite.flip_h, 1))
 
 
 func _on_area_left_body_entered(body):
 	if body.is_in_group("Enemy") or body.is_in_group("Trap"):
-		take_damage(10, Vector2(1, 1))
+		take_damage(Vector2(1, 1))
 
 
 func _on_area_right_body_entered(body):
 	if body.is_in_group("Enemy") or body.is_in_group("Trap"):
-		take_damage(10, Vector2(-1, 1))
+		take_damage(Vector2(-1, 1))

@@ -131,7 +131,7 @@ b = Vector2(-30, 22)
 a = Vector2(30, -20)
 b = Vector2(30, 22)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m6bvt"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3fi0r"]
 size = Vector2(500, 60)
 
 [node name="bluebird" type="Node2D"]
@@ -168,13 +168,18 @@ debug_color = Color(0.643137, 0.415686, 0.827451, 0.419608)
 shape = SubResource("SegmentShape2D_20xql")
 debug_color = Color(0.752941, 0.364706, 0.717647, 0.419608)
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="enemy_bluebird"]
+scale = Vector2(8.65, 5.4735)
+
 [node name="Flying_area" type="Area2D" parent="."]
 
 [node name="Shape" type="CollisionShape2D" parent="Flying_area"]
-shape = SubResource("RectangleShape2D_m6bvt")
+shape = SubResource("RectangleShape2D_3fi0r")
 debug_color = Color(0.741176, 0.45098, 0.329412, 0.0431373)
 
 [connection signal="body_entered" from="enemy_bluebird/Area_up" to="enemy_bluebird" method="_on_area_up_body_entered"]
 [connection signal="body_entered" from="enemy_bluebird/Area_left" to="enemy_bluebird" method="_on_area_left_body_entered"]
 [connection signal="body_entered" from="enemy_bluebird/Area_right" to="enemy_bluebird" method="_on_area_right_body_entered"]
+[connection signal="screen_entered" from="enemy_bluebird/VisibleOnScreenNotifier2D" to="enemy_bluebird" method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="enemy_bluebird/VisibleOnScreenNotifier2D" to="enemy_bluebird" method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="area_exited" from="Flying_area" to="enemy_bluebird" method="_on_flying_area_area_exited"]

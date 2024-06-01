@@ -15,6 +15,25 @@ var attack = false
 @onready var col_vect_up_1 = $collision_up_1
 @onready var col_vect_up_2 = $collision_up_2
 
+var on_screen:bool = false
+
+func _ready():
+	enemy_pause(true)
+	GameManager.game_pause.connect(enemy_pause)
+
+func enemy_pause(_pause):
+	if _pause:
+		set_process(false)
+		set_physics_process(false)
+		set_process_unhandled_input(false)
+		set_process_input(false)
+	else:
+		if on_screen:
+			set_process(true)
+			set_physics_process(true)
+			set_process_unhandled_input(true)
+			set_process_input(true)
+
 func _physics_process(delta):
 
 	if facing_left and !attack:
@@ -57,3 +76,13 @@ func die():
 	queue_free()
 	
 	move_and_slide()
+
+
+func _on_visible_on_screen_notifier_2d_screen_entered():
+	on_screen = true
+	enemy_pause(false)
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	on_screen = false
+	enemy_pause(true)
