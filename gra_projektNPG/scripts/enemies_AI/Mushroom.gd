@@ -5,6 +5,7 @@ const SPEED_MAX = 100.0
 
 var speed:float = SPEED_MIN
 var facing_dir:bool = false
+var on_screen:bool = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -13,21 +14,25 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var ground_detection_right = $Ground_detection_right
 
 func _ready():
+	enemy_pause(true)
 	GameManager.game_pause.connect(enemy_pause)
 	facing_dir = randi_range(0, 1)
 	speed = randf_range(SPEED_MIN, SPEED_MAX)
 
 func enemy_pause(_pause):
 	if _pause:
+		Enemy.stop()
 		set_process(false)
 		set_physics_process(false)
 		set_process_unhandled_input(false)
 		set_process_input(false)
 	else:
-		set_process(true)
-		set_physics_process(true)
-		set_process_unhandled_input(true)
-		set_process_input(true)
+		if on_screen:
+			Enemy.play("enemy")
+			set_process(true)
+			set_physics_process(true)
+			set_process_unhandled_input(true)
+			set_process_input(true)
 
 
 func _physics_process(delta):
@@ -71,3 +76,13 @@ func _on_area_right_body_entered(body:Node2D):
 
 func _on_area_left_body_entered(body:Node2D):
 	facing_dir = true
+
+
+func _on_visible_on_screen_notifier_2d_screen_entered():
+	on_screen = true
+	enemy_pause(false)
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	on_screen = false
+	enemy_pause(true)
