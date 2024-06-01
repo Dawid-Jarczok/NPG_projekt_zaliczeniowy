@@ -42,7 +42,7 @@ func _physics_process(delta):
 
 func die():
 	bluebird.play("dying")
-	GameManager.gain_score(1)
+	GameManager.gain_score(5)
 	set_collision_layer_value(1, false)
 	set_collision_mask_value(1, false)
 	velocity.x = 0.0

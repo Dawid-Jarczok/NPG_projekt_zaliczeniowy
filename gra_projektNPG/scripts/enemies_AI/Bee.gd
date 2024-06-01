@@ -67,7 +67,7 @@ func _on_area_2d_body_entered(body):
 
 func die():
 	Bee.play("dying")
-	GameManager.gain_score(1)
+	GameManager.gain_score(5)
 	col_vect_up_1.enabled = false
 	col_vect_up_2.enabled = false
 	set_collision_mask_value(1, false)

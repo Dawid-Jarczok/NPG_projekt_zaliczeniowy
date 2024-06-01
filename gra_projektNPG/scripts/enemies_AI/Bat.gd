@@ -72,7 +72,7 @@ func _on_detection_area_body_exited(body):
 
 func die():
 	Bat.play("dying")
-	GameManager.gain_score(1)
+	GameManager.gain_score(10)
 	set_collision_mask_value(1, false)
 	velocity.x = 0.0
 	speed = 0.0
