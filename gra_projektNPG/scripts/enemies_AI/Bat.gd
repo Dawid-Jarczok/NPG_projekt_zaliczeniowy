@@ -9,7 +9,10 @@ var collider_name = null
 @onready var col_vect_down_1 = $collision_down_1
 @onready var col_vect_down_2 = $collision_down_2
 
+var on_screen:bool = false
+
 func _ready():
+	enemy_pause(true)
 	GameManager.game_pause.connect(enemy_pause)
 	state = State.default
 	timer = Timer.new()
@@ -25,10 +28,11 @@ func enemy_pause(_pause):
 		set_process_unhandled_input(false)
 		set_process_input(false)
 	else:
-		set_process(true)
-		set_physics_process(true)
-		set_process_unhandled_input(true)
-		set_process_input(true)
+		if on_screen:
+			set_process(true)
+			set_physics_process(true)
+			set_process_unhandled_input(true)
+			set_process_input(true)
 
 func _physics_process(delta):
 	if state == State.chase:
@@ -68,7 +72,7 @@ func _on_detection_area_body_exited(body):
 
 func die():
 	Bat.play("dying")
-	GameManager.gain_score(1)
+	GameManager.gain_score(10)
 	set_collision_mask_value(1, false)
 	velocity.x = 0.0
 	speed = 0.0
@@ -89,3 +93,14 @@ func _on_area_up_body_entered(body:Node2D):
 	elif state == State.chase or state == State.push:
 		if body.is_in_group("Player"):
 			die()
+
+
+
+func _on_visible_on_screen_notifier_2d_screen_entered():
+	on_screen = true
+	enemy_pause(false)
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	on_screen = false
+	enemy_pause(true)

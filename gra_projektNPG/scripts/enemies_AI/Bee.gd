@@ -15,7 +15,10 @@ var attack = false
 @onready var col_vect_up_1 = $collision_up_1
 @onready var col_vect_up_2 = $collision_up_2
 
+var on_screen:bool = false
+
 func _ready():
+	enemy_pause(true)
 	GameManager.game_pause.connect(enemy_pause)
 
 func enemy_pause(_pause):
@@ -25,10 +28,11 @@ func enemy_pause(_pause):
 		set_process_unhandled_input(false)
 		set_process_input(false)
 	else:
-		set_process(true)
-		set_physics_process(true)
-		set_process_unhandled_input(true)
-		set_process_input(true)
+		if on_screen:
+			set_process(true)
+			set_physics_process(true)
+			set_process_unhandled_input(true)
+			set_process_input(true)
 
 func _physics_process(delta):
 
@@ -63,7 +67,7 @@ func _on_area_2d_body_entered(body):
 
 func die():
 	Bee.play("dying")
-	GameManager.gain_score(1)
+	GameManager.gain_score(5)
 	col_vect_up_1.enabled = false
 	col_vect_up_2.enabled = false
 	set_collision_mask_value(1, false)
@@ -72,3 +76,13 @@ func die():
 	queue_free()
 	
 	move_and_slide()
+
+
+func _on_visible_on_screen_notifier_2d_screen_entered():
+	on_screen = true
+	enemy_pause(false)
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	on_screen = false
+	enemy_pause(true)

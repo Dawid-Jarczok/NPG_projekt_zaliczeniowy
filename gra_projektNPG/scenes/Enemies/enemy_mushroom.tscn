@@ -222,6 +222,12 @@ target_position = Vector2(0, 7)
 position = Vector2(19, 18)
 target_position = Vector2(0, 7)
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+modulate = Color(1, 1, 1, 0.286275)
+scale = Vector2(7.98, 5)
+
 [connection signal="body_entered" from="Area_up" to="." method="_on_area_up_body_entered"]
 [connection signal="body_entered" from="Area_left" to="." method="_on_area_left_body_entered"]
 [connection signal="body_entered" from="Area_right" to="." method="_on_area_right_body_entered"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

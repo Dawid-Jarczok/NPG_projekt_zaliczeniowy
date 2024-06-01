@@ -5,21 +5,26 @@ var speed = -200.0
 @onready var bluebird = $AnimatedSprite2D
 @onready var area_left = $Area_left
 var direction = true
+var on_screen:bool = false
 
 func _ready():
+	enemy_pause(true)
 	GameManager.game_pause.connect(enemy_pause)
 
 func enemy_pause(_pause):
 	if _pause:
+		bluebird.pause()
 		set_process(false)
 		set_physics_process(false)
 		set_process_unhandled_input(false)
 		set_process_input(false)
 	else:
-		set_process(true)
-		set_physics_process(true)
-		set_process_unhandled_input(true)
-		set_process_input(true)
+		if on_screen:
+			bluebird.play("default")
+			set_process(true)
+			set_physics_process(true)
+			set_process_unhandled_input(true)
+			set_process_input(true)
 
 
 func _physics_process(delta):
@@ -37,7 +42,7 @@ func _physics_process(delta):
 
 func die():
 	bluebird.play("dying")
-	GameManager.gain_score(1)
+	GameManager.gain_score(5)
 	set_collision_layer_value(1, false)
 	set_collision_mask_value(1, false)
 	velocity.x = 0.0
@@ -67,3 +72,13 @@ func _on_flying_area_area_exited(area:Area2D):
 		direction = false
 	elif area == $Area_left:
 		direction = true
+
+
+func _on_visible_on_screen_notifier_2d_screen_entered():
+	on_screen = true
+	enemy_pause(false)
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	on_screen = false
+	enemy_pause(true)
