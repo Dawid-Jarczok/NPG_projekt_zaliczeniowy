@@ -25,8 +25,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var dust = get_parent().get_node("Dust")
 
 func _physics_process(delta):
-	if Input.is_action_just_pressed("TestAction"):
-		teleport()
+	#if Input.is_action_just_pressed("TestAction"):
+		#teleport()
 
 	if current_state != State.teleporting:
 		player_jump(delta)
