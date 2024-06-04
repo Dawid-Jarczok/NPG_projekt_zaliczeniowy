@@ -24,7 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://dncerdh5ikort" path="res://scenes/items/heart.tscn" id="28_s7dl5"]
 [ext_resource type="PackedScene" uid="uid://cdtyiyovg5yr0" path="res://scenes/items/strawberry_collectible.tscn" id="29_3n5m1"]
 [ext_resource type="PackedScene" uid="uid://dcni15hu02fgh" path="res://scenes/items/banana_collectible.tscn" id="30_6ph3c"]
-[ext_resource type="PackedScene" path="res://scenes/map/portal.tscn" id="30_qe0gj"]
+[ext_resource type="PackedScene" uid="uid://bysky8x2mukib" path="res://scenes/map/portal.tscn" id="30_qe0gj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qov1h"]
 texture = ExtResource("11_6cshk")
@@ -2046,7 +2046,7 @@ frame = 4
 frame_progress = 0.558065
 
 [node name="DebugTeleport" type="Node2D" parent="."]
-position = Vector2(4939, 888)
+position = Vector2(46272, 568)
 scale = Vector2(10, 10)
 
 [node name="Saw" parent="." groups=["Trap"] instance=ExtResource("21_5ys3k")]
